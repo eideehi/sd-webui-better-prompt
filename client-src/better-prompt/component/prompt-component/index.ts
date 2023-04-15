@@ -1,0 +1,1 @@
+export { createPromptComponent } from "./main";

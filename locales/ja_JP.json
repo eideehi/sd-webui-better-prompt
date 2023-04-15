@@ -1,0 +1,11 @@
+{
+  "Version of Better Prompt (requires restart Web UI)": "Better Promptのバージョン (Web UIの再起動が必要)",
+  "Display update notifications": "アップデートの通知を表示する",
+  "Notify of updates only once per version": "バージョンごとに一度しかアップデートの通知を行わない",
+  "Interval at which to display update notifications (Unit: days)": "アップデートの通知を表示する間隔 (単位: 日)",
+  "Language of Better Prompt (requires reload UI)": "Better Promptの言語 (UIのリロードが必要)",
+  "Multiplier": "乗数",
+  "Input prompt...": "プロンプトを入力...",
+  "LoRA cannot be add to negative prompt": "LoRAをネガティブプロンプトに追加することはできません",
+  "Better Prompt version {0} is available": "Better Promptのバージョン {0} が利用可能になりました"
+}

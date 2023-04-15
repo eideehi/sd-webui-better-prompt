@@ -1,0 +1,1 @@
+export { createInputComponent } from "./main";

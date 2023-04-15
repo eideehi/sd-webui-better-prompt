@@ -1,0 +1,91 @@
+:root {
+  --danbooru-background-color-base: 246, 246, 248;
+  --danbooru-background: linear-gradient(
+    to bottom right,
+    rgba(var(--danbooru-background-color-base), 0.3),
+    rgba(var(--danbooru-background-color-base), 0.875)
+  );
+  --danbooru-border-color: rgb(209, 209, 218);
+  --danbooru-count-text-color: rgb(145, 146, 167);
+  --danbooru-artist-text-color: rgb(192, 0, 4);
+  --danbooru-artist-text-color-hover: rgb(237, 36, 38);
+  --danbooru-copyright-text-color: rgb(168, 0, 170);
+  --danbooru-copyright-text-color-hover: rgb(215, 0, 217);
+  --danbooru-character-text-color: rgb(0, 171, 44);
+  --danbooru-character-text-color-hover: rgb(53, 198, 74);
+  --danbooru-general-text-color: rgb(0, 117, 248);
+  --danbooru-general-text-color-hover: rgb(140, 170, 255);
+
+  --invalid-prompt-item-color-base: 255, 51, 0;
+  --invalid-prompt-item-background: linear-gradient(
+    to bottom right,
+    rgba(var(--invalid-prompt-item-color-base), 0.3),
+    rgba(var(--invalid-prompt-item-color-base), 0.875)
+  );
+  --invalid-prompt-item-border-color: rgb(var(--invalid-prompt-item-color-base));
+  --invalid-prompt-item-text-color: rgb(153, 0, 0);
+
+  --textual-inversion-background-color-base: 51, 204, 51;
+  --textual-inversion-background: linear-gradient(
+    to bottom right,
+    rgba(var(--textual-inversion-background-color-base), 0.3),
+    rgba(var(--textual-inversion-background-color-base), 0.875)
+  );
+  --textual-inversion-border-color: rgb(var(--textual-inversion-background-color-base));
+  --textual-inversion-text-color: rgb(0, 102, 0);
+
+  --lora-background-color-base: 0, 153, 255;
+  --lora-background: linear-gradient(
+    to bottom right,
+    rgba(var(--lora-background-color-base), 0.3),
+    rgba(var(--lora-background-color-base), 0.875)
+  );
+  --lora-border-color: rgb(var(--lora-background-color-base));
+  --lora-text-color: rgb(0, 51, 153);
+}
+
+.dark {
+  --danbooru-background-color-base: 44, 45, 63;
+  --danbooru-background: linear-gradient(
+    to bottom right,
+    rgba(var(--danbooru-background-color-base), 0.3),
+    rgba(var(--danbooru-background-color-base), 0.875)
+  );
+  --danbooru-border-color: rgb(119, 120, 146);
+  --danbooru-count-text-color: rgb(145, 146, 167);
+  --danbooru-artist-text-color: rgb(255, 138, 139);
+  --danbooru-artist-text-color-hover: rgb(255, 195, 195);
+  --danbooru-copyright-text-color: rgb(199, 151, 255);
+  --danbooru-copyright-text-color-hover: rgb(221, 201, 251);
+  --danbooru-character-text-color: rgb(53, 198, 74);
+  --danbooru-character-text-color-hover: rgb(147, 228, 154);
+  --danbooru-general-text-color: rgb(0, 155, 230);
+  --danbooru-general-text-color-hover: rgb(75, 180, 255);
+
+  --invalid-prompt-item-color-base: 204, 0, 0;
+  --invalid-prompt-item-background: linear-gradient(
+    to bottom right,
+    rgba(var(--invalid-prompt-item-color-base), 0.3),
+    rgba(var(--invalid-prompt-item-color-base), 0.875)
+  );
+  --invalid-prompt-item-color: rgb(var(--invalid-prompt-item-color-base));
+  --invalid-prompt-item-text-color: var(--neutral-300);
+
+  --textual-inversion-background-color-base: 0, 153, 51;
+  --textual-inversion-background: linear-gradient(
+    to bottom right,
+    rgba(var(--textual-inversion-background-color-base), 0.3),
+    rgba(var(--textual-inversion-background-color-base), 0.875)
+  );
+  --textual-inversion-border-color: rgb(var(--textual-inversion-background-color-base));
+  --textual-inversion-text-color: var(--neutral-300);
+
+  --lora-background-color-base: 0, 102, 204;
+  --lora-background: linear-gradient(
+    to bottom right,
+    rgba(var(--lora-background-color-base), 0.3),
+    rgba(var(--lora-background-color-base), 0.875)
+  );
+  --lora-border-color: rgb(var(--lora-background-color-base));
+  --lora-text-color: var(--neutral-300);
+}

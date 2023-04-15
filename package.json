@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "name": "sd-webui-better-prompt",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install",
+    "build": "vite build",
+    "deploy": "cpy --flat ./dist/style.css ./ && cpy --flat ./dist/betterPrompt.js ./javascript/",
+    "build:dev": "pnpm run build && pnpm run deploy",
+    "lint": "prettier --plugin-search-dir . --check ./client-src && eslint ./client-src",
+    "format": "prettier --plugin-search-dir . --write ./client-src"
+  },
+  "keywords": [],
+  "author": "EideeHi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/sortablejs": "^1.15.1",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "autoprefixer": "^10.4.13",
+    "commander": "^10.0.0",
+    "cpy-cli": "^4.2.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "fs-extra": "^11.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "node-fetch": "^3.3.1",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.4",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "fuse.js": "^6.6.2",
+    "nanoid": "^4.0.2",
+    "sortablejs": "^1.15.0"
+  }
+}

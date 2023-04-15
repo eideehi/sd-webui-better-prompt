@@ -1,0 +1,6 @@
+{
+  "src/**/*.{js,ts,svelte}": [
+    "pnpm run lint",
+    "pnpm run format"
+  ]
+}

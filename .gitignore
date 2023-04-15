@@ -1,0 +1,8 @@
+.idea/
+
+node_modules
+dev-scripts/tmp/
+dist/
+
+__pycache__/
+user-data/

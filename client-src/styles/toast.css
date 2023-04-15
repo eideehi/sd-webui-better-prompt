@@ -1,0 +1,41 @@
+.better-prompt.toast {
+  @apply tw-fixed -tw-bottom-[10rem] tw-z-[1100] tw-cursor-pointer tw-rounded tw-px-6 tw-py-4 tw-font-bold tw-text-white tw-opacity-0 tw-duration-300 tw-ease-in-out;
+  transition-property: opacity, bottom, background-color;
+}
+
+.better-prompt.toast.left {
+  @apply tw-left-6;
+}
+
+.better-prompt.toast.center {
+  @apply tw-left-1/2;
+  transform: translateX(-50%);
+}
+
+.better-prompt.toast.right {
+  @apply tw-right-6;
+}
+
+.better-prompt.toast.show {
+  @apply tw-bottom-6 tw-opacity-100;
+}
+
+.better-prompt.toast.fade-out {
+  @apply tw-bottom-6 tw-opacity-0;
+}
+
+.better-prompt.toast.info {
+  background-color: #0064b2;
+}
+
+.better-prompt.toast.success {
+  background-color: #00ce8d;
+}
+
+.better-prompt.toast.warning {
+  background-color: #ce6400;
+}
+
+.better-prompt.toast.error {
+  background-color: #ce0027;
+}

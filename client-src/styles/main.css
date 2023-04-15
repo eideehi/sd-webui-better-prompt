@@ -1,0 +1,113 @@
+[data-hidden-prompt="true"] > #txt2img_prompt_container,
+[data-hidden-prompt="true"] > #img2img_prompt_container {
+  @apply !tw-hidden;
+}
+
+.better-prompt.components {
+  @apply tw-flex tw-w-full tw-flex-wrap tw-gap-[--layout-gap];
+}
+
+.better-prompt .prompt-component {
+  @apply tw-flex tw-min-w-[min(640px,100%)] tw-grow-[6] tw-basis-0 tw-flex-col tw-gap-[--layout-gap];
+}
+
+.better-prompt .prompt-component > .prompt-container {
+  @apply tw-flex tw-flex-col;
+}
+
+.better-prompt .prompt-container > .prompt-wrapper {
+  @apply tw-relative;
+}
+
+.better-prompt .prompt-wrapper > .token-counter {
+  @apply tw-absolute -tw-top-3 tw-right-[1rem] tw-z-[100] tw-inline-block tw-w-auto !tw-min-w-0;
+}
+
+.better-prompt .token-counter > .value {
+  --bp-box-shadow: 0 0 0 0.3em rgba(192, 192, 192, 0.15), inset 0 0 0.6em rgba(192, 192, 192, 0.075);
+  @apply tw-rounded-[0.4rem] tw-border-2 tw-border-solid tw-border-[#c0c0c066] tw-px-3 tw-py-[0.1rem] tw-text-[length:--text-md] tw-font-[--body-text-weight] tw-leading-[--line-sm] tw-text-[--body-text-color] [background:--input-background-fill] [box-shadow:--bp-box-shadow];
+}
+
+.better-prompt .prompt-wrapper > .prompt-list {
+  @apply tw-flex tw-min-h-[84px] tw-w-full tw-list-none tw-flex-wrap tw-gap-2 tw-rounded-[--input-radius] tw-border-[length:--input-border-width] tw-border-solid tw-border-[--input-border-color] tw-p-[--input-padding] tw-text-[length:--input-text-size] tw-font-[--input-text-weight] tw-leading-[--line-sm] tw-text-[--body-text-color] tw-outline-none [background:--input-background-fill] [box-shadow:--input-shadow];
+}
+
+.better-prompt .prompt-list > .prompt-item {
+  @apply tw-inline-block tw-h-fit tw-max-w-full tw-cursor-grab tw-select-none tw-break-words tw-rounded tw-border-[length:--button-border-width] tw-border-solid tw-border-[--button-secondary-border-color] tw-px-1 tw-text-[--button-secondary-text-color] [background:--button-secondary-background-fill];
+}
+
+.better-prompt .prompt-list > .prompt-item[data-subtype="textual-inversion"] {
+  @apply tw-border-[--textual-inversion-border-color] tw-text-[--textual-inversion-text-color] [background:--textual-inversion-background];
+}
+
+.better-prompt .prompt-list > .prompt-item[data-subtype="lora"] {
+  @apply tw-border-[--lora-border-color] tw-text-[--lora-text-color] [background:--lora-background];
+}
+
+.better-prompt .prompt-list > .prompt-item[data-type][data-invalid] {
+  @apply tw-border-[--invalid-prompt-item-border-color] tw-text-[--invalid-prompt-item-text-color] [background:--invalid-prompt-item-background];
+}
+
+.better-prompt .prompt-list > .prompt-item.ghost {
+  @apply tw-border-[--button-primary-border-color] tw-text-[--button-primary-text-color] tw-opacity-50 [background:--button-primary-background-fill];
+}
+
+.better-prompt .prompt-input {
+  @apply tw-flex tw-w-min tw-min-w-[min(640px,100%)] tw-grow tw-flex-col tw-gap-2;
+}
+
+.better-prompt .prompt-input > .suggest-filter {
+  @apply tw-flex tw-flex-wrap tw-gap-x-4 tw-gap-y-2;
+}
+
+.better-prompt .prompt-input > .suggest-wrapper {
+  @apply tw-m-0 tw-min-h-[84px] tw-w-full tw-grow tw-rounded-[--block-radius] tw-border-[length:--block-border-width] tw-border-[--block-border-color] tw-leading-[--line-sm] [background:--block-background-fill] [box-shadow:--block-shadow];
+}
+
+.better-prompt .suggest-wrapper > .suggest {
+  @apply tw-flex tw-flex-wrap tw-gap-2 tw-p-[--input-padding];
+}
+
+.better-prompt .suggest > .prompt-item {
+  @apply tw-cursor-pointer tw-truncate;
+}
+
+.better-prompt .suggest > .prompt-item:focus-visible {
+  @apply tw-outline-none;
+}
+
+.better-prompt .suggest > .prompt-item.pseudo-focus {
+  @apply tw-outline tw-outline-2 tw-outline-[--input-background-fill-focus] ![background:none];
+}
+
+.better-prompt .suggest > .prompt-item[data-type="danbooru"] {
+  @apply tw-flex tw-gap-2 tw-border-[--danbooru-border-color] [background:--danbooru-background];
+}
+
+.better-prompt .suggest > .prompt-item[data-type="danbooru"][data-category="0"] > .label {
+  @apply tw-text-[--danbooru-general-text-color];
+}
+
+.better-prompt .suggest > .prompt-item[data-type="danbooru"][data-category="1"] > .label {
+  @apply tw-text-[--danbooru-artist-text-color];
+}
+
+.better-prompt .suggest > .prompt-item[data-type="danbooru"][data-category="3"] > .label {
+  @apply tw-text-[--danbooru-copyright-text-color];
+}
+
+.better-prompt .suggest > .prompt-item[data-type="danbooru"][data-category="4"] > .label {
+  @apply tw-text-[--danbooru-character-text-color];
+}
+
+.better-prompt .suggest > .prompt-item[data-type="danbooru"] > .count {
+  @apply tw-text-[--danbooru-count-text-color];
+}
+
+.better-prompt.popup.thumbnail-preview > .card {
+  @apply tw-cursor-default tw-shadow-none;
+}
+
+.better-prompt.popup.thumbnail-preview > .card:hover {
+  @apply tw-shadow-none;
+}
