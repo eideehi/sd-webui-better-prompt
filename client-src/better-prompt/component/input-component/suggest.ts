@@ -1,5 +1,5 @@
 import type { Direction2D } from "@/libs/dom";
-import type { ExtraNetworksData, ExtraNetworksType } from "@/better-prompt";
+import type { ExtraNetworksData } from "@/better-prompt";
 import type { FilterType } from "./filter";
 import {
   addClasses,
@@ -167,7 +167,7 @@ function updateSuggest(
   if (withinLimit() && isNotFiltered("textual-inversion")) {
     const fuse = getExtraNetworksDataFuse(tabName, "textual-inversion");
     fuse.search(keyword, { limit: limit - count }).forEach((result) => {
-      results.appendChild(createExtraNetworksButton(tabName, "textual-inversion", result.item));
+      results.appendChild(createExtraNetworksButton(tabName, result.item));
       count++;
     });
   }
@@ -175,7 +175,7 @@ function updateSuggest(
   if (withinLimit() && isNotFiltered("lora")) {
     const fuse = getExtraNetworksDataFuse(tabName, "lora");
     fuse.search(keyword, { limit: limit - count }).forEach((value) => {
-      results.appendChild(createExtraNetworksButton(tabName, "lora", value.item));
+      results.appendChild(createExtraNetworksButton(tabName, value.item));
       count++;
     });
   }
@@ -207,36 +207,37 @@ function updateSuggest(
 
 function createExtraNetworksButton(
   tabName: PromptAvailableTab,
-  type: ExtraNetworksType,
   data: ExtraNetworksData
 ): HTMLElement {
+  const { type, name, thumbnail } = data;
+
   const button = document.createElement("button");
   button.classList.add("prompt-item");
   button.dataset.type = "extranetworks";
   button.dataset.subtype = type;
-  button.textContent = data.name;
+  button.textContent = name;
 
   const createThumbnailPreview = () => {
-    const popup = document.createElement("div");
-    popup.classList.add("thumbnail-preview", "extra-network-cards");
+    const thumbnailPreview = document.createElement("div");
+    thumbnailPreview.classList.add("thumbnail-preview", "extra-network-cards");
 
     const card = document.createElement("div");
     card.classList.add("card");
-    if (data.thumbnail != null) {
-      card.style.backgroundImage = data.thumbnail;
+    if (thumbnail != null) {
+      card.style.backgroundImage = thumbnail;
     }
 
     if (type === "lora") {
-      const showMetadata = document.createElement("div");
-      showMetadata.classList.add("metadata-button");
-      showMetadata.addEventListener("click", (event) => {
-        extraNetworksRequestMetadata(event, type, data.name);
+      const metadataButton = document.createElement("div");
+      metadataButton.classList.add("metadata-button");
+      metadataButton.addEventListener("click", (event) => {
+        extraNetworksRequestMetadata(event, type, name);
       });
-      card.appendChild(showMetadata);
+      card.appendChild(metadataButton);
     }
 
-    popup.appendChild(card);
-    return popup;
+    thumbnailPreview.appendChild(card);
+    return thumbnailPreview;
   };
 
   button.addEventListener("click", (event) => {
