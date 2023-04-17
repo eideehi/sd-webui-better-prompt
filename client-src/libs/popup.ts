@@ -38,6 +38,7 @@ export function showPopupBelow(
     const onMouseDown = (event: Event) => {
       const { target } = event;
       if (!(event instanceof MouseEvent) || !(target instanceof Element)) return;
+      if (hasElement(".global-popup[style='display: flex;']")) return;
       if (event.button !== 1 && target !== popup && target !== parent && !hasChild(popup, target)) {
         closePopup(popup);
       }
