@@ -111,3 +111,7 @@
 .better-prompt.popup.thumbnail-preview > .card:hover {
   @apply tw-shadow-none;
 }
+
+.better-prompt.popup.thumbnail-preview > .card > .metadata-button {
+  @apply tw-w-8;
+}

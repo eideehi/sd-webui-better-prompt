@@ -8,6 +8,9 @@ declare function onUiLoaded(callback: () => void): void;
 declare function onUiTabChange(callback: () => void): void;
 declare function onUiUpdate(callback: () => void): void;
 
+// javascript/extraNetworks.js
+declare function extraNetworksRequestMetadata(event: Event, extraPage: string, cardName: string): void;
+
 // javascript/localization.js
 declare function getTranslation(text: string): string | undefined;
 

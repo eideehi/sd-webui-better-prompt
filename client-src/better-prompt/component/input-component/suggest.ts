@@ -216,6 +216,29 @@ function createExtraNetworksButton(
   button.dataset.subtype = type;
   button.textContent = data.name;
 
+  const createThumbnailPreview = () => {
+    const popup = document.createElement("div");
+    popup.classList.add("thumbnail-preview", "extra-network-cards");
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+    if (data.thumbnail != null) {
+      card.style.backgroundImage = data.thumbnail;
+    }
+
+    if (type === "lora") {
+      const showMetadata = document.createElement("div");
+      showMetadata.classList.add("metadata-button");
+      showMetadata.addEventListener("click", (event) => {
+        extraNetworksRequestMetadata(event, type, data.name);
+      });
+      card.appendChild(showMetadata);
+    }
+
+    popup.appendChild(card);
+    return popup;
+  };
+
   button.addEventListener("click", (event) => {
     if (event.button === 0) {
       appendPromptItem(tabName, !event.shiftKey, createExtraNetworksItem(type, data));
@@ -227,15 +250,7 @@ function createExtraNetworksButton(
       id: popupId,
       contentFactory: () => {
         event.preventDefault();
-        const popup = document.createElement("div");
-        popup.classList.add("thumbnail-preview", "extra-network-cards");
-        const image = document.createElement("div");
-        image.classList.add("card");
-        if (data.thumbnail != null) {
-          image.style.backgroundImage = data.thumbnail;
-        }
-        popup.appendChild(image);
-        return popup;
+        return createThumbnailPreview();
       },
       groupToClose: "thumbnail-preview",
     });
