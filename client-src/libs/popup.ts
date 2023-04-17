@@ -1,15 +1,23 @@
 import { applyClasses, hasElement, getPosition, hasChild, getElementAll, getElement } from "./dom";
 
+export function getPopupById(id: string): Nullable<HTMLElement> {
+  return getElement(`.better-prompt.popup[data-popup-id="${id}"]`);
+}
+
+export function getPopupByGroup(group: string): HTMLElement[] {
+  return getElementAll(`.better-prompt.popup[data-group="${group}"]`);
+}
+
 export function showPopupBelow(
   parent: Element,
   options: {
     id: string;
-    contentFactory: () => Nullable<HTMLElement> | Promise<Nullable<HTMLElement>>;
     groupToClose?: string;
+    contentFactory: () => Nullable<HTMLElement> | Promise<Nullable<HTMLElement>>;
   }
 ): void {
   const { id, contentFactory, groupToClose } = options;
-  if (hasElement(`.better-prompt.popup[data-popup-id="${id}"]`)) return;
+  if (getPopupById(id) != null) return;
 
   const contentOrPromise = contentFactory();
   if (contentOrPromise == null) return;
@@ -19,7 +27,7 @@ export function showPopupBelow(
     applyClasses(popup, hasElement(".gradio-container.dark"), "dark");
     popup.dataset.popupId = id;
     if (groupToClose != null) {
-      getElementAll(`.better-prompt.popup[data-group="${groupToClose}"]`).forEach(closePopup);
+      closePopupByGroup(groupToClose);
       popup.dataset.group = groupToClose;
     }
 
@@ -68,4 +76,18 @@ export function showPopupBelow(
 
 export function closePopup(element: Element): void {
   element.dispatchEvent(new CustomEvent("close-popup"));
+}
+
+export function closePopupById(id: string): boolean {
+  const popup = getPopupById(id);
+  if (popup == null) return false;
+  closePopup(popup);
+  return true;
+}
+
+export function closePopupByGroup(group: string): boolean {
+  const popups = getPopupByGroup(group);
+  if (popups.length === 0) return false;
+  popups.forEach(closePopup);
+  return true;
 }

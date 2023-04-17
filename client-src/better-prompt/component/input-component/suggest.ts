@@ -10,7 +10,7 @@ import {
   removeClasses,
 } from "@/libs/dom";
 import { dispatchEvent } from "@/libs/webui";
-import { showPopupBelow } from "@/libs/popup";
+import { closePopupById, showPopupBelow } from "@/libs/popup";
 import { getExtraNetworksDataFuse, getDanbooruTagFuse } from "@/better-prompt";
 import { createExtraNetworksItem, createPlainItem, parsePromptItem } from "../promptItem";
 import { appendPromptItem } from "../prompt-component/promptList";
@@ -245,16 +245,29 @@ function createExtraNetworksButton(
       appendPromptItem(tabName, !event.shiftKey, createExtraNetworksItem(type, data));
     }
   });
+
   const popupId = `thumbnail-preview-${nanoid()}`;
+  button.addEventListener("mousedown", (event) => {
+    if (event.button !== 0) return;
+    closePopupById(popupId);
+  });
   button.addEventListener("contextmenu", (event) => {
-    showPopupBelow(button, {
-      id: popupId,
-      contentFactory: () => {
-        event.preventDefault();
-        return createThumbnailPreview();
-      },
-      groupToClose: "thumbnail-preview",
-    });
+    const preventDefault = () => {
+      if (event.ctrlKey) return; // For debug. When ctrl key pressed, context menu is displayed.
+      event.preventDefault();
+    };
+    if (closePopupById(popupId)) {
+      preventDefault();
+    } else {
+      showPopupBelow(button, {
+        id: popupId,
+        groupToClose: "thumbnail-preview",
+        contentFactory: () => {
+          preventDefault();
+          return createThumbnailPreview();
+        },
+      });
+    }
   });
   return button;
 }

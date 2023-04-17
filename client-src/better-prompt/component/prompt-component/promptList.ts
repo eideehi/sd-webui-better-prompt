@@ -3,7 +3,7 @@ import type { EmphasizedPrompt, ExtraNetworksPrompt, PlainPrompt, Prompt } from 
 import type { ExtraNetworksType } from "@/better-prompt";
 import { parsePrompt } from "@/libs/api";
 import { getElement, getElementAll, removeAllChild, hasClass } from "@/libs/dom";
-import { showPopupBelow } from "@/libs/popup";
+import { closePopupById, showPopupBelow } from "@/libs/popup";
 import { concatPrompt, isPromptType } from "@/libs/prompt";
 import { showToast } from "@/libs/toast";
 import { _ } from "@/libs/webui";
@@ -93,15 +93,27 @@ function _appendPromptItem(list: HTMLElement, item: HTMLElement, silent: boolean
   });
 
   const popupId = `prompt-item-${nanoid()}`;
+  item.addEventListener("mousedown", (event) => {
+    if (event.button !== 0) return;
+    closePopupById(popupId);
+  });
   item.addEventListener("contextmenu", async (event) => {
-    showPopupBelow(item, {
-      id: popupId,
-      contentFactory: async () => {
-        event.preventDefault();
-        return await createPopupForPromptItem(item);
-      },
-      groupToClose: "prompt-item",
-    });
+    const preventDefault = () => {
+      if (event.ctrlKey) return; // For debug. When ctrl key pressed, context menu is displayed.
+      event.preventDefault();
+    };
+    if (closePopupById(popupId)) {
+      preventDefault();
+    } else {
+      showPopupBelow(item, {
+        id: popupId,
+        groupToClose: "prompt-item",
+        contentFactory: async () => {
+          preventDefault();
+          return await createPopupForPromptItem(item);
+        },
+      });
+    }
   });
 
   list.appendChild(item);
