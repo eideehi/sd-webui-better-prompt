@@ -2,8 +2,9 @@ import "./styles/index.css";
 import { getDanbooruTags, getLocalization } from "./libs/api";
 import { getElement } from "./libs/dom";
 import { getCurrentTabName, withBooleanOption } from "./libs/webui";
-import { createMainComponents, initDanbooruTags, initExtraNetworksData } from "./better-prompt";
+import { createMainComponents, initDanbooruTags, initExtraNetworksData } from "@/better-prompt";
 import { checkForUpdates } from "@/better-prompt/checkForUpdates";
+import { initUndoRedo } from "@/better-prompt/common/undoRedo";
 
 let fetchLocalization: Promise<void> | null = null;
 let fetchDanbooruTags: Promise<void> | null = null;
@@ -19,6 +20,7 @@ function initialize(tabName: PromptAvailableTab) {
 
   Promise.all([fetchLocalization, fetchDanbooruTags]).then(() => {
     initExtraNetworksData(tabName);
+    initUndoRedo(tabName);
     createMainComponents(tabName);
     checkForUpdates();
   });
