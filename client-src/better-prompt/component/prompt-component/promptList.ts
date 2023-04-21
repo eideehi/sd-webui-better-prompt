@@ -51,8 +51,8 @@ export function createPromptList(options: {
 
   store.subscribe(async (prompt) => {
     if (!parseDisabled) {
-      removeAllChild(list);
       const items = await parsePromptItem(tabName, prompt);
+      removeAllChild(list);
       items.forEach((item) => {
         itemValidation(tabName, item);
         _appendPromptItem(list, item, true);
