@@ -156,6 +156,7 @@ function updateSuggest(
   }
 ): void {
   const { tabName, keyword, filter } = options;
+
   const isNotFiltered = (type: FilterType) => filter.has("all") || filter.has(type);
 
   removeAllChild(results);
@@ -250,6 +251,9 @@ function createDanbooruButton(tabName: PromptAvailableTab, tag: DanbooruTag): HT
   const toLabel = (tag: DanbooruTag) => {
     return `${tag.name.replaceAll("_", " ")}`;
   };
+  const toLabelZh = (tag: DanbooruTag) => {
+    return `${tag.zh_cn.replaceAll("_", " ")}`;
+  }
   const toCount = (tag: DanbooruTag) => {
     let count = tag.post_count;
     if (count >= 1000000) {
@@ -274,6 +278,11 @@ function createDanbooruButton(tabName: PromptAvailableTab, tag: DanbooruTag): HT
   label.classList.add("label");
   label.textContent = toLabel(tag);
   button.appendChild(label);
+
+  const label_zh = document.createElement("span");
+  label_zh.classList.add("label");
+  label_zh.textContent = toLabelZh(tag);
+  button.appendChild(label_zh);
 
   const count = document.createElement("span");
   count.classList.add("count");

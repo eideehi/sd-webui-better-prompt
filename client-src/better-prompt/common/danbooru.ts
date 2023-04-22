@@ -21,9 +21,11 @@ function createDanbooruTagFuse(data: DanbooruTag[]): Fuse<DanbooruTag> {
   return new Fuse(data, {
     useExtendedSearch: true,
     threshold: 0.3,
-    keys: ["name"],
+    keys: ["name", "zh_cn"],
   });
 }
+
+
 
 export function getDanbooruTagFuse(category: DanbooruTagCategory): Fuse<DanbooruTag> {
   return _danbooruTagFuseMap[category] || createDanbooruTagFuse([]);

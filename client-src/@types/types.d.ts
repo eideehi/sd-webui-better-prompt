@@ -4,7 +4,10 @@ declare type DanbooruTag = {
   category: number;
   is_deprecated: boolean;
   words: string[];
+  zh_cn: string;
 };
+
+
 
 declare type PromptAvailableTab = "txt2img" | "img2img";
 
