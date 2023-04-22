@@ -1,7 +1,8 @@
 [英语](README.en.md)\|[中文](README.zh-CN.md)\|[日本](README.ja.md)
 
-Better Prompt 是[stable diffusion](https://github.com/AUTOMATIC1111/stable-diffusion-webui)这增加了
-用于协助提示输入和编辑的 UI。
+
+Better Prompt Chinese是
+[stable diffusion](https://github.com/AUTOMATIC1111/stable-diffusion-webui)的插件
 
 <figure>
 <img src="docs/images/overview.png" alt="Image - Overview" />
@@ -11,7 +12,7 @@ Better Prompt 是[stable diffusion](https://github.com/AUTOMATIC1111/stable-diff
 
 Better Prompt Chinexe的创建是为了减少各种不便 传统提示输入和编辑。它允许您设置文本
 Inversion 和 LoRA 不显示 Extra networks (🎴)，重新排列
-通过拖放排序提示，并调整提示的强调程度
+通过拖放来调整提示的顺序，并调整提示的强调程度
 通过 GUI 提示。
 
 # 安装
@@ -129,13 +130,6 @@ alt="Image - Prompt Component" />
 ### \[2]否定提示
 
 除了不能添加LoRA，其他都一样[\[肯定提示\]](#positive-prompt).
-
-
-## 更好提示的语言
-
-指定 Better Prompt 使用的语言。默认值为空
-（英语）。目前，如果你改变
-设置，则需要重新加载 Web UI。
 
 # 待办事项清单
 
