@@ -183,7 +183,7 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
             json_data = TreeToJson().transform(PROMPT_PARSER.parse(body))
             print(json_data)
             if isinstance(json_data, list):
-                return JSONResponse(content=json)
+                return JSONResponse(content=json_data)
             return JSONResponse(content=[])
         except Exception as e:
             print(body, e)
