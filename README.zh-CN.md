@@ -1,7 +1,7 @@
 英语 |[中文](README.zh-CN.md)\|[日本人](README.ja.md)
 
 Better Prompt 是[稳定扩散网
-界面](https://github.com/AUTOMATIC1111/stable-diffusion-webui)这增加了
+用户界面](https://github.com/AUTOMATIC1111/stable-diffusion-webui)这增加了
 用于协助提示输入和编辑的 UI。
 
 <figure>
@@ -13,7 +13,7 @@ Better Prompt 是[稳定扩散网
 Better Prompt 的创建是为了减少各种不便
 传统提示输入和编辑。它允许您设置文本
 Inversion 和 LoRA 不显示 Extra networks (🎴)，重新排列
-通过拖放排序提示，并调整提示的强调程度
+通过拖放来调整提示的顺序，并调整提示的强调程度
 通过 GUI 提示。
 
 # 安装
@@ -140,9 +140,9 @@ Better Prompt 在“设置”选项卡中创建自己的配置部分。
 
 ## 更好提示的版本<span id="version_change"></span>
 
-You can change the version of Better Prompt. The default value is blank
-(the latest version at the time of installation). If you change the
-settings, it is necessary to restart the Web UI. (not just reload)
+您可以更改 Better Prompt 的版本。默认值为空
+（安装时的最新版本）。如果你改变
+设置，需要重新启动 Web UI。 （不只是重新加载）
 
 Better Prompt 的当前版本显示在
 网络用户界面。对应的Web UI版本见下表
