@@ -165,6 +165,7 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
             data_zh_cn = json.loads(DANBOORU_TAGS_JSON_ZH_CN.read_text(encoding="UTF-8"))
             data_org = json.loads(DANBOORU_TAGS_JSON.read_text(encoding="UTF-8"))
             data = data_org + data_zh_cn
+            print(data_zh_cn)
             return JSONResponse(content=data)
         if DANBOORU_TAGS_JSON.is_file():
             return FileResponse(path=DANBOORU_TAGS_JSON, media_type="application/json")
