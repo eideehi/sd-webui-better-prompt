@@ -77,6 +77,7 @@ EXTENSION_ROOT = scripts.basedir()
 LOCALIZATION_DIR = Path(EXTENSION_ROOT).joinpath("locales")
 DATA_DIR = Path(EXTENSION_ROOT).joinpath("data")
 DANBOORU_TAGS_JSON = DATA_DIR.joinpath("danbooru-tags.json")
+DANBOORU_TAGS_JSON_ZH_CN = DATA_DIR.joinpath("danbooru-tags-zh-cn.json")
 USER_DATA_DIR = Path(EXTENSION_ROOT).joinpath("user-data")
 UPDATE_INFO_JSON = USER_DATA_DIR.joinpath("update-info.json")
 
@@ -160,10 +161,14 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
 
     @app.get("/better-prompt-api/v1/get-danbooru-tags")
     async def all_danbooru_tag(request: Request):
+        if DANBOORU_TAGS_JSON_ZH_CN.is_file() and DANBOORU_TAGS_JSON.is_file():
+            data_zh_cn = json.loads(DANBOORU_TAGS_JSON_ZH_CN.read_text(encoding="UTF-8"))
+            data_org = json.loads(DANBOORU_TAGS_JSON.read_text(encoding="UTF-8"))
+            data = data_org + data_zh_cn
+            return JSONResponse(content=data)
         if DANBOORU_TAGS_JSON.is_file():
             return FileResponse(path=DANBOORU_TAGS_JSON, media_type="application/json")
-        else:
-            return JSONResponse(content=[])
+        return JSONResponse(content=[])
 
     @app.post("/better-prompt-api/v1/parse-prompt")
     async def parse_prompt(request: Request):
