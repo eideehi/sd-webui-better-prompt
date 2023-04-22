@@ -70,6 +70,8 @@ TIP: Each prompt can be reordered by drag and drop, and can be deleted by clicki
 
 TIP: Right-clicking on LoRA and normal prompts displays a popup for adjusting the emphasis level.
 
+TIP: You can undo or redo your actions on the prompt with [Ctrl + Z] or [Ctrl + Y]
+
 ==== [2] Negative Prompt
 Except for not being able to add LoRA, it is the same as <<positive-prompt>>.
 
@@ -79,13 +81,13 @@ Better Prompt creates its own configuration section in the Settings tab. Here, w
 image::docs/images/settings.png[Image - Settings]
 
 === Version of Better Prompt [[version_change]]
-You can change the version of Better Prompt. The default value is blank (the latest version at the time of installation). If you change the settings, it is necessary to restart the Web UI. (not just reload)
+You can change the version of Better Prompt. Selecting a blank space will change it to the latest version at that point. If you change the settings, it is necessary to restart the Web UI. (not just reload)
 
 TIP: The current version of Better Prompt is displayed in the console of the Web UI. Refer to the table below for the Web UI versions corresponding to each version.
 
 |===
-| Version | Web UI Version (Minimum) | Web UI Version (Maximum)
-| 0.1.0   | 9e1afa9e (2023-03-25)    | ~
+| Version       | Web UI Version (Minimum) | Web UI Version (Maximum)
+| 0.1.0 - 0.2.0 | 9e1afa9e (2023-03-25)    | ~
 |===
 
 === Display update notifications
@@ -103,7 +105,7 @@ Specify the language used by Better Prompt. The default value is blank (English)
 == To-Do List
 * [ ] Add the feature to set aliases for prompts
 * [ ] Add to prompt merge feature
-* [ ] Allow undoing the last added prompt with [Ctrl + Z]
+* [x] Add the feature to undo/redo for prompts
 * [ ] Support for Better Styles
 * [ ] Support for LoRA Block Weight
 * [ ] Support other Extra networks
