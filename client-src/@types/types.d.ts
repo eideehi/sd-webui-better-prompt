@@ -4,6 +4,7 @@ declare type DanbooruTag = {
   category: number;
   is_deprecated: boolean;
   words: string[];
+  zh_cn: string;
 };
 
 
