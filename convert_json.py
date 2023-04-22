@@ -4,6 +4,7 @@ import googletrans
 from googletrans import Translator
 import copy
 
+
 def load_translate(input_path):
     en2zh = {}
     for root, dirs, files in os.walk(input_path):
@@ -25,7 +26,7 @@ def load_translate(input_path):
 class TranslateWithCache(object):
     CACHE_FILE = "./data/translate_cache.json"
 
-    def __init__(self):
+    def __init__(self, enable_google_translate=True):
         if not os.path.exists(self.CACHE_FILE):
             with open(self.CACHE_FILE, "w+", encoding="UTF-8") as f:
                 f.write("{}")
@@ -33,12 +34,14 @@ class TranslateWithCache(object):
             f.seek(0)
             self.cache = json.load(f)
         print(googletrans.LANGUAGES)
-
+        self.enable_google_translate = enable_google_translate
         self.translator = Translator()
 
     def goole_translate(self, txt, src="en", dest="zh-cn"):
+        if not self.enable_google_translate:
+            return None
         try:
-            result = self.translator.translate(txt, dest)
+            result = self.translator.translate(txt, src=src, dest=dest)
             print(f"{txt} -> {result.text}")
             return result.text
         except Exception as e:
@@ -59,7 +62,7 @@ class TranslateWithCache(object):
 
 
 def translate_json():
-    translator = TranslateWithCache()
+    translator = TranslateWithCache(False)
     en2zh = load_translate("../image2text_prompt_generator/data/translate_cache/tags/")
     with open("./data/danbooru-tags.json", encoding="UTF-8") as f:
         tags = json.load(f)
@@ -82,7 +85,7 @@ def translate_json():
             else:
                 tag["zh_cn"] = ""
     with open("./data/danbooru-tags-zh-cn-1.json", "w+", encoding="UTF-8") as f:
-        f.write(json.dumps(tags, ensure_ascii=False, indent=4))
+        f.write(json.dumps(tags, ensure_ascii=False))
 
 
 if __name__ == "__main__":
