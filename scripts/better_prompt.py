@@ -73,7 +73,7 @@ class TreeToJson(lark.Transformer):
 
 
 GIT = os.environ.get('GIT', "git")
-SETTINGS_SECTION = ("better_prompt", "Better Prompt")
+SETTINGS_SECTION = ("better_prompt_chinese", "Better Prompt Chinese")
 EXTENSION_ROOT = scripts.basedir()
 LOCALIZATION_DIR = Path(EXTENSION_ROOT).joinpath("locales")
 DATA_DIR = Path(EXTENSION_ROOT).joinpath("data")
@@ -105,39 +105,6 @@ available_localization: List[str] = []
 localization_dict: Dict[str, str] = {}
 
 
-def print_version() -> None:
-    result = subprocess.check_output([GIT, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd=EXTENSION_ROOT,
-                                     shell=True).decode("utf-8")
-    print(f"Better Prompt version is {result}")
-
-
-def refresh_available_version() -> None:
-    versions = subprocess.check_output([GIT, "tag"], cwd=EXTENSION_ROOT, shell=True).decode("utf-8").splitlines()
-
-    regex = r'(?<=\-\>)\s*(\d+\.\d+\.\d+)'
-    for s in subprocess.check_output([GIT, "fetch", "--dry-run", "--tags"], cwd=EXTENSION_ROOT, shell=True).decode(
-            "utf-8").splitlines():
-        match = re.search(regex, s)
-        if match:
-            versions.append(match.group(1))
-
-    global available_versions
-    available_versions = [" "] + sorted(versions, key=lambda v: tuple(map(int, v.split("."))), reverse=True)
-
-
-def change_version() -> None:
-    before = subprocess.check_output([GIT, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd=EXTENSION_ROOT,
-                                     shell=True).decode("utf-8")
-    subprocess.run([GIT, "fetch", "-q"], cwd=EXTENSION_ROOT, shell=True)
-    if shared.opts.better_styles_version and (not shared.opts.better_styles_version.isspace()):
-        subprocess.run([GIT, "checkout", "-q", shared.opts.better_styles_version], cwd=EXTENSION_ROOT, shell=True)
-    else:
-        subprocess.run([GIT, "checkout", "-q", "main"], cwd=EXTENSION_ROOT, shell=True)
-    after = subprocess.check_output([GIT, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd=EXTENSION_ROOT,
-                                    shell=True).decode("utf-8")
-    print(f"Better Prompt version changed: {before} -> {after}")
-
-
 def find_newer_version(target_version: str) -> str:
     target_parts = list(map(int, target_version.split(".")))
     for version in available_versions:
@@ -151,26 +118,6 @@ def find_newer_version(target_version: str) -> str:
         if version_parts > target_parts:
             return version
     return ""
-
-
-def do_check_for_updates(target_version: str) -> Dict[str, Any]:
-    if UPDATE_INFO_JSON.exists():
-        update_info = UpdateInfo.from_json(UPDATE_INFO_JSON)
-        delta = datetime.now() - update_info.timestamp
-        if delta.days < shared.opts.better_prompt_update_notify_inverval:
-            return {"update": False}
-
-    newer_version = find_newer_version(target_version)
-    if not newer_version:
-        return {"update": False}
-
-    if shared.opts.better_prompt_update_notify_only_once_per_version and newer_version == update_info.version:
-        return {"update": False}
-
-    update_info = UpdateInfo(datetime.now(), newer_version)
-    update_info.to_json(UPDATE_INFO_JSON)
-
-    return {"update": True, "version": newer_version}
 
 
 def refresh_available_localization() -> None:
@@ -208,13 +155,6 @@ def filter_none_fields(obj: Any) -> Any:
 
 
 def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
-    @app.get("/better-prompt-api/v1/check-for-updates")
-    async def check_for_updates(request: Request):
-        version = subprocess.check_output([GIT, "log", '--pretty=%(describe:tags)', "-n", "1"], cwd=EXTENSION_ROOT,
-                                          shell=True).decode("utf-8")
-        version = version.split("-")[0]
-        return JSONResponse(content=do_check_for_updates(version))
-
     @app.get("/better-prompt-api/v1/get-localization")
     async def get_localization(request: Request):
         return JSONResponse(content=localization_dict)
@@ -230,8 +170,8 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
     async def parse_prompt(request: Request):
         body = (await request.body()).decode("utf-8")
         try:
-            json = TreeToJson().transform(PROMPT_PARSER.parse(body))
-            if isinstance(json, list):
+            json_data = TreeToJson().transform(PROMPT_PARSER.parse(body))
+            if isinstance(json_data, list):
                 return JSONResponse(content=json)
             return JSONResponse(content=[])
         except:
@@ -242,32 +182,41 @@ script_callbacks.on_app_started(on_app_started)
 
 
 def on_ui_settings():
-    shared.opts.add_option("better_prompt_version",
-                           shared.OptionInfo("", _("Version of Better Prompt (requires restart Web UI)"), gr.Dropdown,
-                                             lambda: {"choices": available_versions}, refresh=refresh_available_version,
-                                             onchange=change_version, section=SETTINGS_SECTION)),
-    shared.opts.add_option("better_prompt_update_notify_enabled",
-                           shared.OptionInfo(True, _("Display update notifications"), section=SETTINGS_SECTION))
-    shared.opts.add_option("better_prompt_update_notify_only_once_per_version",
-                           shared.OptionInfo(False, _("Notify of updates only once per version"),
-                                             section=SETTINGS_SECTION))
-    shared.opts.add_option("better_prompt_update_notify_inverval",
-                           shared.OptionInfo(1, _("Interval at which to display update notifications (Unit: days)"),
-                                             gr.Slider, {"minimum": 1, "maximum": 31, "step": 1},
-                                             section=SETTINGS_SECTION))
+    shared.opts.add_option(
+        "better_prompt_update_notify_enabled",
+        shared.OptionInfo(True, _("Display update notifications"), section=SETTINGS_SECTION)
+    )
+    shared.opts.add_option(
+        "better_prompt_update_notify_only_once_per_version",
+        shared.OptionInfo(
+            False, _("Notify of updates only once per version"),
+            section=SETTINGS_SECTION
+        )
+    )
+    shared.opts.add_option(
+        "better_prompt_update_notify_inverval",
+        shared.OptionInfo(
+            1, _(
+                "Interval at which to display update notifications (Unit: days)"),
+            gr.Slider, {"minimum": 1, "maximum": 31, "step": 1},
+            section=SETTINGS_SECTION
+        )
+    )
     # shared.opts.add_option("better_prompt_hide_original_prompt", shared.OptionInfo(False, _("Hide the original Prompt"), section = SETTINGS_SECTION))
-    shared.opts.add_option("better_prompt_localization",
-                           shared.OptionInfo("", _("Language of Better Prompt (requires reload UI)"), gr.Dropdown,
-                                             lambda: {"choices": available_localization},
-                                             refresh=refresh_available_localization, section=SETTINGS_SECTION)),
+    shared.opts.add_option(
+        "better_prompt_localization",
+        shared.OptionInfo(
+            "", _("Language of Better Prompt (requires reload UI)"), gr.Dropdown,
+            lambda: {"choices": available_localization},
+            refresh=refresh_available_localization, section=SETTINGS_SECTION
+        )
+    ),
 
 
 script_callbacks.on_ui_settings(on_ui_settings)
 
 
 def initialize() -> None:
-    print_version()
-    refresh_available_version()
     refresh_available_localization()
     load_localization()
 
