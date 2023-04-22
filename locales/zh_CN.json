@@ -1,0 +1,11 @@
+{
+  "Version of Better Prompt Chinese(requires restart Web UI)": "Better Prompt Chinese版本（需重启Web UI）",
+  "Display update notifications": "显示更新通知",
+  "Notify of updates only once per version": "每个版本仅通知更新一次",
+  "Interval at which to display update notifications (Unit: days)": "显示更新通知的时间间隔（单位：天）",
+  "Language of Better Prompt (requires reload UI)": "Better Prompt 语言 (需重启Web UI)",
+  "Multiplier": "乘数",
+  "Input prompt...": "输入 prompt...",
+  "LoRA cannot be add to negative prompt": "LoRA不能添加到否定提示中",
+  "Better Prompt version {0} is available": "Better Prompt 版本 {0} 可使用"
+}
