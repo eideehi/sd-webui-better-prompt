@@ -112,7 +112,7 @@ def get_git_command() -> None:
 
 def print_version() -> None:
   result = subprocess.check_output([git, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8")
-  print(f"Better Prompt version is {result}")
+  print(f"Better Prompt version is {result.strip()}")
 
 def refresh_available_version() -> None:
   versions = subprocess.check_output([git, "tag"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8").splitlines()
@@ -134,7 +134,7 @@ def change_version() -> None:
   else:
     subprocess.run([git, "checkout", "-q", "main"], cwd = EXTENSION_ROOT, shell = True)
   after = subprocess.check_output([git, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8")
-  print(f"Better Prompt version changed: {before} -> {after}")
+  print(f"Better Prompt version changed: {before.strip()} -> {after.strip()}")
 
 def find_newer_version(target_version: str) -> str:
   target_parts = list(map(int, target_version.split(".")))
@@ -203,7 +203,7 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
   @app.get("/better-prompt-api/v1/check-for-updates")
   async def check_for_updates(request: Request):
     version = subprocess.check_output([git, "log", '--pretty=%(describe:tags)', "-n", "1"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8")
-    version = version.split("-")[0]
+    version = version.strip().split("-")[0]
     return JSONResponse(content = do_check_for_updates(version))
 
   @app.get("/better-prompt-api/v1/get-localization")
