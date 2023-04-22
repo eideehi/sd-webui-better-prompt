@@ -130,8 +130,8 @@ def refresh_available_version() -> None:
 def change_version() -> None:
   before = subprocess.check_output([git, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8")
   subprocess.run([git, "fetch", "-q"], cwd = EXTENSION_ROOT, shell = True)
-  if shared.opts.better_styles_version and (not shared.opts.better_styles_version.isspace()):
-    subprocess.run([git, "checkout", "-q", shared.opts.better_styles_version], cwd = EXTENSION_ROOT, shell = True)
+  if shared.opts.better_prompt_version and (not shared.opts.better_prompt_version.isspace()):
+    subprocess.run([git, "checkout", "-q", shared.opts.better_prompt_version], cwd = EXTENSION_ROOT, shell = True)
   else:
     subprocess.run([git, "checkout", "-q", "main"], cwd = EXTENSION_ROOT, shell = True)
   after = subprocess.check_output([git, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8")
