@@ -187,6 +187,9 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
             return JSONResponse(content=[])
         except Exception as e:
             print(body, e)
+            import traceback
+            traceback.print_exc()
+
             return JSONResponse(content=[])
 
 
