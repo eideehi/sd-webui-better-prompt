@@ -118,10 +118,11 @@ def refresh_available_version() -> None:
   versions = subprocess.check_output([git, "tag"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8").splitlines()
 
   regex = r'(?<=\-\>)\s*(\d+\.\d+\.\d+)'
-  for s in subprocess.check_output([git, "fetch", "--dry-run", "--tags"], cwd = EXTENSION_ROOT, shell = True).decode("utf-8").splitlines():
-      match = re.search(regex, s)
-      if match:
-          versions.append(match.group(1))
+  fetch_result = subprocess.run([git, "fetch", "--dry-run", "--tags"], cwd = EXTENSION_ROOT, shell = True, stdout = subprocess.PIPE, stderr = subprocess.STDOUT)
+  for line in fetch_result.stdout.decode("utf-8").splitlines():
+    match = re.search(regex, line)
+    if match:
+      versions.append(match.group(1))
 
   global available_versions
   available_versions = [" "] + sorted(versions, key = lambda v: tuple(map(int, v.split("."))), reverse = True)
