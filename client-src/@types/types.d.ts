@@ -6,6 +6,8 @@ declare type DanbooruTag = {
   words: string[];
 };
 
+
+
 declare type PromptAvailableTab = "txt2img" | "img2img";
 
 declare type WebUiTab = PromptAvailableTab | "other";

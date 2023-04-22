@@ -156,6 +156,7 @@ function updateSuggest(
   }
 ): void {
   const { tabName, keyword, filter } = options;
+
   const isNotFiltered = (type: FilterType) => filter.has("all") || filter.has(type);
 
   removeAllChild(results);

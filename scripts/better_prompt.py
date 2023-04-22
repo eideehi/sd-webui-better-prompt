@@ -78,6 +78,7 @@ LOCALIZATION_DIR = Path(EXTENSION_ROOT).joinpath("locales")
 DATA_DIR = Path(EXTENSION_ROOT).joinpath("data")
 DANBOORU_TAGS_JSON = DATA_DIR.joinpath("danbooru-tags.json")
 DANBOORU_TAGS_JSON_ZH_CN = DATA_DIR.joinpath("danbooru-tags-zh-cn.json")
+W14_TAGS_TRANSLATION_ZH_EN_JSON = DATA_DIR.joinpath("w14-tags-translation-zh-en.json")
 USER_DATA_DIR = Path(EXTENSION_ROOT).joinpath("user-data")
 UPDATE_INFO_JSON = USER_DATA_DIR.joinpath("update-info.json")
 
@@ -159,14 +160,18 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
     async def get_localization(request: Request):
         return JSONResponse(content=localization_dict)
 
+    @app.get("/better-prompt-api/v1/get-w14-tags-zh-en")
+    async def get_w14_tags_zh_en(request: Request):
+        return FileResponse(path=W14_TAGS_TRANSLATION_ZH_EN_JSON, media_type="application/json")
+
     @app.get("/better-prompt-api/v1/get-danbooru-tags")
     async def all_danbooru_tag(request: Request):
-
-        data_zh_cn = json.loads(DANBOORU_TAGS_JSON_ZH_CN.read_text(encoding="UTF-8"))
-        #data_org = json.loads(DANBOORU_TAGS_JSON.read_text(encoding="UTF-8"))
-        #data = data_org + data_zh_cn
-        print(data_zh_cn)
-        return JSONResponse(content=data_zh_cn)
+        if DANBOORU_TAGS_JSON_ZH_CN.is_file() and DANBOORU_TAGS_JSON.is_file():
+            data_zh_cn = json.loads(DANBOORU_TAGS_JSON_ZH_CN.read_text(encoding="UTF-8"))
+            data_org = json.loads(DANBOORU_TAGS_JSON.read_text(encoding="UTF-8"))
+            data = data_org + data_zh_cn
+            print(data_zh_cn)
+            return JSONResponse(content=data)
         if DANBOORU_TAGS_JSON.is_file():
             return FileResponse(path=DANBOORU_TAGS_JSON, media_type="application/json")
         return JSONResponse(content=[])
