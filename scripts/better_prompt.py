@@ -1,16 +1,15 @@
-from pathlib import Path
-from modules import scripts, script_callbacks, shared
-from typing import Dict, Optional, List, Any
-from dataclasses import dataclass
-from fastapi import FastAPI, Request
-from fastapi.responses import FileResponse, JSONResponse
 import json
+import os
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, Optional, List, Any
+
 import gradio as gr
 import lark
-import os
-import subprocess
-import re
-from datetime import datetime
+from fastapi import FastAPI, Request
+from fastapi.responses import FileResponse, JSONResponse
+from modules import scripts, script_callbacks, shared
 
 
 @dataclass
@@ -171,10 +170,12 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
         body = (await request.body()).decode("utf-8")
         try:
             json_data = TreeToJson().transform(PROMPT_PARSER.parse(body))
+            print(json_data)
             if isinstance(json_data, list):
                 return JSONResponse(content=json)
             return JSONResponse(content=[])
-        except:
+        except Exception as e:
+            print(e)
             return JSONResponse(content=[])
 
 
@@ -182,27 +183,6 @@ script_callbacks.on_app_started(on_app_started)
 
 
 def on_ui_settings():
-    shared.opts.add_option(
-        "better_prompt_update_notify_enabled",
-        shared.OptionInfo(True, _("Display update notifications"), section=SETTINGS_SECTION)
-    )
-    shared.opts.add_option(
-        "better_prompt_update_notify_only_once_per_version",
-        shared.OptionInfo(
-            False, _("Notify of updates only once per version"),
-            section=SETTINGS_SECTION
-        )
-    )
-    shared.opts.add_option(
-        "better_prompt_update_notify_inverval",
-        shared.OptionInfo(
-            1, _(
-                "Interval at which to display update notifications (Unit: days)"),
-            gr.Slider, {"minimum": 1, "maximum": 31, "step": 1},
-            section=SETTINGS_SECTION
-        )
-    )
-    # shared.opts.add_option("better_prompt_hide_original_prompt", shared.OptionInfo(False, _("Hide the original Prompt"), section = SETTINGS_SECTION))
     shared.opts.add_option(
         "better_prompt_localization",
         shared.OptionInfo(
