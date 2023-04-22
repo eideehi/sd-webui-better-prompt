@@ -186,7 +186,7 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
                 return JSONResponse(content=json)
             return JSONResponse(content=[])
         except Exception as e:
-            print(e)
+            print(body, e)
             return JSONResponse(content=[])
 
 
