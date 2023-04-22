@@ -18,7 +18,7 @@ jobs:
       - name: Adding README - Chinese Simplified
         uses: dephraiim/translate-readme@main
         with:
-          LANG: zh-CN
+          LANG: en
       - name: Adding README - Japanese
         uses: dephraiim/translate-readme@main
         with:

@@ -62,7 +62,7 @@ class TranslateWithCache(object):
 
 
 def translate_json():
-    translator = TranslateWithCache(False)
+    translator = TranslateWithCache()
     en2zh = load_translate("../image2text_prompt_generator/data/translate_cache/tags/")
     with open("./data/danbooru-tags.json", encoding="UTF-8") as f:
         tags = json.load(f)

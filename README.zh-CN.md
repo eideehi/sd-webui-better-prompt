@@ -1,7 +1,6 @@
-英语 |[中文](README.zh-CN.md)\|[日本人](README.ja.md)
+[英语](README.en.md)\|[中文](README.zh-CN.md)\|[日本](README.ja.md)
 
-Better Prompt 是[稳定扩散网
-界面](https://github.com/AUTOMATIC1111/stable-diffusion-webui)这增加了
+Better Prompt 是[stable diffusion](https://github.com/AUTOMATIC1111/stable-diffusion-webui)这增加了
 用于协助提示输入和编辑的 UI。
 
 <figure>
@@ -10,8 +9,7 @@ Better Prompt 是[稳定扩散网
 
 # 概述
 
-Better Prompt 的创建是为了减少各种不便
-传统提示输入和编辑。它允许您设置文本
+Better Prompt Chinexe的创建是为了减少各种不便 传统提示输入和编辑。它允许您设置文本
 Inversion 和 LoRA 不显示 Extra networks (🎴)，重新排列
 通过拖放排序提示，并调整提示的强调程度
 通过 GUI 提示。
@@ -21,7 +19,7 @@ Inversion 和 LoRA 不显示 Extra networks (🎴)，重新排列
 ## 从浏览器安装（推荐）
 
 您可以从扩展程序中的“从 URL 安装”选项安装它
-标签。只需输入[HTTPS://GitHub.com/中配/山东-Web UI-better-prompt.git](https://github.com/zhongpei/sd-webui-better-prompt.git)在“网址为
+标签。只需输入[https://github.com/zhongpei/sd-webui-better-prompt.git](https://github.com/zhongpei/sd-webui-better-prompt.git)在“网址为
 扩展的 git 存储库”字段，然后按“安装”按钮。
 
 <figure>
@@ -49,20 +47,23 @@ Inversion 和 LoRA 不显示 Extra networks (🎴)，重新排列
 
 Better Prompt 添加了下图中红线包围的部分。
 从现在开始我们将解释如何使用这个添加的内容。
-
-<figure>
-<img src="docs/images/components.png" alt="Image - Components" />
-</figure>
+![input]("docs/images/components.png")
 
 ## 提示添加表格<span id="input-form"></span>
 
 添加提示是使用如下所示的三个元素完成的
 图像。
 
-<figure>
-<img src="docs/images/input-component.png"
-alt="Image - Input Component" />
-</figure>
+
+
+![input-component](./docs/images/input-component.png)
+
+## 支持中英文双向转换
+
+### 超大词表支持(5W+)
+
+![en2zh](./docs/images/en2zh.jpeg)
+![zh2en](./docs/images/zh2en.jpeg)
 
 ### \[1]提示输入字段<span id="input-field"></span>
 
@@ -129,82 +130,19 @@ alt="Image - Prompt Component" />
 
 除了不能添加LoRA，其他都一样[\[肯定提示\]](#positive-prompt).
 
-# 配置
-
-Better Prompt 在“设置”选项卡中创建自己的配置部分。
-在这里，我们将解释每个项目。
-
-<figure>
-<img src="docs/images/settings.png" alt="Image - Settings" />
-</figure>
-
-## 更好提示的版本<span id="version_change"></span>
-
-You can change the version of Better Prompt. The default value is blank
-(the latest version at the time of installation). If you change the
-settings, it is necessary to restart the Web UI. (not just reload)
-
-Better Prompt 的当前版本显示在
-网络用户界面。对应的Web UI版本见下表
-到每个版本。
-
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p>Version</p></td>
-<td style="text-align: left;"><p>Web UI Version (Minimum)</p></td>
-<td style="text-align: left;"><p>Web UI Version (Maximum)</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p>0.1.0</p></td>
-<td style="text-align: left;"><p>9e1afa9e (2023-03-25)</p></td>
-<td style="text-align: left;"><p>~</p></td>
-</tr>
-</tbody>
-</table>
-
-## 显示更新通知
-
-如果选中，它将在更新可用时显示通知。
-
-## 每个版本仅通知更新一次
-
-如果选中，它只会在更新时为每个版本通知一次
-可用的。
-
-## 显示更新通知的时间间隔
-
-指定显示更新通知的时间间隔。单位是
-“天”，默认值为 1 天。
 
 ## 更好提示的语言
 
 指定 Better Prompt 使用的语言。默认值为空
-（英语）。目前，贾\_JP语言可用。如果你改变
+（英语）。目前，如果你改变
 设置，则需要重新加载 Web UI。
 
 # 待办事项清单
 
--   \[]添加为提示设置别名的功能
+- [X] 中文搜索
 
--   \[]添加到提示合并功能
 
--   \[]允许撤消最后添加的提示\[Ctrl + Z]
 
--   \[]支持更好的样式
-
--   \[]支持 LoRA 块权重
-
--   \[]支持其他Extra网络
-
--   \[]支持嵌套提示
-
--   \[]支持时间表符号（例如\[红:绿:0.5])
 
 # 执照
 

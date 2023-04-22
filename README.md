@@ -46,6 +46,11 @@ possible to resolve the issue by using a different version.
 You can change the version of Better Prompt from the Settings tab. For
 more information, refer to [\[version\_change\]](#version_change).
 
+# chinese support
+
+![en2zh](./docs/images/en2zh.jpeg)
+![zh2en](./docs/images/zh2en.jpeg)
+
 # Usage
 
 Better Prompt adds the part enclosed by the red line in the image below.
