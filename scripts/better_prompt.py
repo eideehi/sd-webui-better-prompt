@@ -15,6 +15,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from modules import scripts, script_callbacks, shared
 
 
+# noinspection DuplicatedCode
 @dataclass
 class UpdateInfo:
     timestamp: datetime
@@ -108,6 +109,7 @@ available_localization: List[str] = []
 localization_dict: Dict[str, str] = {}
 
 
+# noinspection DuplicatedCode
 def get_git_command() -> None:
     global git
     try:
@@ -169,7 +171,9 @@ def find_newer_version(target_version: str) -> str:
     return ""
 
 
+# noinspection DuplicatedCode
 def do_check_for_updates(target_version: str) -> Dict[str, Any]:
+    update_info = UpdateInfo(datetime.now(), "")
     if UPDATE_INFO_JSON.exists():
         update_info = UpdateInfo.from_json(UPDATE_INFO_JSON)
         delta = datetime.now() - update_info.timestamp
@@ -189,16 +193,18 @@ def do_check_for_updates(target_version: str) -> Dict[str, Any]:
     return {"update": True, "version": newer_version}
 
 
+# noinspection DuplicatedCode
 def refresh_available_localization() -> None:
     if LOCALIZATION_DIR.is_dir():
         global available_localization
         available_localization = [" "] + [f.stem for f in LOCALIZATION_DIR.glob("*.json") if f.is_file()]
 
 
+# noinspection DuplicatedCode
 def load_localization() -> None:
     try:
         localization = shared.opts.better_prompt_localization
-    except:
+    except AttributeError:
         return
 
     if localization in available_localization:
@@ -208,6 +214,7 @@ def load_localization() -> None:
             localization_dict = json.loads(file_path.read_text(encoding="UTF-8"))
 
 
+# noinspection DuplicatedCode
 def _(text: str) -> str:
     if text in localization_dict:
         return localization_dict[text]
@@ -246,11 +253,11 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
     async def parse_prompt(request: Request):
         body = (await request.body()).decode("utf-8")
         try:
-            json = TreeToJson().transform(PROMPT_PARSER.parse(body))
-            if isinstance(json, list):
-                return JSONResponse(content=json)
+            response = TreeToJson().transform(PROMPT_PARSER.parse(body))
+            if isinstance(response, list):
+                return JSONResponse(content=response)
             return JSONResponse(content=[])
-        except:
+        except lark.LarkError:
             return JSONResponse(content=[])
 
 
@@ -271,7 +278,8 @@ def on_ui_settings():
                            shared.OptionInfo(1, _("Interval at which to display update notifications (Unit: days)"),
                                              gr.Slider, {"minimum": 1, "maximum": 31, "step": 1},
                                              section=SETTINGS_SECTION))
-    # shared.opts.add_option("better_prompt_hide_original_prompt", shared.OptionInfo(False, _("Hide the original Prompt"), section = SETTINGS_SECTION))
+    # shared.opts.add_option("better_prompt_hide_original_prompt", shared.OptionInfo(False,
+    # _("Hide the original Prompt"), section = SETTINGS_SECTION))
     shared.opts.add_option("better_prompt_localization",
                            shared.OptionInfo("", _("Language of Better Prompt (requires reload UI)"), gr.Dropdown,
                                              lambda: {"choices": available_localization},
