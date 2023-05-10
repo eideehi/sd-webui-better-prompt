@@ -16,6 +16,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["client-src/*"],
