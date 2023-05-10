@@ -1,10 +1,12 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 
 export default defineConfig({
   resolve: {
     alias: {
       "@/": `${resolve(__dirname, "client-src")}/`,
+      "#/": `${resolve(__dirname, "client-src", "components")}/`,
     },
   },
   build: {
@@ -15,8 +17,6 @@ export default defineConfig({
       formats: ["iife"],
       fileName: () => "betterPrompt.js",
     },
-    watch: {
-      include: resolve(__dirname, "client-src"),
-    },
   },
+  plugins: [svelte()],
 });
