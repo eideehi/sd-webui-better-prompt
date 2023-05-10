@@ -1,6 +1,7 @@
 {
-  "src/**/*.{js,ts,svelte}": [
-    "pnpm run lint",
-    "pnpm run format"
+  "client-src/**/*.{js,ts,svelte}": [
+    "pnpm run check",
+    "prettier --write",
+    "eslint --fix"
   ]
 }
