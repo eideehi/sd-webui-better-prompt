@@ -1,59 +1,59 @@
 .better-prompt .input-field {
-  @apply tw-flex tw-flex-col;
+  @apply flex flex-col;
 }
 
 .better-prompt .input-field > .input {
-  @apply tw-w-full tw-rounded-[--input-radius] tw-border-[length:--input-border-width] tw-border-solid tw-border-[--input-border-color] tw-p-[--input-padding] tw-text-[length:--input-text-size] tw-leading-[--line-sm] tw-text-[--body-text-color] tw-outline-none [background:--input-background-fill] [box-shadow:--input-shadow];
+  @apply w-full rounded-[--input-radius] border-[length:--input-border-width] border-solid border-[--input-border-color] p-[--input-padding] text-[length:--input-text-size] leading-[--line-sm] text-[--body-text-color] outline-none [background:--input-background-fill] [box-shadow:--input-shadow];
 }
 
 .better-prompt .input-field > .input.center {
-  @apply tw-text-center;
+  @apply text-center;
 }
 
 .better-prompt .input-field > .input.small {
-  @apply tw-h-[--size-6] tw-w-[inherit] tw-px-[--size-2] tw-py-0;
+  @apply h-[--size-6] w-[inherit] px-[--size-2] py-0;
 }
 
 .better-prompt .input-field > .input:focus {
-  @apply tw-border-[--input-border-color-focus] [box-shadow:--input-shadow-focus];
+  @apply border-[--input-border-color-focus] [box-shadow:--input-shadow-focus];
 }
 
 .better-prompt .slider-field {
-  @apply tw-flex tw-flex-col tw-gap-2;
+  @apply flex flex-col gap-2;
 }
 
 .better-prompt .slider-field > .header {
-  @apply tw-flex tw-items-center tw-justify-between;
+  @apply flex items-center justify-between;
 }
 
 .better-prompt .slider-field > .header > .label {
-  @apply tw-mr-8;
+  @apply mr-8;
 }
 
 .better-prompt .slider-field > input[type="range"] {
-  @apply tw-m-0 tw-w-full tw-p-0 [accent-color:--slider-color];
+  @apply m-0 w-full p-0 [accent-color:--slider-color];
 }
 
 .better-prompt .checkbox-field {
-  @apply tw-flex tw-cursor-pointer tw-select-none tw-items-center tw-text-[length:--checkbox-label-text-size] tw-font-[--checkbox-label-text-weight] tw-leading-[--line-md] tw-text-[--body-text-color];
+  @apply flex cursor-pointer select-none items-center text-[length:--checkbox-label-text-size] font-[--checkbox-label-text-weight] leading-[--line-md] text-[--body-text-color];
 }
 
 .better-prompt .checkbox-field > .checkbox {
-  @apply tw-relative tw-inline-block tw-h-4 tw-w-4 tw-flex-shrink-0 tw-select-none tw-appearance-none tw-rounded-[--checkbox-border-radius] tw-border tw-border-solid tw-border-[--checkbox-border-color] tw-bg-[--checkbox-background-color] tw-bg-origin-border tw-p-0 tw-align-middle tw-leading-[--line-sm] tw-text-[#2563eb] [box-shadow:--input-shadow] [--ring-color:transparent];
+  @apply relative inline-block h-4 w-4 flex-shrink-0 select-none appearance-none rounded-[--checkbox-border-radius] border border-solid border-[--checkbox-border-color] bg-[--checkbox-background-color] bg-origin-border p-0 align-middle leading-[--line-sm] text-[#2563eb] [box-shadow:--input-shadow] [--ring-color:transparent];
 }
 
 .better-prompt .checkbox-field > .checkbox:checked {
-  @apply tw-border-[--checkbox-border-color-selected] tw-bg-[--checkbox-background-color-selected] tw-bg-[url:--checkbox-check];
+  @apply border-[--checkbox-border-color-selected] bg-[--checkbox-background-color-selected] bg-[url:--checkbox-check];
 }
 
 .better-prompt .checkbox-field > .checkbox:not(:checked):hover {
-  @apply tw-border-[--checkbox-border-color-hover] tw-bg-[--checkbox-background-color-hover];
+  @apply border-[--checkbox-border-color-hover] bg-[--checkbox-background-color-hover];
 }
 
 .better-prompt .checkbox-field > .checkbox:not(:checked):focus {
-  @apply tw-border-[--checkbox-border-color-focus] tw-bg-[--checkbox-background-color-focus];
+  @apply border-[--checkbox-border-color-focus] bg-[--checkbox-background-color-focus];
 }
 
 .better-prompt .checkbox-field > .label {
-  @apply tw-ml-[--size-2] tw-flex tw-cursor-pointer tw-items-center tw-whitespace-nowrap tw-text-[length:--checkbox-label-text-size] tw-font-[--checkbox-label-text-weight] tw-leading-[--line-md] tw-text-[--body-text-color];
+  @apply ml-[--size-2] flex cursor-pointer items-center whitespace-nowrap text-[length:--checkbox-label-text-size] font-[--checkbox-label-text-weight] leading-[--line-md] text-[--body-text-color];
 }

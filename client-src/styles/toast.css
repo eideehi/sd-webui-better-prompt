@@ -1,27 +1,27 @@
 .better-prompt.toast {
-  @apply tw-fixed -tw-bottom-[10rem] tw-z-[1100] tw-cursor-pointer tw-rounded tw-px-6 tw-py-4 tw-font-bold tw-text-white tw-opacity-0 tw-duration-300 tw-ease-in-out;
+  @apply fixed -bottom-[10rem] z-[1100] cursor-pointer rounded px-6 py-4 font-bold text-white opacity-0 duration-300 ease-in-out;
   transition-property: opacity, bottom, background-color;
 }
 
 .better-prompt.toast.left {
-  @apply tw-left-6;
+  @apply left-6;
 }
 
 .better-prompt.toast.center {
-  @apply tw-left-1/2;
+  @apply left-1/2;
   transform: translateX(-50%);
 }
 
 .better-prompt.toast.right {
-  @apply tw-right-6;
+  @apply right-6;
 }
 
 .better-prompt.toast.show {
-  @apply tw-bottom-6 tw-opacity-100;
+  @apply bottom-6 opacity-100;
 }
 
 .better-prompt.toast.fade-out {
-  @apply tw-bottom-6 tw-opacity-0;
+  @apply bottom-6 opacity-0;
 }
 
 .better-prompt.toast.info {

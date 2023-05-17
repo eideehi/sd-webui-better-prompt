@@ -1,3 +1,3 @@
 .better-prompt.popup {
-  @apply tw-absolute tw-rounded tw-border tw-border-solid tw-border-[--block-border-color] tw-p-[--input-padding] tw-text-[length:--body-text-size] tw-font-[--body-text-weight] tw-text-[--body-text-color] tw-shadow-sm tw-shadow-black/50 [background:--body-background-fill];
+  @apply absolute rounded border border-solid border-[--block-border-color] p-[--input-padding] text-[length:--body-text-size] font-[--body-text-weight] text-[--body-text-color] shadow-sm shadow-black/50 [background:--body-background-fill];
 }

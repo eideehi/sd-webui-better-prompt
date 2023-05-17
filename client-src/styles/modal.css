@@ -1,12 +1,12 @@
 .better-prompt.modal {
-  @apply tw-fixed tw-left-0 tw-top-0 tw-z-[1001] tw-flex tw-h-full tw-w-full tw-overflow-auto tw-bg-[rgba(20,20,20,0.95)];
+  @apply fixed left-0 top-0 z-[1001] flex h-full w-full overflow-auto bg-[rgba(20,20,20,0.95)];
 }
 
 .better-prompt.modal > .content-wrapper {
-  @apply tw-m-auto tw-inline-block tw-p-8;
+  @apply m-auto inline-block p-8;
 }
 
 .better-prompt.modal .modal-content {
   --bp-box-shadow: 0 0 4px 0.25rem rgb(8 8 8 / 50%);
-  @apply tw-w-[clamp(20rem,70vw,42.5rem)] tw-rounded tw-border tw-border-solid tw-border-[var(--input-border-color)] tw-text-white [box-shadow:--bp-box-shadow] [background:--body-background-fill];
+  @apply w-[clamp(20rem,70vw,42.5rem)] rounded border border-solid border-[var(--input-border-color)] text-white [box-shadow:--bp-box-shadow] [background:--body-background-fill];
 }
