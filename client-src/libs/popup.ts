@@ -1,4 +1,11 @@
-import { applyClasses, hasElement, getPosition, hasChild, getElementAll, getElement } from "./dom";
+import {
+  applyClasses,
+  hasElement,
+  getScreenPosition,
+  hasChild,
+  getElementAll,
+  getElement,
+} from "./util/dom";
 
 export function getPopupById(id: string): Nullable<HTMLElement> {
   return getElement(`.better-prompt.popup[data-popup-id="${id}"]`);
@@ -32,7 +39,7 @@ export function showPopupBelow(
     }
 
     const update = () => {
-      const { left: parentLeft, bottom: parentBottom } = getPosition(parent);
+      const { left: parentLeft, bottom: parentBottom } = getScreenPosition(parent);
       const bodyWidth = document.body.clientWidth;
       const popupWidth = popup.clientWidth;
       const left = parentLeft + popupWidth > bodyWidth ? bodyWidth - popupWidth - 4 : parentLeft;
@@ -66,7 +73,7 @@ export function showPopupBelow(
   if (contentOrPromise instanceof HTMLElement) {
     showPopup(contentOrPromise);
   } else {
-    contentOrPromise.then((content) => {
+    void contentOrPromise.then((content) => {
       if (content != null) {
         showPopup(content);
       }

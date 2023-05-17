@@ -1,4 +1,4 @@
-import { getElementAll } from "@/libs/dom";
+import { getElementAll } from "./util/dom";
 
 export type ToastType = "info" | "success" | "warning" | "error";
 

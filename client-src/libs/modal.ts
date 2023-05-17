@@ -1,4 +1,4 @@
-import { applyClasses, hasElement, removeAllChild } from "./dom";
+import { applyClasses, hasElement, removeAllChild } from "./util/dom";
 
 let root: HTMLElement | null = null;
 let contentWrapper: HTMLElement;

@@ -1,0 +1,11 @@
+export { addClasses } from "./addClasses";
+export { applyClasses } from "./applyClasses";
+export { getElement } from "./getElement";
+export { getElementAll } from "./getElementAll";
+export { getScreenPosition } from "./getScreenPosition";
+export { hasChild } from "./hasChild";
+export { hasClass } from "./hasClass";
+export { hasElement } from "./hasElement";
+export { removeAllChild } from "./removeAllChild";
+export { removeClasses } from "./removeClasses";
+export { rotateElement } from "./rotateElement";
