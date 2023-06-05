@@ -1,11 +1,14 @@
 import type { PromptType } from "@/libs/prompt";
 
 const promptTypes: Set<string> = new Set<PromptType>([
+  "alternate",
+  "combination",
+  "emphasized-positive",
+  "emphasized-negative",
+  "emphasized-weighted",
   "plain",
-  "emphasized",
   "scheduled",
-  "extranetworks",
-  "whitespace",
+  "extra-networks",
 ]);
 
 export function isPromptType(type: string): type is PromptType {

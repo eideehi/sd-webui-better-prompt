@@ -1,36 +1,54 @@
 import "./styles/index.css";
-import { getDanbooruTags, getLocalization } from "./libs/api";
-import { getElement } from "./libs/dom";
-import { getCurrentTabName, withBooleanOption } from "./libs/webui";
-import { createMainComponents, initDanbooruTags, initExtraNetworksData } from "@/better-prompt";
-import { checkForUpdates } from "@/better-prompt/checkForUpdates";
-import { initUndoRedo } from "@/better-prompt/common/undoRedo";
+import { checkForUpdates, getDanbooruTags, getLocalization } from "@/libs/api";
+import { getElement, hasElement } from "@/libs/util/dom";
+import { getCurrentTabName, t, withBooleanOption } from "@/libs/util/webui";
+import { initDanbooruTags } from "#/better-prompt/_logic/danbooruTags";
+import Toast, { showToast } from "#/widgets/Toast.svelte";
+import BetterPrompt from "#/better-prompt/BetterPrompt.svelte";
 
-let fetchLocalization: Promise<void> | null = null;
-let fetchDanbooruTags: Promise<void> | null = null;
+let fetchLocalization: Nullable<Promise<void>> = null;
+let fetchDanbooruTags: Nullable<Promise<void>> = null;
+let updateChecked = false;
 
-const initialized: Record<PromptAvailableTab, boolean> = {
-  txt2img: false,
-  img2img: false,
-};
+function initWidgets(): void {
+  if (!hasElement("#better-prompt-toast")) {
+    new Toast({ target: gradioApp() });
+  }
+}
 
-function initialize(tabName: PromptAvailableTab) {
-  if (initialized[tabName]) return;
-  initialized[tabName] = true;
-
-  Promise.all([fetchLocalization, fetchDanbooruTags]).then(() => {
-    initExtraNetworksData(tabName);
-    initUndoRedo(tabName);
-    createMainComponents(tabName);
-    checkForUpdates();
+function initialize(tabName: ExtensionAvailableTab): void {
+  void Promise.all([fetchLocalization, fetchDanbooruTags]).then(() => {
+    initBetterPrompt(tabName);
+    checkExtensionUpdate();
   });
 }
 
-function hiddenOriginalComponents(tabName: PromptAvailableTab) {
+function initBetterPrompt(tabName: ExtensionAvailableTab): void {
+  if (hasElement(`#${tabName}-better-prompt`)) return;
+
+  const anchor = getElement(`#${tabName}_toprow + div`);
+  if (anchor == null || anchor.parentElement == null) return;
+  new BetterPrompt({ target: anchor.parentElement, anchor, props: { tabName } });
+}
+
+function checkExtensionUpdate(): void {
+  if (updateChecked) return;
+  updateChecked = true;
+
+  withBooleanOption("better_prompt_update_notify_enabled", (value) => {
+    if (!value) return;
+    void checkForUpdates().then(({ update, version }) => {
+      if (!update || version == null) return;
+      showToast({ text: t("Better Prompt version {0} is available", version) });
+    });
+  });
+}
+
+function hiddenOriginalComponents(tabName: ExtensionAvailableTab): void {
   withBooleanOption("better_prompt_hide_original_prompt", (value) => {
     const element = getElement(`#${tabName}_toprow`);
     if (element) {
-      element.dataset.hiddenPrompt = value ? "true" : "false";
+      element.dataset.hiddenOriginal = value ? "true" : "false";
     }
   });
 }
@@ -43,6 +61,8 @@ onUiLoaded(() => {
   fetchDanbooruTags = getDanbooruTags().then((value) => {
     initDanbooruTags(value);
   });
+
+  initWidgets();
 });
 
 onUiTabChange(() => {
@@ -59,4 +79,4 @@ onUiUpdate(() => {
   }
 });
 
-export {};
+export default {};

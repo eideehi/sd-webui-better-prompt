@@ -1,1 +1,0 @@
-export { createMainComponents } from "./main";

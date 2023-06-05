@@ -1,0 +1,38 @@
+start : (extra_networks_prompts | prompts)*
+
+?extra_networks_prompts : extra_networks
+                        | extra_networks_prompts (extra_networks)+
+                        | extra_networks_prompts ("," [extra_networks_prompts])
+extra_networks          : "<" extra_networks_name extra_networks_args ">"
+extra_networks_name     : EXTRA_NETWORKS_TEXT
+extra_networks_args     : (":" EXTRA_NETWORKS_TEXT)+
+
+?prompts : prompt
+         | prompts (prompt)+       -> combination
+         | prompts ("," [prompts]) -> multiple
+?prompt  : emphasized
+         | scheduled
+         | alternate
+         | plain
+
+alternate  : "[" prompts ("|" prompts)+ "]"
+scheduled  : "[" prompts ":" prompts ":" number "]" -> scheduled_full
+           | "[" prompts ":" ":" number "]"         -> scheduled_from
+           | "[" prompts ":" number "]"             -> scheduled_to
+emphasized : "(" prompts ")"                        -> emphasized_positive
+           | "(" prompts ":" number ")"             -> emphasized_weighted
+           | "[" prompts "]"                        -> emphasized_negative
+plain      : PLAIN_TEXT
+number     : NUMBER
+
+FLOAT  : INT | DECIMAL
+NUMBER : ["+"|"-"] (FLOAT | INT)
+
+EXTRA_NETWORKS_TEXT : /[^:>]+/
+PLAIN_TEXT          : /(\\.|[^\[\]\(\)<>:|,\s])+/
+
+%import common.INT
+%import common.DECIMAL
+%import common.WS
+
+%ignore WS

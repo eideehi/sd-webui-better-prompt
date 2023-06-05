@@ -8,7 +8,6 @@ from pathlib import Path
 from typing import Dict, Optional, List, Any
 
 import gradio as gr
-import lark
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
 
@@ -37,44 +36,6 @@ class UpdateInfo:
         file_path.write_text(json.dumps(data), encoding="UTF-8")
 
 
-class TreeToJson(lark.Transformer):
-    def prompt(self, value):
-        return filter_none_fields(value)
-
-    def scheduled(self, value):
-        get_or_none = lambda x: None if not x else x[0]
-        flat = lambda x: get_or_none(x) if isinstance(x, list) else x
-        values = [flat(x) for x in value]
-        return {"type": "scheduled", "from": values[0], "to": values[1], "when": values[2]["value"]}
-
-    def emphasized(self, value):
-        multiplier = None
-        if len(value) == 5:
-            multiplier = value[3]["value"]
-
-        (paren,) = value[0]
-        if paren == "(":
-            return {"type": "emphasized", "negative": False, "values": list(value[1]), "multiplier": multiplier}
-        else:
-            return {"type": "emphasized", "negative": True, "values": list(value[1]), "multiplier": multiplier}
-
-    def number(self, value):
-        (value,) = value
-        value = int(value) if value.isdigit() else float(value)
-        return {"type": "number", "value": value}
-
-    def text(self, value):
-        (value,) = value
-        return value
-
-    extranetworks = lambda self, x: {"type": "extranetworks", "args": list(x)}
-    alternate = list
-    extranetworksparam = lambda self, x, text=text: text(self, x)
-    plain = lambda self, x, text=text: {"type": "plain", "value": text(self, x)}
-    separator = lambda self, _: None
-    whitespace = lambda self, _: {"type": "whitespace"}
-
-
 GIT = os.environ.get('GIT', "git")
 SETTINGS_SECTION = ("better_prompt", "Better Prompt")
 EXTENSION_ROOT = scripts.basedir()
@@ -83,25 +44,6 @@ DATA_DIR = Path(EXTENSION_ROOT).joinpath("data")
 DANBOORU_TAGS_JSON = DATA_DIR.joinpath("danbooru-tags.json")
 USER_DATA_DIR = Path(EXTENSION_ROOT).joinpath("user-data")
 UPDATE_INFO_JSON = USER_DATA_DIR.joinpath("update-info.json")
-
-PROMPT_PARSER = lark.Lark(r"""
-  ?start: (prompt | /[][():]/+)*
-  prompt: (extranetworks | emphasized | scheduled | alternate | plain | separator | whitespace)*
-  extranetworks: "<" extranetworksparam (":" extranetworksparam)+ ">"
-  !emphasized: "(" prompt ")"
-             | "(" prompt ":" number ")"
-             | "[" prompt "]"
-  scheduled: "[" [prompt ":"] prompt ":" number "]"
-  alternate: "[" prompt ("|" prompt)+ "]"
-  extranetworksparam: /[^:<>]+/
-  !plain: /([^\\\[\]():|,]|\\.)+/
-  separator: /\s*,\s*/
-  whitespace: [WS]
-  number: SIGNED_NUMBER
-  %import common.SIGNED_NUMBER
-  %import common.WS
-  %ignore WS
-""")
 
 git = "git"
 available_versions: List[str] = []
@@ -247,17 +189,6 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
         if DANBOORU_TAGS_JSON.is_file():
             return FileResponse(path=DANBOORU_TAGS_JSON, media_type="application/json")
         else:
-            return JSONResponse(content=[])
-
-    @app.post("/better-prompt-api/v1/parse-prompt")
-    async def parse_prompt(request: Request):
-        body = (await request.body()).decode("utf-8")
-        try:
-            response = TreeToJson().transform(PROMPT_PARSER.parse(body))
-            if isinstance(response, list):
-                return JSONResponse(content=response)
-            return JSONResponse(content=[])
-        except lark.LarkError:
             return JSONResponse(content=[])
 
 

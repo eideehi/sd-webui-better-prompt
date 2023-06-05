@@ -20,6 +20,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.2.0",
     "@tsconfig/svelte": "^4.0.1",
+    "@types/big.js": "^6.1.6",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.1.1",
     "@types/sortablejs": "^1.15.1",
@@ -48,6 +49,7 @@
     "vite": "^4.3.5"
   },
   "dependencies": {
+    "big.js": "^6.2.1",
     "fuse.js": "^6.6.2",
     "nanoid": "^4.0.2",
     "sortablejs": "^1.15.0"

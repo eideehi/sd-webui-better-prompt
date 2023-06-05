@@ -1,6 +1,2 @@
 @import "theme.css";
-@import "modal.css";
-@import "toast.css";
-@import "popup.css";
-@import "forms.css";
-@import "main.css";
+@import "global.css";

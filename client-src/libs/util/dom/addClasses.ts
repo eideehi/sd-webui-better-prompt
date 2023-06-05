@@ -1,4 +1,4 @@
-import { omitNulls } from "@/libs/util/common/omitNulls";
+import { omitNulls } from "@/libs/util/array";
 
 /**
  * Adds one or more CSS classes to an element.

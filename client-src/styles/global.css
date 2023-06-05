@@ -1,0 +1,21 @@
+[data-hidden-original="true"] > #txt2img_prompt_container,
+[data-hidden-original="true"] > #img2img_prompt_container {
+  @apply !hidden;
+}
+
+.better-prompt button:focus-visible,
+.better-prompt input:focus-visible {
+  @apply outline-none;
+}
+
+.better-prompt .prompt-item {
+  @apply inline-block h-fit max-w-full select-none break-words rounded border-[length:--button-border-width] border-solid border-[--button-secondary-border-color] px-1 text-[--button-secondary-text-color] [background:--button-secondary-background-fill];
+}
+
+.better-prompt .prompt-item[data-extra-networks="textual-inversion"] {
+  @apply border-[--textual-inversion-border-color] text-[--textual-inversion-text-color] [background:--textual-inversion-background];
+}
+
+.better-prompt .prompt-item[data-extra-networks="lora"] {
+  @apply border-[--lora-border-color] text-[--lora-text-color] [background:--lora-background];
+}

@@ -1,10 +1,9 @@
-import type { AllPrompt } from "./allPrompt";
-import type { ExtraNetworksPrompt } from "./extraNetworksPrompt";
 import type { Prompt } from "./prompt";
+import type { InnerPrompt } from "./innerPrompt";
 
 export interface ScheduledPrompt extends Prompt {
   type: "scheduled";
-  from?: Exclude<AllPrompt, ExtraNetworksPrompt>;
-  to?: Exclude<AllPrompt, ExtraNetworksPrompt>;
+  from?: InnerPrompt;
+  to?: InnerPrompt;
   when: number;
 }

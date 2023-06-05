@@ -1,3 +1,0 @@
-.better-prompt.popup {
-  @apply absolute rounded border border-solid border-[--block-border-color] p-[--input-padding] text-[length:--body-text-size] font-[--body-text-weight] text-[--body-text-color] shadow-sm shadow-black/50 [background:--body-background-fill];
-}

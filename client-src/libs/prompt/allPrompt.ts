@@ -1,12 +1,5 @@
-import type { PlainPrompt } from "./plainPrompt";
-import type { EmphasizedPrompt } from "./emphasizedPrompt";
-import type { ScheduledPrompt } from "./scheduledPrompt";
+import type { BasicPrompt } from "./basicPrompt";
 import type { ExtraNetworksPrompt } from "./extraNetworksPrompt";
-import type { WhiteSpacePrompt } from "./whiteSpacePrompt";
+import type { PromptCombination } from "@/libs/prompt/promptCombination";
 
-export type AllPrompt =
-  | PlainPrompt
-  | EmphasizedPrompt
-  | ScheduledPrompt
-  | ExtraNetworksPrompt
-  | WhiteSpacePrompt;
+export type AllPrompt = BasicPrompt | PromptCombination | ExtraNetworksPrompt;
