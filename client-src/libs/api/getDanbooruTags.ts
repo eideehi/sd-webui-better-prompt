@@ -6,5 +6,19 @@ export function getDanbooruTags(): Promise<DanbooruTag[]> {
 }
 
 function parseDanbooruTags(json: unknown): DanbooruTag[] {
-  return !Array.isArray(json) ? [] : json.filter(isDanbooruTag);
+  return !Array.isArray(json) ? [] : json.filter(isDanbooruTag).sort(sortByCategory);
+}
+
+function sortByCategory(a: DanbooruTag, b: DanbooruTag): number {
+  const sortIndex = (category: number): number => {
+    switch (category) {
+      case 3:
+        return 100;
+      case 4:
+        return 10;
+      default:
+        return category;
+    }
+  };
+  return sortIndex(a.category) - sortIndex(b.category);
 }
