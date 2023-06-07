@@ -9,6 +9,7 @@ import type {
   PromptCombination,
   ScheduledPrompt,
 } from "@/libs/prompt";
+import { getOption } from "@/libs/util/webui";
 import { get_parser } from "./prompt-parser";
 
 export function parsePrompt(text: string, callback: Callback1<Prompt[]>): void;
@@ -32,7 +33,12 @@ function parse(text: string): Nullable<Prompt[]> {
       extra_networks_prompts: (values: unknown[]) => Array.from(values).flat(),
       extra_networks: ([name, args]: [string, string[]]): ExtraNetworksPrompt => {
         if (name !== "lora") return { type: "extra-networks", name, args };
-        return { type: "extra-networks", name, args: args.length === 1 ? [args[0], "1"] : args };
+        const weight = getOption("extra_networks_default_multiplier", 1).toString();
+        return {
+          type: "extra-networks",
+          name,
+          args: args.length === 1 ? [args[0], weight] : args,
+        };
       },
       extra_networks_name: ([{ value }]: Array<{ value: string }>) => value.toLowerCase().trim(),
       extra_networks_args: (values: Array<{ value: string }>) => values.map((x) => x.value.trim()),

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { ExtraNetworksData } from "@/libs/extra-networks";
   import { getContext } from "svelte";
-  import { t } from "@/libs/util/webui";
+  import { getOption, t } from "@/libs/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import {
     type PromptInputContext,
@@ -44,7 +44,9 @@
         prompts.push({
           type: "extra-networks",
           name: data.type,
-          args: isLora ? [data.name, "1"] : [data.name],
+          args: isLora
+            ? [data.name, getOption("extra_networks_default_multiplier", 1).toString()]
+            : [data.name],
         });
         return prompts;
       });
