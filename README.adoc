@@ -87,7 +87,7 @@ TIP: The current version of Better Prompt is displayed in the console of the Web
 
 |===
 | Version       | Web UI Version (Minimum) | Web UI Version (Maximum)
-| 0.1.0 - 0.2.0 | 9e1afa9e (2023-03-25)    | ~
+| 0.1.0 - 0.3.0 | 9e1afa9e (2023-03-25)    | ~
 |===
 
 === Display update notifications
@@ -101,16 +101,6 @@ Specify the interval for displaying update notifications. The unit is "days", an
 
 === Language of Better Prompt
 Specify the language used by Better Prompt. The default value is blank (English). Currently, ja_JP language is available. If you change the settings, it is necessary to reload the Web UI.
-
-== To-Do List
-* [ ] Add the feature to set aliases for prompts
-* [ ] Add to prompt merge feature
-* [x] Add the feature to undo/redo for prompts
-* [ ] Support for Better Styles
-* [ ] Support for LoRA Block Weight
-* [ ] Support other Extra networks
-* [ ] Support nested prompts
-* [ ] Support schedule notation (e.g. [red:green:0.5])
 
 == License
 Better Prompt is developed and published under the MIT license. For details on the license, please refer to the link below.
