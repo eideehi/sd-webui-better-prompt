@@ -42,6 +42,6 @@
   }
 
   .input-container {
-    @apply flex w-min min-w-[min(640px,100%)];
+    @apply flex w-min min-w-[min(640px,100%)] grow;
   }
 </style>
