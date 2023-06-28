@@ -11,8 +11,9 @@
     "deploy": "cpy --flat ./dist/style.css ./ && cpy --flat ./dist/betterPrompt.js ./javascript/",
     "build:dev": "pnpm run build && pnpm run deploy",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "lint": "prettier --plugin-search-dir . --check ./client-src && eslint ./client-src",
-    "format": "prettier --plugin-search-dir . --write ./client-src"
+    "lint": "eslint ./client-src",
+    "format": "prettier --write ./client-src",
+    "format:check": "prettier --check ./client-src"
   },
   "keywords": [],
   "author": "EideeHi",
