@@ -18,6 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "baseUrl": "./",
+    "outDir": "./dist",
     "paths": {
       "@/*": ["client-src/*"],
       "#/*": ["client-src/components/*"]
