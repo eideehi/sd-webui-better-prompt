@@ -12,6 +12,7 @@ let updateChecked = false;
 
 function initWidgets(): void {
   if (!hasElement("#better-prompt-toast")) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     new Toast({ target: gradioApp() });
   }
 }

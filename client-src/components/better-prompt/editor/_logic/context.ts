@@ -1,4 +1,4 @@
-import type { Writable } from "svelte/types/runtime/store";
+import type { Writable } from "svelte/store";
 import type { Prompt } from "@/libs/prompt";
 
 export type EditorContext = {
