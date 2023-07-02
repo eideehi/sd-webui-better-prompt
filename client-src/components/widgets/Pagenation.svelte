@@ -56,11 +56,16 @@
   }
 
   .button {
+    --active-background: linear-gradient(to_bottom_right, var(--neutral-50), var(--neutral-100));
     @apply rounded-sm px-[calc(var(--spacing-md)_*_2)] py-[--spacing-md] text-[length:--text-md] font-[--button-large-text-weight];
   }
 
+  :global(.dark) .button {
+    --active-background: linear-gradient(to_bottom_right, var(--neutral-900), var(--neutral-950));
+  }
+
   .button.active {
-    @apply cursor-default ![background:linear-gradient(to_bottom_right,var(--neutral-900),var(--neutral-950))];
+    @apply cursor-default ![background:--active-background];
   }
 
   .ellipsis {

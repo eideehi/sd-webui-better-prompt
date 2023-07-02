@@ -228,9 +228,17 @@
     @apply m-0 max-h-64 list-none overflow-y-auto p-0;
   }
 
+  .suggest-item {
+    --suggest-background: var(--neutral-100);
+  }
+
+  :global(.dark) .suggest-item {
+    --suggest-background: var(--neutral-800);
+  }
+
   .suggest-item.focused,
   .suggest-item:hover {
-    @apply [background:--neutral-100];
+    @apply [background:--suggest-background];
   }
 
   .suggest {
