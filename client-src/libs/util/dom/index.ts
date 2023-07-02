@@ -9,3 +9,4 @@ export { hasElement } from "./hasElement";
 export { removeAllChild } from "./removeAllChild";
 export { removeClasses } from "./removeClasses";
 export { rotateElement } from "./rotateElement";
+export { scrollIntoViewIfNeeded } from "./scrollIntoViewIfNeeded";

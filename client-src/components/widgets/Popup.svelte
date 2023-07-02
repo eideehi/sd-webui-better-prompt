@@ -5,6 +5,11 @@
 
   export let parent: HTMLElement;
   export let show: boolean;
+  export let options: Nullable<{
+    closeOnClickOutside?: boolean;
+  }> = null;
+
+  let { closeOnClickOutside } = Object.assign({ closeOnClickOutside: true }, options || {});
 
   let ref: Nullable<HTMLElement> = null;
   let left = 0;
@@ -30,6 +35,7 @@
 
   const onMouseDown = (event: MouseEvent) => {
     if (ref == null) return;
+    if (!closeOnClickOutside) return;
     const { target } = event;
     if (!(target instanceof HTMLElement)) return;
     if (event.button !== 1 && target !== ref && target !== parent && !hasChild(ref, target)) {
@@ -54,7 +60,7 @@
 
 {#if show}
   <div
-    class="popup"
+    class="better-prompt popup"
     class:dark={isDarkMode()}
     style:--left="{left}px"
     style:--top="{top}px"

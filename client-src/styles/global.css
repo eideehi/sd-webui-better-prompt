@@ -8,6 +8,34 @@
   @apply outline-none;
 }
 
+.better-prompt .button {
+  @apply inline-flex cursor-pointer items-center justify-center px-[--size-2] py-[--size-0-5] text-center transition-opacity [box-shadow:--button-shadow] [transition:--button-transition];
+}
+
+.better-prompt .button.primary {
+  @apply border-[length:--button-border-width] border-solid border-[--button-primary-border-color] text-[--button-primary-text-color] [background:--button-primary-background-fill];
+}
+
+.better-prompt .button:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.better-prompt .button.primary:not(:disabled):hover {
+  @apply border-[--button-primary-border-color-hover] text-[--button-primary-text-color-hover] [background:--button-primary-background-fill-hover];
+}
+
+.better-prompt .button.secondary {
+  @apply border-[length:--button-border-width] border-solid border-[--button-secondary-border-color] text-[--button-secondary-text-color] [background:--button-secondary-background-fill];
+}
+
+.better-prompt .button.secondary:not(:disabled):hover {
+  @apply border-[--button-secondary-border-color-hover] text-[--button-secondary-text-color-hover] [background:--button-secondary-background-fill-hover];
+}
+
+.better-prompt .button.lg {
+  @apply rounded-[--button-large-radius] p-[--button-large-padding] text-[length:--button-large-text-size] font-[--button-large-text-weight];
+}
+
 .better-prompt .prompt-item {
   @apply inline-block h-fit max-w-full select-none break-words rounded border-[length:--button-border-width] border-solid border-[--button-secondary-border-color] px-1 text-[--button-secondary-text-color] [background:--button-secondary-background-fill];
 }

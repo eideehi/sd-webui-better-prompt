@@ -10,6 +10,7 @@ from typing import Dict, Optional, List, Any
 import gradio as gr
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
+from pydantic import BaseModel
 
 from modules import scripts, script_callbacks, shared
 
@@ -36,6 +37,12 @@ class UpdateInfo:
         file_path.write_text(json.dumps(data), encoding="UTF-8")
 
 
+class MyPrompt(BaseModel):
+    label: str
+    tags: list[str]
+    prompt: str
+
+
 GIT = os.environ.get('GIT', "git")
 SETTINGS_SECTION = ("better_prompt", "Better Prompt")
 EXTENSION_ROOT = scripts.basedir()
@@ -44,6 +51,7 @@ DATA_DIR = Path(EXTENSION_ROOT).joinpath("data")
 DANBOORU_TAGS_JSON = DATA_DIR.joinpath("danbooru-tags.json")
 USER_DATA_DIR = Path(EXTENSION_ROOT).joinpath("user-data")
 UPDATE_INFO_JSON = USER_DATA_DIR.joinpath("update-info.json")
+MY_PROMPT_JSON = USER_DATA_DIR.joinpath("my-prompts.json")
 
 git = "git"
 available_versions: List[str] = []
@@ -135,6 +143,14 @@ def do_check_for_updates(target_version: str) -> Dict[str, Any]:
     return {"update": True, "version": newer_version}
 
 
+def do_update_my_prompts(my_prompts: List[MyPrompt]) -> Dict[str, Any]:
+    if not MY_PROMPT_JSON.exists():
+        MY_PROMPT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    data = list(map(lambda x: x.dict(), my_prompts))
+    MY_PROMPT_JSON.write_text(json.dumps(data, ensure_ascii=False), encoding="UTF-8")
+    return {"success": True}
+
+
 # noinspection DuplicatedCode
 def refresh_available_localization() -> None:
     if LOCALIZATION_DIR.is_dir():
@@ -190,6 +206,17 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
             return FileResponse(path=DANBOORU_TAGS_JSON, media_type="application/json")
         else:
             return JSONResponse(content=[])
+
+    @app.get("/better-prompt-api/v1/get-my-prompts")
+    async def get_my_prompts(request: Request):
+        if MY_PROMPT_JSON.is_file():
+            return FileResponse(path=MY_PROMPT_JSON, media_type="application/json")
+        else:
+            return JSONResponse(content=[])
+
+    @app.post("/better-prompt-api/v1/update-my-prompts")
+    async def update_my_prompts(request: List[MyPrompt]):
+        return JSONResponse(content=do_update_my_prompts(request))
 
 
 script_callbacks.on_app_started(on_app_started)

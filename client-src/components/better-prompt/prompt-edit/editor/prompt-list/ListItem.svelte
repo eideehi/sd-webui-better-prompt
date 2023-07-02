@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { Prompt } from "@/libs/prompt";
-  import { createDataset, getTextContent, isPopupEnabled } from "./_logic/listItem";
+  import { createDataset, getTextContent } from "#/better-prompt/_logic/prompt";
+  import { isPopupEnabled } from "./_logic/listItem";
   import Popup from "#/widgets/Popup.svelte";
-  import WeightInput from "#/better-prompt/editor/prompt-list/WeightInput.svelte";
+  import WeightInput from "#/better-prompt/prompt-edit/editor/prompt-list/WeightInput.svelte";
 
   export let prompt: Prompt;
 

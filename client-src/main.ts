@@ -1,13 +1,15 @@
 import "./styles/index.css";
-import { checkForUpdates, getDanbooruTags, getLocalization } from "@/libs/api";
+import { checkForUpdates, getDanbooruTags, getLocalization, getMyPrompts } from "@/libs/api";
 import { getElement, hasElement } from "@/libs/util/dom";
 import { getCurrentTabName, t, withBooleanOption } from "@/libs/util/webui";
 import { initDanbooruTags } from "#/better-prompt/_logic/danbooruTags";
+import { initMyPrompts } from "#/better-prompt/_logic/myPrompts";
 import Toast, { showToast } from "#/widgets/Toast.svelte";
 import BetterPrompt from "#/better-prompt/BetterPrompt.svelte";
 
 let fetchLocalization: Nullable<Promise<void>> = null;
 let fetchDanbooruTags: Nullable<Promise<void>> = null;
+let fetchMyPrompts: Nullable<Promise<void>> = null;
 let updateChecked = false;
 
 function initWidgets(): void {
@@ -18,7 +20,7 @@ function initWidgets(): void {
 }
 
 function initialize(tabName: ExtensionAvailableTab): void {
-  void Promise.all([fetchLocalization, fetchDanbooruTags]).then(() => {
+  void Promise.all([fetchLocalization, fetchDanbooruTags, fetchMyPrompts]).then(() => {
     initBetterPrompt(tabName);
     checkExtensionUpdate();
   });
@@ -61,6 +63,10 @@ onUiLoaded(() => {
 
   fetchDanbooruTags = getDanbooruTags().then((value) => {
     initDanbooruTags(value);
+  });
+
+  fetchMyPrompts = getMyPrompts().then((value) => {
+    initMyPrompts(value);
   });
 
   initWidgets();

@@ -6,13 +6,14 @@
   let { placeholder } = Object.assign({ placeholder: "" }, options || {});
 </script>
 
-<div class="text-input">
+<div class="text-area">
   {#if label}
     <span class="label">{label}</span>
   {/if}
-  <input
+  <textarea
     bind:value
     class="input"
+    rows="3"
     on:change
     on:focusin
     on:focusout
@@ -20,20 +21,23 @@
     on:keydown
     on:keyup
     {placeholder}
-    type="text"
   />
 </div>
 
 <style lang="postcss">
-  .text-input {
+  .text-area {
     @apply flex flex-col;
   }
 
-  .text-input > .input {
-    @apply grow rounded-[--input-radius] border-[length:--input-border-width] border-solid border-[--input-border-color] p-[--input-padding] text-[length:--input-text-size] leading-[--line-sm] text-[--body-text-color] outline-none [background:--input-background-fill] [box-shadow:--input-shadow];
+  .input {
+    @apply h-[86px] grow overflow-y-scroll rounded-[--input-radius] border-[length:--input-border-width] border-solid border-[--input-border-color] p-[--input-padding] text-[length:--input-text-size] leading-[--line-sm] text-[--body-text-color] outline-none [background:--input-background-fill] [box-shadow:--input-shadow] [-ms-overflow-style:none] [scrollbar-width:none];
   }
 
-  .text-input > .input:focus {
+  .input::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  .input:focus {
     @apply border-[--input-border-color-focus] [box-shadow:--input-shadow-focus];
   }
 </style>

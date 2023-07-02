@@ -1,7 +1,7 @@
 import type { EmphasizedNegativePrompt, EmphasizedPositivePrompt, Prompt } from "@/libs/prompt";
 import Big from "big.js";
 import { toString } from "@/libs/prompt";
-import { purgeEmphasizedPrompt } from "#/better-prompt/_logic/purgeEmphasizedPrompt";
+import { purgeEmphasizedPrompt } from "#/better-prompt/prompt-edit/_logic/purgeEmphasizedPrompt";
 
 export function getWeight(prompt: Prompt): number {
   switch (prompt.type) {

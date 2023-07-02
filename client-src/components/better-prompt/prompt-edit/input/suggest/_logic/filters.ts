@@ -6,7 +6,8 @@ export type FilterType =
   | "lora"
   | "danbooru-general"
   | "danbooru-character"
-  | "danbooru-copyright";
+  | "danbooru-copyright"
+  | "my-prompt";
 
 export const FilterTypes: readonly FilterType[] = [
   "all",
@@ -15,6 +16,7 @@ export const FilterTypes: readonly FilterType[] = [
   "danbooru-general",
   "danbooru-character",
   "danbooru-copyright",
+  "my-prompt",
 ] as const;
 
 export function typeToLabel(type: FilterType): string {
@@ -31,5 +33,7 @@ export function typeToLabel(type: FilterType): string {
       return t("Danbooru Tag (Character)");
     case "danbooru-copyright":
       return t("Danbooru Tag (Copyright)");
+    case "my-prompt":
+      return t("My Prompt");
   }
 }

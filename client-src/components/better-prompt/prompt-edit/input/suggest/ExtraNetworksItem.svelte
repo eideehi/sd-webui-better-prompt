@@ -6,7 +6,7 @@
   import {
     type PromptInputContext,
     promptInputContextKey,
-  } from "#/better-prompt/input/_logic/context";
+  } from "#/better-prompt/prompt-edit/input/_logic/context";
   import { showToast } from "#/widgets/Toast.svelte";
   import Popup from "#/widgets/Popup.svelte";
 

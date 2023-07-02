@@ -1,7 +1,8 @@
 import type { ExtraNetworksData } from "@/libs/extra-networks";
 import type { DanbooruTag } from "@/libs/danbooru";
+import type { MyPrompt } from "@/libs/my-prompt";
 
-export type SuggestDataType = "extra-networks" | "danbooru";
+export type SuggestDataType = "extra-networks" | "danbooru" | "my-prompt";
 
 interface AnySuggestData {
   type: SuggestDataType;
@@ -17,4 +18,9 @@ export interface DanbooruSuggestData extends AnySuggestData {
   value: DanbooruTag;
 }
 
-export type SuggestData = ExtraNetworksSuggestData | DanbooruSuggestData;
+export interface MyPromptSuggestData extends AnySuggestData {
+  type: "my-prompt";
+  value: MyPrompt;
+}
+
+export type SuggestData = ExtraNetworksSuggestData | DanbooruSuggestData | MyPromptSuggestData;

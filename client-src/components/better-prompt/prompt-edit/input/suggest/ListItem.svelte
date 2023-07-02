@@ -2,6 +2,7 @@
   import type { SuggestData } from "./_logic/suggest";
   import ExtraNetworksItem from "./ExtraNetworksItem.svelte";
   import DanbooruItem from "./DanbooruItem.svelte";
+  import MyPromptItem from "./MyPromptItem.svelte";
 
   export let data: SuggestData;
   export let index: number;
@@ -11,4 +12,6 @@
   <ExtraNetworksItem {index} data={data.value} />
 {:else if data.type === "danbooru"}
   <DanbooruItem {index} data={data.value} />
+{:else if data.type === "my-prompt"}
+  <MyPromptItem {index} data={data.value} />
 {/if}

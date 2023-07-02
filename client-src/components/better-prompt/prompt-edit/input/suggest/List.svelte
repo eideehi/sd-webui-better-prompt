@@ -9,11 +9,13 @@
   import { getElement, getElementAll, rotateElement } from "@/libs/util/dom";
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import { danbooruTags } from "#/better-prompt/_logic/danbooruTags";
+  import { myPrompts } from "#/better-prompt/_logic/myPrompts";
   import {
     type PromptInputContext,
     promptInputContextKey,
-  } from "#/better-prompt/input/_logic/context";
+  } from "#/better-prompt/prompt-edit/input/_logic/context";
   import ListItem from "./ListItem.svelte";
+  import type { MyPrompt } from "@/libs/my-prompt";
 
   export let promptText: string;
   export let filters: FilterType[];
@@ -72,6 +74,13 @@
     keys: ["name", "category"],
   });
 
+  let myPromptFuse: Fuse<MyPrompt>;
+  $: myPromptFuse = new Fuse($myPrompts, {
+    useExtendedSearch: true,
+    threshold: 0.1,
+    keys: ["label", "tags", "prompt"],
+  });
+
   function updateSuggest() {
     if (!promptText || filters.length === 0) {
       suggests.set([]);
@@ -124,6 +133,13 @@
             count++;
           });
       }
+    }
+
+    if (withinLimit()) {
+      myPromptFuse.search(promptText, { limit: limit - count }).forEach(({ item }) => {
+        results.push({ type: "my-prompt", value: item });
+        count++;
+      });
     }
 
     suggests.set(results);
