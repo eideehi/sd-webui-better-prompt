@@ -34,10 +34,10 @@
       class:selected={activeTab === "prompt-edit"}
       on:click={openTab("prompt-edit")}
     >
-      {t("Prompt Edit")}
+      {t("prompt-edit", { defaultValue: "Prompt Edit" })}
     </button>
     <button class="tab" class:selected={activeTab === "my-prompt"} on:click={openTab("my-prompt")}>
-      {t("My Prompt")}
+      {t("my-prompt", { defaultValue: "My Prompt" })}
     </button>
   </div>
   <div class="content-area">

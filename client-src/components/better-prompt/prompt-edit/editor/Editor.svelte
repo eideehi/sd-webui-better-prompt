@@ -11,6 +11,10 @@
 
   export let negative = false;
 
+  const caption = t(`editor-prompt${negative ? "-negative" : ""}`, {
+    defaultValue: negative ? "Negative prompt" : "Prompt",
+  });
+
   const {
     tabName,
     prompts: { positive: positivePrompts, negative: negativePrompts },
@@ -94,7 +98,7 @@
 </script>
 
 <div class="editor">
-  <span>{t(negative ? "Negative prompt" : "Prompt")}</span>
+  <span>{caption}</span>
   <div class="content">
     <TokenCounter />
     <PromptList />

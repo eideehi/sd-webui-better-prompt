@@ -18,9 +18,11 @@
 
 <button class="button secondary lg" on:click={() => (deleteMode = !deleteMode)}>
   {#if deleteMode}
-    {t("Cancel My Prompt deletion")}
+    {t("cancel-my-prompt-deletion", { defaultValue: "Cancel My Prompt deletion" })}
   {:else}
-    {t("Select and delete My Prompt")}
+    {t("select-and-delete-my-prompt", {
+      defaultValue: "Select and delete My Prompt",
+    })}
   {/if}
 </button>
 
@@ -30,6 +32,6 @@
     on:click={deleteMyPrompts}
     disabled={selectedMyPrompts.length === 0}
   >
-    {t("Delete selected My Prompts")}
+    {t("delete-selected-my-prompt", { defaultValue: "Delete selected My Prompts" })}
   </button>
 {/if}

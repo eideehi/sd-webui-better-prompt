@@ -48,16 +48,29 @@
 </script>
 
 <button class="button secondary lg" on:click={() => (showPopup = true)}>
-  {t("Add new My Prompt")}
+  {t("add-new-my-prompt", { defaultValue: "Add new My Prompt" })}
 </button>
 
-<PopupWindow title={t("Add new My Prompt")} bind:show={showPopup}>
+<PopupWindow
+  title={t("add-new-my-prompt", { defaultValue: "Add new My Prompt" })}
+  bind:show={showPopup}
+>
   <div class="add-new-my-prompt">
-    <TextInput label={t("Label")} bind:value={myPrompt.label} />
-    <MultiInput label={t("Tags")} bind:values={myPrompt.tags} list={$allMyPromptTags} />
-    <TextArea label={t("Prompt")} bind:value={myPrompt.prompt} />
+    <TextInput
+      label={t("my-prompt-label", { defaultValue: "Label" })}
+      bind:value={myPrompt.label}
+    />
+    <MultiInput
+      label={t("my-prompt-tags", { defaultValue: "Tags" })}
+      bind:values={myPrompt.tags}
+      list={$allMyPromptTags}
+    />
+    <TextArea
+      label={t("my-prompt-prompt", { defaultValue: "Prompt" })}
+      bind:value={myPrompt.prompt}
+    />
     <button class="button primary lg" on:click={addNewMyPrompt} disabled={!isValid(myPrompt)}>
-      {t("Add this My Prompt")}
+      {t("add-this.my-prompt", { defaultValue: "Add this My Prompt" })}
     </button>
   </div>
 </PopupWindow>

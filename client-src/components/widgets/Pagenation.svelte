@@ -22,13 +22,15 @@
   <div class="pagenation">
     {#if page > 1}
       <button class="button secondary" on:click={() => (page = page - 1)}>
-        {t("Previous")}
+        {t("pagenation-previous", { defaultValue: "Previous" })}
       </button>
     {/if}
     {#if page >= 4}
       <button class="button secondary" on:click={() => (page = 1)}>1</button>
       {#if page >= 5}
-        <span class="ellipsis">{t("…")}</span>
+        <span class="ellipsis">
+          {t("pagenation-ellipsis", { defaultValue: "…" })}
+        </span>
       {/if}
     {/if}
     {#each pages as _page}
@@ -42,7 +44,7 @@
     {/each}
     {#if page < lastPage}
       <button class="button secondary" on:click={() => (page = page + 1)}>
-        {t("Next")}
+        {t("pagenation-next", { defaultValue: "Next" })}
       </button>
     {/if}
   </div>

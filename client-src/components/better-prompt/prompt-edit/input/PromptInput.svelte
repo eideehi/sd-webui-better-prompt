@@ -96,5 +96,5 @@
   on:focusout={clearPseudoFocus}
   on:input={clearPseudoFocus}
   on:keydown={onKeyDown}
-  options={{ placeholder: t("Input prompt...") }}
+  options={{ placeholder: t("input-prompt", { defaultValue: "Input prompt..." }) }}
 />

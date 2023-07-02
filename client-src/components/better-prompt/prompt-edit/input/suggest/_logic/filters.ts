@@ -22,18 +22,26 @@ export const FilterTypes: readonly FilterType[] = [
 export function typeToLabel(type: FilterType): string {
   switch (type) {
     case "all":
-      return t("All");
+      return t("suggest-filter-all", { defaultValue: "All" });
     case "textual-inversion":
-      return t("Textual Inversion");
+      return t("suggest-filter-textual-inversion", {
+        defaultValue: "Textual Inversion",
+      });
     case "lora":
-      return t("LoRA");
+      return t("suggest-filter-lora", { defaultValue: "LoRA" });
     case "danbooru-general":
-      return t("Danbooru Tag (General)");
+      return t("suggest-filter-danbooru-general", {
+        defaultValue: "Danbooru Tag (General)",
+      });
     case "danbooru-character":
-      return t("Danbooru Tag (Character)");
+      return t("suggest-filter-danbooru-character", {
+        defaultValue: "Danbooru Tag (Character)",
+      });
     case "danbooru-copyright":
-      return t("Danbooru Tag (Copyright)");
+      return t("suggest-filter-danbooru-copyright", {
+        defaultValue: "Danbooru Tag (Copyright)",
+      });
     case "my-prompt":
-      return t("My Prompt");
+      return t("suggest-filter-my-prompt", { defaultValue: "My Prompt" });
   }
 }

@@ -83,7 +83,12 @@
 
 <div class="my-prompt" class:active>
   <div class="tools">
-    <TextInput bind:value={searchKeyword} options={{ placeholder: t("Search my prompts...") }} />
+    <TextInput
+      bind:value={searchKeyword}
+      options={{
+        placeholder: t("search-my-prompts", { defaultValue: "Search my prompts..." }),
+      }}
+    />
     <AddNewMyPrompt bind:this={addNewMyPrompt} on:popupopen={() => (deleteMode = false)} />
     {#if $myPrompts.length > 0}
       <SelectAndDeleteMyPrompt bind:deleteMode bind:selectedMyPrompts />
@@ -99,7 +104,10 @@
     <Pagenation bind:page totalCount={displayableMyPrompts.length} {displayLimit} />
   {:else if $myPrompts.length === 0}
     <div class="empty-my-prompts">
-      {t('My Prompt has not been registered yet. You can add it by "Add new My Prompt".')}
+      {t("empty-my-prompts", {
+        defaultValue:
+          'You don\'t have any My Prompt yet. Press the "Add My Prompt" button to add your My Prompt.',
+      })}
     </div>
   {/if}
 </div>

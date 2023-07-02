@@ -46,7 +46,7 @@
         <div class="tag">{tag}</div>
       {/each}
     {:else}
-      <div class="tag empty">{t("No tags are set")}</div>
+      <div class="tag empty">{t("my-prompt-tags-empty", { defaultValue: "No tags are set" })}</div>
     {/if}
   </div>
   <div class="prompt">

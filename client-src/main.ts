@@ -42,7 +42,12 @@ function checkExtensionUpdate(): void {
     if (!value) return;
     void checkForUpdates().then(({ update, version }) => {
       if (!update || version == null) return;
-      showToast({ text: t("Better Prompt version {0} is available", version) });
+      showToast({
+        text: t("update-available", {
+          defaultValue: "Better Prompt version {0} is available",
+          args: [version],
+        }),
+      });
     });
   });
 }

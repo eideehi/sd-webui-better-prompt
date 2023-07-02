@@ -36,7 +36,12 @@
 
       const isLora = data.type === "lora";
       if (isLora && shiftKey) {
-        showToast({ type: "warning", text: t("LoRA cannot be add to negative prompt") });
+        showToast({
+          type: "warning",
+          text: t("lora-negative-prompt-error", {
+            defaultValue: "LoRA cannot be add to negative prompt",
+          }),
+        });
         return;
       }
 
