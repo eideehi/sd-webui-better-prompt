@@ -25,63 +25,91 @@ git clone https://github.com/eideehi/sd-webui-better-prompt.git extensions/sd-we
 === Better Promptが表示されない・表示が崩れている
 上記の方法でインストールを行うと、最新のバージョンがインストールされます。しかし、それではあなたの使用しているWeb UIのバージョンではうまく動作しないかもしれません。Better Promptが正常に表示されない場合、別のバージョンを使用することで解決できるかもしれません。
 
-TIP: Better Promptのバージョンは Settings タブから変更することが出来ます。詳しくは <<version_change>> を参照してください。
+TIP: Better Promptのバージョンは Settings タブから変更することができます。詳しくは <<version-change>> を参照してください。
 
 == 使用方法
 Better Promptにより、以下の画像の赤い線で囲われた部分が追加されます。以降ではこの追加された内容について、使い方を説明していきます。
 
 image::images/components.png[Image - Components]
 
-=== プロンプト追加フォーム [[input-form]]
+=== Prompt Edit タブ
+デフォルトで表示されているコンテンツで、プロンプトの編集を行うことができます。
+
+==== プロンプト追加フォーム [[input-form]]
 プロンプトの追加は次の画像で示される3つの要素を使用して行います。
 
 image::images/input-component.png[Image - Input Component]
 
-==== [1] プロンプト入力フィールド [[input-field]]
-このフィールドにプロンプトを入力して、エンターキーを押すことでポジティブプロンプトへ入力した内容が追加されます。またシフトキーを押しながらエンターキーを押すことでネガティブプロンプトに内容が追加されます。また、入力した内容に類似するTextual Inversion・LoRA・Danbooruタグが存在する場合、<<suggest>> に一覧で表示されます。
+===== [1] プロンプト入力フィールド [[input-field]]
+このフィールドにプロンプトを入力して、エンターキーを押すことでポジティブプロンプトへ入力した内容が追加されます。またシフトキーを押しながらエンターキーを押すことでネガティブプロンプトに内容が追加されます。また、入力した内容に類似する**Textual Inversion**・**LoRA**・**Danbooruタグ**・**My Prompt**が存在する場合、<<suggest-area>> に一覧で表示されます。
 
 TIP: 類似判定にはFuse.jsを使用しているため、「完全一致」、「接頭辞・接尾辞」、「AND・OR・NOT」などのさまざまな判定方法を利用することが可能です。詳細は https://fusejs.io/examples.html#extended-search[fusejs.io のドキュメント] を参照してください。
 
-TIP: タブキーを押すと <<suggest>> の要素にフォーカスが移り、エスケープキーを押すとフォーカスが戻ります。選択された要素はエンターキー（あるいはシフトキーを押しながらエンターキー）を押すとポジティブ（ネガティブ）プロンプトへ追加することが出来ます。
+TIP: タブキーを押すと <<suggest-area>> の要素にフォーカスが移り、エスケープキーを押すとフォーカスが戻ります。選択された要素はエンターキー（あるいはシフトキーを押しながらエンターキー）を押すとポジティブ（ネガティブ）プロンプトへ追加することができます。
 
-==== [2] サジェストフィルター
-これらのフィルターにチェックが入っている要素のみ、<<suggest>> に表示されます。
+===== [2] サジェストフィルター
+これらのフィルターにチェックが入っている要素のみ、<<suggest-area>> に表示されます。
 
-==== [3] サジェストエリア [[suggest]]
+===== [3] サジェストエリア [[suggest-area]]
 <<input-field>> に入力された内容に類似する要素を最大20件まで一覧で表示します。追加されるアイテムの例を画像で示します。
 
 image::images/suggest-items.png[Image - Suggest Items]
 
-緑はTextual Inversion、青はLoRA、最後はDanbooruタグです。これらの要素をクリック（あるいはシフトキーを押しながらクリック）することで、ポジティブ（ネガティブ）プロンプトへ追加することが出来ます。
+緑はTextual Inversion、青はLoRA、最後はDanbooruタグです。これらの要素をクリック（あるいはシフトキーを押しながらクリック）することで、ポジティブ（ネガティブ）プロンプトへ追加することができます。
 
 NOTE: LoRAはネガティブプロンプトには追加できないので注意してください。
 
 TIP: Textual InversionとLoRAの要素は右クリックすることでサムネイルを確認することができます。
 
-=== プロンプト編集
+==== プロンプト編集
 プロンプトの編集は次の画像で示される2つの要素を使用して行います。
 
 image::images/prompt-component.png[Image - Prompt Component]
 
-==== [1] ポジティブプロンプト [[positive-prompt]]
+===== [1] ポジティブプロンプト [[positive-prompt]]
 <<input-form>> により追加されたプロンプトはこのエリアに表示されます。この要素はWeb UIのポジティブプロンプト入力エリアと相互に同期しています。
 
-TIP: 各プロンプトはドラッグ操作で入れ替えることが可能なほか、シフトキーを押しながらクリックすることで削除することが出来ます。
+TIP: 各プロンプトはドラッグ操作で入れ替えることが可能なほか、シフトキーを押しながらクリックすることで削除することができます。
 
 TIP: LoRAと通常のプロンプトは右クリックすることで強調レベルを調整するためのポップアップが表示されます。
 
-TIP: プロンプトに対する操作は[Ctrl + Z]、[Ctrl + Y]で取り消したり、元に戻したりすることが可能です。
+===== [2] ネガティブプロンプト
+LoRAを追加することができない以外は <<positive-prompt>> と同じです。
 
-==== [2] ネガティブプロンプト
-LoRAを追加することが出来ない以外は <<positive-prompt>> と同じです。
+=== My Prompt タブ
+任意のプロンプトに対して別名とタグを付けて管理することができます。登録したMy Promptはプロンプト編集時に <<suggest-area>> に表示されます。
+
+image::images/my-prompt.png[Image - My Prompt Overview]
+
+==== My Prompt を登録する
+``Add new My Prompt``ボタンを押すとMy Promptの登録を行うためのポップアップが表示されます。
+
+image::images/add-new-my-prompt.png[Image - Add new My Prompt]
+
+===== Label [[my-prompt-label]]
+ラベルにはMy Promptの表示名を設定します。これはサジェストに表示される場合などに使用されます。**この項目は必須であり、省略することはできません。**また、すでに存在するラベルを設定することもできません。
+
+===== Tags [[my-prompt-tags]]
+タグを設定することで、タグによるMy Promptの絞り込みが可能になります。入力フォームがアクティブになると既存のタグがサジェストとして一覧表示されます。入力した文字列はエンターキーを押すことで新しいタグとして追加することができます。この項目はオプションであり、入力を省略することができます。
+
+===== Prompt [[my-prompt-prompt]]
+My Promptには任意のプロンプトを設定します。 <<suggest-area>> に表示されたMy Promptをクリックした際にここで設定したプロンプトが展開されます。**この項目は必須であり、省略することはできません。**
+
+==== My Prompt を削除する
+``Select and delete My Prompt``ボタンを押すことで一覧表示されているMy Promptをクリックにより選択することが出来るようになります。``Delete selected My Prompts``ボタンを押すことで選択したMy Promptをすべて削除することができます。削除したMy Promptを復元することはできないので気をつけて使用してください。
+
+image::images/delete-my-prompts.png[Image - Delete My Prompts]
+
+==== My Prompt の検索について
+My Promptの検索には <<my-prompt-label>>・<<my-prompt-tags>>・<<my-prompt-prompt>> の要素が参照されます。検索フォームに``style``と入力した場合、前述の要素のいずれかに``style``という文字列が含まれているMy Promptが検索結果に表示されます。
 
 == コンフィグ
 Better Promptは、Settings タブに独自のコンフィグセクションを作成します。ここでは、それぞれの項目について説明します。
 
 image::images/settings.png[Image - Settings]
 
-=== Version of Better Prompt [[version_change]]
-Better Promptのバージョンを変更することが出来ます。空白を選択するとその時点での最新バージョンに変更されます。設定を変更した場合、Web UIの再起動が必要です。(リロードではありません)
+=== Version of Better Prompt [[version-change]]
+Better Promptのバージョンを変更することができます。空白を選択するとその時点での最新バージョンに変更されます。設定を変更した場合、Web UIの再起動が必要です。(リロードではありません)
 
 TIP: Better Promptの現在のバージョンはWeb UIのコンソールに表示されます。各バージョンが対応するWeb UIのバージョンは以下の表を参照してください。
 
