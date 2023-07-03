@@ -5,6 +5,7 @@
   import { t, dispatchEvent } from "@/libs/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
+  import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
   import { type EditorContext, editorContextKey } from "./_logic/context";
   import TokenCounter from "./TokenCounter.svelte";
   import PromptList from "./prompt-list/PromptList.svelte";
@@ -18,7 +19,6 @@
   const {
     tabName,
     prompts: { positive: positivePrompts, negative: negativePrompts },
-    extraNetworksData: { textualInversion },
   } = getContext<BetterPromptContext>(betterPromptContextKey);
   const prompts = negative ? negativePrompts : positivePrompts;
 

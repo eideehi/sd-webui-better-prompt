@@ -7,8 +7,8 @@
   import { getContext } from "svelte";
   import { writable } from "svelte/store";
   import { getElement, getElementAll, rotateElement } from "@/libs/util/dom";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import { danbooruTags } from "#/better-prompt/_logic/danbooruTags";
+  import { lora, textualInversion } from "#/better-prompt/_logic/extraNetworks";
   import { myPrompts } from "#/better-prompt/_logic/myPrompts";
   import {
     type PromptInputContext,
@@ -20,9 +20,6 @@
   export let promptText: string;
   export let filters: FilterType[];
 
-  const {
-    extraNetworksData: { lora, textualInversion },
-  } = getContext<BetterPromptContext>(betterPromptContextKey);
   const { pseudoFocus, movePseudoFocus } = getContext<PromptInputContext>(promptInputContextKey);
 
   let suggestsRef: Nullable<HTMLElement> = null;

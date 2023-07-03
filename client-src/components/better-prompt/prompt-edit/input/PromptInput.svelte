@@ -4,6 +4,7 @@
   import { t } from "@/libs/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
+  import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
   import {
     type PromptInputContext,
     type PseudoFocusMoveDirection,
@@ -15,7 +16,6 @@
 
   const {
     prompts: { positive, negative },
-    extraNetworksData: { textualInversion },
   } = getContext<BetterPromptContext>(betterPromptContextKey);
   const { pseudoFocus, movePseudoFocus, currentFocus } =
     getContext<PromptInputContext>(promptInputContextKey);

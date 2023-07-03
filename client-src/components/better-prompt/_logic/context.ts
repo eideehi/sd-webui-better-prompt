@@ -1,5 +1,4 @@
-import type { Readable, Writable } from "svelte/store";
-import type { ExtraNetworksData } from "@/libs/extra-networks";
+import type { Writable } from "svelte/store";
 import type { Prompt } from "@/libs/prompt";
 
 export type BetterPromptContext = {
@@ -7,10 +6,6 @@ export type BetterPromptContext = {
   prompts: {
     positive: Writable<Prompt[]>;
     negative: Writable<Prompt[]>;
-  };
-  extraNetworksData: {
-    lora: Readable<ExtraNetworksData[]>;
-    textualInversion: Readable<ExtraNetworksData[]>;
   };
 };
 

@@ -3,7 +3,6 @@
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
   import { t } from "@/libs/util/webui";
-  import { createLoraReadable, createTextualInversionReadable } from "./_logic/betterPrompt";
   import { type BetterPromptContext, betterPromptContextKey } from "./_logic/context";
   import PromptEdit from "./prompt-edit/PromptEdit.svelte";
   import MyPrompt from "./my-prompt/MyPrompt.svelte";
@@ -16,10 +15,6 @@
   setContext<BetterPromptContext>(betterPromptContextKey, {
     tabName,
     prompts: { positive, negative },
-    extraNetworksData: {
-      lora: createLoraReadable(tabName),
-      textualInversion: createTextualInversionReadable(tabName),
-    },
   });
 
   type BetterPromptTab = "prompt-edit" | "my-prompt";

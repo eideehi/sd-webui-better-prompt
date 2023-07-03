@@ -5,6 +5,7 @@
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import { createDataset, getTextContent } from "#/better-prompt/_logic/prompt";
   import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
+  import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
   import {
     type PromptInputContext,
     promptInputContextKey,
@@ -16,7 +17,6 @@
 
   const {
     prompts: { positive, negative },
-    extraNetworksData: { textualInversion },
   } = getContext<BetterPromptContext>(betterPromptContextKey);
   const { pseudoFocus, currentFocus } = getContext<PromptInputContext>(promptInputContextKey);
 

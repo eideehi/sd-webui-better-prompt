@@ -1,8 +1,15 @@
 import "./styles/index.css";
-import { checkForUpdates, getDanbooruTags, getLocalization, getMyPrompts } from "@/libs/api";
+import {
+  checkForUpdates,
+  getDanbooruTags,
+  getExtraNetworks,
+  getLocalization,
+  getMyPrompts,
+} from "@/libs/api";
 import { getElement, hasElement } from "@/libs/util/dom";
 import { getCurrentTabName, t, withBooleanOption } from "@/libs/util/webui";
 import { initDanbooruTags } from "#/better-prompt/_logic/danbooruTags";
+import { initLora, initTextualInversion } from "#/better-prompt/_logic/extraNetworks";
 import { initMyPrompts } from "#/better-prompt/_logic/myPrompts";
 import Toast, { showToast } from "#/widgets/Toast.svelte";
 import BetterPrompt from "#/better-prompt/BetterPrompt.svelte";
@@ -72,6 +79,14 @@ onUiLoaded(() => {
 
   fetchMyPrompts = getMyPrompts().then((value) => {
     initMyPrompts(value);
+  });
+
+  void getExtraNetworks("lora").then((value) => {
+    initLora(value);
+  });
+
+  void getExtraNetworks("textual-inversion").then((value) => {
+    initTextualInversion(value);
   });
 
   initWidgets();

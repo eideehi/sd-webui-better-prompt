@@ -1,18 +1,14 @@
 <script lang="ts">
   import type { MyPrompt } from "@/libs/my-prompt";
-  import { createEventDispatcher, getContext } from "svelte";
+  import { createEventDispatcher } from "svelte";
   import { parsePrompt, type Prompt } from "@/libs/prompt";
   import { t } from "@/libs/util/webui";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
+  import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
   import { createDataset, getTextContent } from "#/better-prompt/_logic/prompt";
   import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
 
   export let myPrompt: MyPrompt;
   export let selectable = false;
-
-  const {
-    extraNetworksData: { textualInversion },
-  } = getContext<BetterPromptContext>(betterPromptContextKey);
 
   let prompts: Prompt[];
   $: prompts = (parsePrompt(myPrompt.prompt) || []).map((prompt) =>

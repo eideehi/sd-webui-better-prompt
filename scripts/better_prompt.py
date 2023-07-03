@@ -2,6 +2,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -13,6 +14,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
 
 from modules import scripts, script_callbacks, shared
+from modules.paths_internal import extensions_builtin_dir
 
 
 # noinspection DuplicatedCode
@@ -217,6 +219,28 @@ def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
     @app.post("/better-prompt-api/v1/update-my-prompts")
     async def update_my_prompts(request: List[MyPrompt]):
         return JSONResponse(content=do_update_my_prompts(request))
+
+    @app.get("/better-prompt-api/v1/get-extra-networks/{extra_network_type}")
+    async def get_extra_networks(extra_network_type: str):
+        result = []
+        match extra_network_type:
+            case "lora":
+                sys.path.append(extensions_builtin_dir)
+                from Lora.ui_extra_networks_lora import ExtraNetworksPageLora
+                sys.path.remove(extensions_builtin_dir)
+
+                lora = ExtraNetworksPageLora()
+                for item in lora.list_items():
+                    result.append(
+                        {"name": item["name"], "preview": item["preview"], "search_term": item["search_term"]})
+            case "textual-inversion":
+                from modules.ui_extra_networks_textual_inversion import ExtraNetworksPageTextualInversion
+
+                ti = ExtraNetworksPageTextualInversion()
+                for item in ti.list_items():
+                    result.append(
+                        {"name": item["name"], "preview": item["preview"], "search_term": item["search_term"]})
+        return JSONResponse(content=result)
 
 
 script_callbacks.on_app_started(on_app_started)
