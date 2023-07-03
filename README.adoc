@@ -115,7 +115,8 @@ TIP: The current version of Better Prompt is displayed in the console of the Web
 
 |===
 | Version       | Web UI Version (Minimum) | Web UI Version (Maximum)
-| 0.1.0 - 0.3.0 | 9e1afa9e (2023-03-25)    | ~
+| 0.1.0 - 0.3.0 | 9e1afa9e (2023-03-25)    | 1.3.2
+| 0.4.0         | 9e1afa9e (2023-03-25)    | ~
 |===
 
 === Display update notifications
