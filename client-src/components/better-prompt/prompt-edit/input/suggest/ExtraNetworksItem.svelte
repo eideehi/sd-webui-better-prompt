@@ -75,8 +75,11 @@
 
 {#if ref != null}
   <Popup parent={ref} bind:show={showPopup}>
-    <div class="thumbnail-preview extra-network-cards">
-      <div class="card" style:background-image={data.thumbnail}>
+    <div class="thumbnail-preview">
+      <div
+        class="thumbnail-card"
+        style:background-image={data.thumbnail || "url(/file=html/card-no-preview.png)"}
+      >
         {#if data.type === "lora"}
           <button class="metadata-button" on:click={showLoraMetadata} />
         {/if}
@@ -94,12 +97,8 @@
     @apply outline-none;
   }
 
-  .card {
-    @apply cursor-default;
-  }
-
-  .card:hover {
-    @apply shadow-none;
+  .thumbnail-card {
+    @apply relative m-[0.5em] inline-block h-[24em] w-[16em] cursor-default overflow-hidden rounded-[0.2rem] bg-[auto_100%] bg-center text-[length:--text-md];
   }
 
   .metadata-button {
