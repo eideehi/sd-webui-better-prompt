@@ -56,11 +56,11 @@
 
 <style lang="postcss">
   .my-prompt-item {
-    @apply min-h-[144px] w-full min-w-[256px] max-w-[256px] transform-none rounded-[--container-radius] border-2 border-solid border-[--input-border-color] p-[--block-padding] shadow-none transition-[box-shadow_transform] duration-200 ease-in-out;
+    @apply min-h-[144px] w-full min-w-[256px] max-w-[256px] transform-none rounded-[--container-radius] border-2 border-solid border-[--input-border-color] p-[--block-padding] shadow-none transition-[box-shadow,transform] duration-200 ease-in-out;
   }
 
   .my-prompt-item.selectable {
-    @apply cursor-pointer shadow-md shadow-[rgba(0,0,0,0.33)] [transform:translate(0,-2px)_scale(1.01)];
+    @apply cursor-pointer select-none shadow-md shadow-[rgba(0,0,0,0.33)] [transform:translate(0,-2px)_scale(1.01)];
   }
 
   :global(.dark) .my-prompt-item.selectable {
@@ -68,11 +68,11 @@
   }
 
   .my-prompt-item.selectable:not(.selected):hover {
-    @apply border-[--input-border-color-focus];
+    @apply [box-shadow:0_0_8px_var(--secondary-600)];
   }
 
   .my-prompt-item.selected {
-    @apply [box-shadow:0_0_8px_var(--primary-500)];
+    @apply outline outline-[3px] outline-offset-2 outline-[--color-accent];
   }
 
   .label {

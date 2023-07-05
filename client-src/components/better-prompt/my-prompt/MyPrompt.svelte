@@ -130,6 +130,6 @@
   }
 
   .my-prompt-views {
-    @apply flex flex-wrap gap-[--layout-gap];
+    @apply flex flex-wrap gap-[1.5rem];
   }
 </style>
