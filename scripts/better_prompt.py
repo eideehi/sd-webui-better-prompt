@@ -20,7 +20,7 @@ class MyPrompt(BaseModel):
     prompt: str
 
 
-GIT = os.environ.get('GIT', "git")
+VERSION = "0.4.0"
 SETTINGS_SECTION = ("better_prompt", "Better Prompt")
 EXTENSION_ROOT = scripts.basedir()
 LOCALIZATION_DIR = Path(EXTENSION_ROOT).joinpath("locales")
@@ -29,27 +29,29 @@ DANBOORU_TAGS_JSON = DATA_DIR.joinpath("danbooru-tags.json")
 USER_DATA_DIR = Path(EXTENSION_ROOT).joinpath("user-data")
 MY_PROMPT_JSON = USER_DATA_DIR.joinpath("my-prompts.json")
 
-git = "git"
 available_localization: List[str] = []
 localization_dict: Dict[str, str] = {}
 
 
 # noinspection DuplicatedCode
-def get_git_command() -> None:
-    global git
-    try:
-        subprocess.run([git, "-v"], cwd=EXTENSION_ROOT, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                       check=True)
-    except subprocess.CalledProcessError:
-        git = GIT
-        subprocess.run([git, "-v"], cwd=EXTENSION_ROOT, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                       check=True)
-
-
 def print_version() -> None:
-    result = subprocess.check_output([git, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd=EXTENSION_ROOT,
-                                     shell=True).decode("utf-8")
-    print(f"Better Prompt version is {result.strip()}")
+    git = os.environ.get('GIT', "git")
+    try:
+        result = subprocess.check_output([git, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd=EXTENSION_ROOT,
+                                         shell=True).decode("utf-8")
+    except subprocess.CalledProcessError:
+        git = "git"
+        try:
+            result = subprocess.check_output([git, "log", '--pretty=v%(describe:tags)', "-n", "1"], cwd=EXTENSION_ROOT,
+                                             shell=True).decode("utf-8")
+        except subprocess.CalledProcessError:
+            result = None
+
+    if result:
+        version = result.strip()
+        print(f"[Better Prompt] Version {version}")
+    else:
+        print(f"[Better Prompt] Version {VERSION}")
 
 
 def do_update_my_prompts(my_prompts: List[MyPrompt]) -> Dict[str, Any]:
@@ -157,7 +159,6 @@ script_callbacks.on_ui_settings(on_ui_settings)
 
 
 def initialize() -> None:
-    get_git_command()
     print_version()
     refresh_available_localization()
     load_localization()
