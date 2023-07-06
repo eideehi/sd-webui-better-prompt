@@ -1,23 +1,16 @@
 import "./styles/index.css";
-import {
-  checkForUpdates,
-  getDanbooruTags,
-  getExtraNetworks,
-  getLocalization,
-  getMyPrompts,
-} from "@/libs/api";
+import { getDanbooruTags, getExtraNetworks, getLocalization, getMyPrompts } from "@/libs/api";
 import { getElement, hasElement } from "@/libs/util/dom";
 import { getCurrentTabName, t, withBooleanOption } from "@/libs/util/webui";
 import { initDanbooruTags } from "#/better-prompt/_logic/danbooruTags";
 import { initLora, initTextualInversion } from "#/better-prompt/_logic/extraNetworks";
 import { initMyPrompts } from "#/better-prompt/_logic/myPrompts";
-import Toast, { showToast } from "#/widgets/Toast.svelte";
+import Toast from "#/widgets/Toast.svelte";
 import BetterPrompt from "#/better-prompt/BetterPrompt.svelte";
 
 let fetchLocalization: Nullable<Promise<void>> = null;
 let fetchDanbooruTags: Nullable<Promise<void>> = null;
 let fetchMyPrompts: Nullable<Promise<void>> = null;
-let updateChecked = false;
 
 function initWidgets(): void {
   if (!hasElement("#better-prompt-toast")) {
@@ -29,7 +22,6 @@ function initWidgets(): void {
 function initialize(tabName: ExtensionAvailableTab): void {
   void Promise.all([fetchLocalization, fetchDanbooruTags, fetchMyPrompts]).then(() => {
     initBetterPrompt(tabName);
-    checkExtensionUpdate();
   });
 }
 
@@ -39,24 +31,6 @@ function initBetterPrompt(tabName: ExtensionAvailableTab): void {
   const anchor = getElement(`#${tabName}_toprow + div`);
   if (anchor == null || anchor.parentElement == null) return;
   new BetterPrompt({ target: anchor.parentElement, anchor, props: { tabName } });
-}
-
-function checkExtensionUpdate(): void {
-  if (updateChecked) return;
-  updateChecked = true;
-
-  withBooleanOption("better_prompt_update_notify_enabled", (value) => {
-    if (!value) return;
-    void checkForUpdates().then(({ update, version }) => {
-      if (!update || version == null) return;
-      showToast({
-        text: t("update-available", {
-          defaultValue: "Better Prompt version {0} is available",
-          args: [version],
-        }),
-      });
-    });
-  });
 }
 
 function hiddenOriginalComponents(tabName: ExtensionAvailableTab): void {

@@ -1,15 +1,10 @@
 {
-  "Version of Better Prompt (requires restart Web UI)": "Better Promptのバージョン (Web UIの再起動が必要)",
-  "Display update notifications": "アップデートの通知を表示する",
-  "Notify of updates only once per version": "バージョンごとに一度しかアップデートの通知を行わない",
-  "Interval at which to display update notifications (Unit: days)": "アップデートの通知を表示する間隔 (単位: 日)",
   "Language of Better Prompt (requires reload UI)": "Better Promptの言語 (UIのリロードが必要)",
 
   "__The following translations are for client-side__": "移行の翻訳はクライアントサイド用",
   "better-prompt.weight": "重み",
   "better-prompt.input-prompt": "プロンプトを入力...",
   "better-prompt.lora-negative-prompt-error": "LoRAをネガティブプロンプトに追加することはできません",
-  "better-prompt.update-available": "Better Promptのバージョン {0} が利用可能になりました",
   "better-prompt.suggest-filter-all": "すべて",
   "better-prompt.suggest-filter-danbooru-general": "Danbooruタグ (一般)",
   "better-prompt.suggest-filter-danbooru-character": "Danbooruタグ (キャラクター)",
