@@ -2,19 +2,18 @@
   import { getContext, onMount, setContext } from "svelte";
   import { isEquals, parsePrompt, toString } from "@/libs/prompt";
   import { getElement } from "@/libs/util/dom";
-  import { t, dispatchEvent } from "@/libs/util/webui";
+  import { dispatchEvent } from "@/libs/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
   import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
+  import { editorNegativePrompt, editorPrompt } from "#/better-prompt/_logic/messages";
   import { type EditorContext, editorContextKey } from "./_logic/context";
   import TokenCounter from "./TokenCounter.svelte";
   import PromptList from "./prompt-list/PromptList.svelte";
 
   export let negative = false;
 
-  const caption = t(`editor-prompt${negative ? "-negative" : ""}`, {
-    defaultValue: negative ? "Negative prompt" : "Prompt",
-  });
+  const caption = negative ? editorNegativePrompt : editorPrompt;
 
   const {
     tabName,
@@ -98,7 +97,7 @@
 </script>
 
 <div class="editor">
-  <span>{caption}</span>
+  <span>{caption.translate()}</span>
   <div class="content">
     <TokenCounter />
     <PromptList />

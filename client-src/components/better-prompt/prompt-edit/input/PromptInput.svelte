@@ -1,10 +1,10 @@
 <script lang="ts">
   import { getContext } from "svelte";
   import { parsePrompt } from "@/libs/prompt";
-  import { t } from "@/libs/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
   import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
   import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
+  import { inputPrompt } from "#/better-prompt/_logic/messages";
   import {
     type PromptInputContext,
     type PseudoFocusMoveDirection,
@@ -96,5 +96,5 @@
   on:focusout={clearPseudoFocus}
   on:input={clearPseudoFocus}
   on:keydown={onKeyDown}
-  options={{ placeholder: t("input-prompt", { defaultValue: "Input prompt..." }) }}
+  options={{ placeholder: inputPrompt.translate() }}
 />

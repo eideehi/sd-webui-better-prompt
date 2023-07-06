@@ -2,8 +2,8 @@
   import type { Prompt } from "@/libs/prompt";
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
-  import { t } from "@/libs/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "./_logic/context";
+  import { myPrompt, promptEdit } from "./_logic/messages";
   import PromptEdit from "./prompt-edit/PromptEdit.svelte";
   import MyPrompt from "./my-prompt/MyPrompt.svelte";
 
@@ -29,10 +29,10 @@
       class:selected={activeTab === "prompt-edit"}
       on:click={openTab("prompt-edit")}
     >
-      {t("prompt-edit", { defaultValue: "Prompt Edit" })}
+      {promptEdit.translate()}
     </button>
     <button class="tab" class:selected={activeTab === "my-prompt"} on:click={openTab("my-prompt")}>
-      {t("my-prompt", { defaultValue: "My Prompt" })}
+      {myPrompt.translate()}
     </button>
   </div>
   <div class="content-area">

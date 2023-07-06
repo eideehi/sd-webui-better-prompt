@@ -1,4 +1,12 @@
-import { t } from "@/libs/util/webui";
+import {
+  suggestFilterAll,
+  suggestFilterDanbooruCharacter,
+  suggestFilterDanbooruCopyright,
+  suggestFilterDanbooruGeneral,
+  suggestFilterLora,
+  suggestFilterMyPrompt,
+  suggestFilterTextualInversion,
+} from "@/components/better-prompt/_logic/messages";
 
 export type FilterType =
   | "all"
@@ -22,26 +30,18 @@ export const FilterTypes: readonly FilterType[] = [
 export function typeToLabel(type: FilterType): string {
   switch (type) {
     case "all":
-      return t("suggest-filter-all", { defaultValue: "All" });
+      return suggestFilterAll.translate();
     case "textual-inversion":
-      return t("suggest-filter-textual-inversion", {
-        defaultValue: "Textual Inversion",
-      });
+      return suggestFilterTextualInversion.translate();
     case "lora":
-      return t("suggest-filter-lora", { defaultValue: "LoRA" });
+      return suggestFilterLora.translate();
     case "danbooru-general":
-      return t("suggest-filter-danbooru-general", {
-        defaultValue: "Danbooru Tag (General)",
-      });
+      return suggestFilterDanbooruGeneral.translate();
     case "danbooru-character":
-      return t("suggest-filter-danbooru-character", {
-        defaultValue: "Danbooru Tag (Character)",
-      });
+      return suggestFilterDanbooruCharacter.translate();
     case "danbooru-copyright":
-      return t("suggest-filter-danbooru-copyright", {
-        defaultValue: "Danbooru Tag (Copyright)",
-      });
+      return suggestFilterDanbooruCopyright.translate();
     case "my-prompt":
-      return t("suggest-filter-my-prompt", { defaultValue: "My Prompt" });
+      return suggestFilterMyPrompt.translate();
   }
 }

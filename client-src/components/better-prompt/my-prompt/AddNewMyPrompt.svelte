@@ -1,8 +1,14 @@
 <script lang="ts">
   import type { MyPrompt } from "@/libs/my-prompt";
   import { createEventDispatcher } from "svelte";
-  import { t } from "@/libs/util/webui";
   import { addMyPrompt, allMyPromptTags, myPrompts } from "#/better-prompt/_logic/myPrompts";
+  import {
+    addNewMyPrompt,
+    addThisMyPrompt,
+    myPromptLabel,
+    myPromptPrompt,
+    myPromptTags,
+  } from "#/better-prompt/_logic/messages";
   import TextInput from "#/widgets/TextInput.svelte";
   import PopupWindow from "#/widgets/PopupWindow.svelte";
   import MultiInput from "#/widgets/MultiInput.svelte";
@@ -38,7 +44,7 @@
     return prompt.length > 0;
   }
 
-  function addNewMyPrompt(): void {
+  function onClickConfirm(): void {
     if (!isValid(myPrompt)) return;
 
     addMyPrompt(myPrompt);
@@ -48,29 +54,20 @@
 </script>
 
 <button class="button secondary lg" on:click={() => (showPopup = true)}>
-  {t("add-new-my-prompt", { defaultValue: "Add new My Prompt" })}
+  {addNewMyPrompt.translate()}
 </button>
 
-<PopupWindow
-  title={t("add-new-my-prompt", { defaultValue: "Add new My Prompt" })}
-  bind:show={showPopup}
->
+<PopupWindow title={addNewMyPrompt.translate()} bind:show={showPopup}>
   <div class="add-new-my-prompt">
-    <TextInput
-      label={t("my-prompt-label", { defaultValue: "Label" })}
-      bind:value={myPrompt.label}
-    />
+    <TextInput label={myPromptLabel.translate()} bind:value={myPrompt.label} />
     <MultiInput
-      label={t("my-prompt-tags", { defaultValue: "Tags" })}
+      label={myPromptTags.translate()}
       bind:values={myPrompt.tags}
       list={$allMyPromptTags}
     />
-    <TextArea
-      label={t("my-prompt-prompt", { defaultValue: "Prompt" })}
-      bind:value={myPrompt.prompt}
-    />
-    <button class="button primary lg" on:click={addNewMyPrompt} disabled={!isValid(myPrompt)}>
-      {t("add-this.my-prompt", { defaultValue: "Add this My Prompt" })}
+    <TextArea label={myPromptPrompt.translate()} bind:value={myPrompt.prompt} />
+    <button class="button primary lg" on:click={onClickConfirm} disabled={!isValid(myPrompt)}>
+      {addThisMyPrompt.translate()}
     </button>
   </div>
 </PopupWindow>

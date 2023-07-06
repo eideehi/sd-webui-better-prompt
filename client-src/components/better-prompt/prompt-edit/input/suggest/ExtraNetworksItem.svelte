@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { ExtraNetworksData } from "@/libs/extra-networks";
   import { getContext } from "svelte";
-  import { getOption, t } from "@/libs/util/webui";
+  import { getOption } from "@/libs/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
+  import { loraNegativePromptError } from "#/better-prompt/_logic/messages";
   import {
     type PromptInputContext,
     promptInputContextKey,
@@ -38,9 +39,7 @@
       if (isLora && shiftKey) {
         showToast({
           type: "warning",
-          text: t("lora-negative-prompt-error", {
-            defaultValue: "LoRA cannot be add to negative prompt",
-          }),
+          text: loraNegativePromptError.translate(),
         });
         return;
       }

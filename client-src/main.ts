@@ -1,7 +1,7 @@
 import "./styles/index.css";
 import { getDanbooruTags, getExtraNetworks, getLocalization, getMyPrompts } from "@/libs/api";
 import { getElement, hasElement } from "@/libs/util/dom";
-import { getCurrentTabName, t, withBooleanOption } from "@/libs/util/webui";
+import { getCurrentTabName, withBooleanOption } from "@/libs/util/webui";
 import { initDanbooruTags } from "#/better-prompt/_logic/danbooruTags";
 import { initLora, initTextualInversion } from "#/better-prompt/_logic/extraNetworks";
 import { initMyPrompts } from "#/better-prompt/_logic/myPrompts";

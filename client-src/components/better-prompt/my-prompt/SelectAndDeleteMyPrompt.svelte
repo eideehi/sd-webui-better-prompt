@@ -1,7 +1,11 @@
 <script lang="ts">
   import type { MyPrompt } from "@/libs/my-prompt";
-  import { t } from "@/libs/util/webui";
   import { removeMyPrompts } from "#/better-prompt/_logic/myPrompts";
+  import {
+    cancelMyPromptDeletion,
+    deleteSelectedMyPrompt,
+    selectAndDeleteMyPrompt,
+  } from "#/better-prompt/_logic/messages";
 
   export let deleteMode: boolean;
   export let selectedMyPrompts: MyPrompt[];
@@ -18,11 +22,9 @@
 
 <button class="button secondary lg" on:click={() => (deleteMode = !deleteMode)}>
   {#if deleteMode}
-    {t("cancel-my-prompt-deletion", { defaultValue: "Cancel My Prompt deletion" })}
+    {cancelMyPromptDeletion.translate()}
   {:else}
-    {t("select-and-delete-my-prompt", {
-      defaultValue: "Select and delete My Prompt",
-    })}
+    {selectAndDeleteMyPrompt.translate()}
   {/if}
 </button>
 
@@ -32,6 +34,6 @@
     on:click={deleteMyPrompts}
     disabled={selectedMyPrompts.length === 0}
   >
-    {t("delete-selected-my-prompt", { defaultValue: "Delete selected My Prompts" })}
+    {deleteSelectedMyPrompt.translate()}
   </button>
 {/if}

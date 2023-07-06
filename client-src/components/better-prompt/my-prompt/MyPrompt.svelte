@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { MyPrompt } from "@/libs/my-prompt";
   import Fuse from "fuse.js";
-  import { t } from "@/libs/util/webui";
   import { myPrompts } from "#/better-prompt/_logic/myPrompts";
+  import { emptyMyPrompt, searchMyPrompts } from "#/better-prompt/_logic/messages";
   import MyPromptItem from "./MyPromptItem.svelte";
   import TextInput from "#/widgets/TextInput.svelte";
   import Pagenation from "#/widgets/Pagenation.svelte";
@@ -83,12 +83,7 @@
 
 <div class="my-prompt" class:active>
   <div class="tools">
-    <TextInput
-      bind:value={searchKeyword}
-      options={{
-        placeholder: t("search-my-prompts", { defaultValue: "Search my prompts..." }),
-      }}
-    />
+    <TextInput bind:value={searchKeyword} options={{ placeholder: searchMyPrompts.translate() }} />
     <AddNewMyPrompt bind:this={addNewMyPrompt} on:popupopen={() => (deleteMode = false)} />
     {#if $myPrompts.length > 0}
       <SelectAndDeleteMyPrompt bind:deleteMode bind:selectedMyPrompts />
@@ -104,10 +99,7 @@
     <Pagenation bind:page totalCount={displayableMyPrompts.length} {displayLimit} />
   {:else if $myPrompts.length === 0}
     <div class="empty-my-prompts">
-      {t("empty-my-prompts", {
-        defaultValue:
-          'You don\'t have any My Prompt yet. Press the "Add My Prompt" button to add your My Prompt.',
-      })}
+      {emptyMyPrompt.translate()}
     </div>
   {/if}
 </div>

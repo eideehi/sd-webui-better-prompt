@@ -2,8 +2,8 @@
   import type { MyPrompt } from "@/libs/my-prompt";
   import { createEventDispatcher } from "svelte";
   import { parsePrompt, type Prompt } from "@/libs/prompt";
-  import { t } from "@/libs/util/webui";
   import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
+  import { myPromptTagsEmpty } from "#/better-prompt/_logic/messages";
   import { createDataset, getTextContent } from "#/better-prompt/_logic/prompt";
   import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
 
@@ -42,7 +42,9 @@
         <div class="tag">{tag}</div>
       {/each}
     {:else}
-      <div class="tag empty">{t("my-prompt-tags-empty", { defaultValue: "No tags are set" })}</div>
+      <div class="tag empty">
+        {myPromptTagsEmpty.translate()}
+      </div>
     {/if}
   </div>
   <div class="prompt">

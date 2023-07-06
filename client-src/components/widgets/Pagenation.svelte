@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { t } from "@/libs/util/webui";
+  import {
+    pagenationEllipsis,
+    pagenationNext,
+    pagenationPrevious,
+  } from "#/better-prompt/_logic/messages";
 
   export let page: number;
   export let totalCount: number;
@@ -22,14 +26,14 @@
   <div class="pagenation">
     {#if page > 1}
       <button class="button secondary" on:click={() => (page = page - 1)}>
-        {t("pagenation-previous", { defaultValue: "Previous" })}
+        {pagenationPrevious.translate()}
       </button>
     {/if}
     {#if page >= 4}
       <button class="button secondary" on:click={() => (page = 1)}>1</button>
       {#if page >= 5}
         <span class="ellipsis">
-          {t("pagenation-ellipsis", { defaultValue: "…" })}
+          {pagenationEllipsis.translate()}
         </span>
       {/if}
     {/if}
@@ -44,7 +48,7 @@
     {/each}
     {#if page < lastPage}
       <button class="button secondary" on:click={() => (page = page + 1)}>
-        {t("pagenation-next", { defaultValue: "Next" })}
+        {pagenationNext.translate()}
       </button>
     {/if}
   </div>

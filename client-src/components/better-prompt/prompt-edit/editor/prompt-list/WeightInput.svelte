@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Prompt } from "@/libs/prompt";
-  import { t } from "@/libs/util/webui";
+  import { weight as weightLabel } from "#/better-prompt/_logic/messages";
   import { getWeight, updateWeight } from "./_logic/weightInput";
   import NumberInput from "#/widgets/NumberInput.svelte";
 
@@ -17,7 +17,7 @@
 
 {#if !isNaN(weight)}
   <NumberInput
-    label={t("weight", { defaultValue: "Weight" })}
+    label={weightLabel.translate()}
     value={weight}
     options={{ min: -2, max: 2, input: { step: 0.01 }, slider: { step: 0.05 } }}
     on:input={onWeightUpdate}
