@@ -5,6 +5,7 @@
   import {
     addNewMyPrompt,
     addThisMyPrompt,
+    cancelAndClose,
     myPromptLabel,
     myPromptPrompt,
     myPromptTags,
@@ -66,14 +67,27 @@
       list={$allMyPromptTags}
     />
     <TextArea label={myPromptPrompt.translate()} bind:value={myPrompt.prompt} />
-    <button class="button primary lg" on:click={onClickConfirm} disabled={!isValid(myPrompt)}>
-      {addThisMyPrompt.translate()}
-    </button>
+    <div class="buttons">
+      <button class="button primary lg" on:click={onClickConfirm} disabled={!isValid(myPrompt)}>
+        {addThisMyPrompt.translate()}
+      </button>
+      <button class="button secondary lg" on:click={closePopup}>
+        {cancelAndClose.translate()}
+      </button>
+    </div>
   </div>
 </PopupWindow>
 
 <style lang="postcss">
   .add-new-my-prompt {
-    @apply flex w-[256px] flex-col gap-[--layout-gap] px-3 pb-2 sm:w-[384px] lg:w-[512px];
+    @apply flex w-[256px] flex-col gap-[--layout-gap] px-3 pb-2 sm:w-[384px] md:w-[512px] lg:w-[640px];
+  }
+
+  .buttons {
+    @apply flex gap-3;
+  }
+
+  .buttons > .button {
+    @apply grow basis-0;
   }
 </style>

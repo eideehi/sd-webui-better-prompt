@@ -20,6 +20,7 @@ class MessageImpl implements Message {
 
 const addNewMyPrompt = new MessageImpl("add-new-my-prompt", "Add new My Prompt");
 const addThisMyPrompt = new MessageImpl("add-this-my-prompt", "Add this My Prompt");
+const cancelAddingMyPrompt = new MessageImpl("cancel-adding-my-prompt", "Cancel adding My Prompt");
 const cancelMyPromptDeletion = new MessageImpl(
   "cancel-my-prompt-deletion",
   "Cancel My Prompt deletion"
@@ -77,6 +78,7 @@ const weight = new MessageImpl("weight", "Weight");
 export {
   addNewMyPrompt,
   addThisMyPrompt,
+  cancelAddingMyPrompt as cancelAndClose,
   cancelMyPromptDeletion,
   deleteSelectedMyPrompt,
   editorNegativePrompt,

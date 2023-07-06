@@ -5,6 +5,7 @@
   "__The following translations are for client-side__": "以降の翻訳はクライアントサイド用",
   "better-prompt.add-new-my-prompt": "My Promptを追加",
   "better-prompt.add-this-my-prompt": "このMy Promptを追加する",
+  "better-prompt.cancel-adding-my-prompt": "My Promptの追加をキャンセルする",
   "better-prompt.cancel-my-prompt-deletion": "My Promptの削除をキャンセルする",
   "better-prompt.delete-selected-my-prompt": "選択したMy Promptを削除する",
   "better-prompt.editor-negative-prompt": "Negative prompt",
