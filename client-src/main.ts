@@ -20,9 +20,16 @@ function initWidgets(): void {
 }
 
 function initialize(tabName: ExtensionAvailableTab): void {
-  void Promise.all([fetchLocalization, fetchDanbooruTags, fetchMyPrompts]).then(() => {
-    initBetterPrompt(tabName);
-  });
+  window.setTimeout(function init() {
+    if (Object.keys(opts).length === 0) {
+      window.setTimeout(init, 125);
+      return;
+    }
+
+    void Promise.all([fetchLocalization, fetchDanbooruTags, fetchMyPrompts]).then(() => {
+      initBetterPrompt(tabName);
+    });
+  }, 10);
 }
 
 function initBetterPrompt(tabName: ExtensionAvailableTab): void {
