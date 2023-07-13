@@ -1,7 +1,7 @@
 ## v0.4.1
 ### Add
 - Added a cancel button to the registration dialog of "My Prompt".
-## Fix
+### Fix
 - Fixed an issue where the option values were not reflected in the new version of the Web UI.
 ### Remove
 - Removed version change feature.
