@@ -20,7 +20,7 @@ class MyPrompt(BaseModel):
     prompt: str
 
 
-VERSION = "0.4.0"
+VERSION = "0.4.1"
 SETTINGS_SECTION = ("better_prompt", "Better Prompt")
 EXTENSION_ROOT = scripts.basedir()
 LOCALIZATION_DIR = Path(EXTENSION_ROOT).joinpath("locales")

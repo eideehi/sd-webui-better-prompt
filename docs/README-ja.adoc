@@ -9,6 +9,9 @@ image::images/overview.png[Image - Ovewview]
 == 概要
 Better Promptは従来のプロンプト入力・編集作業におけるさまざまな煩わしさを軽減するために作られました。Extra networks（🎴）を表示せずにTextual InversionやLoRAを設定したり、プロンプトの順番をドラッグ操作で入れ替えたり、プロンプトの強調レベルをGUIで調整したりすることが可能になります。
 
+== 注意事項
+Better PromptはJavaScriptベースの拡張機能です。``--data-dir``のオプションを使用するなどでJavaScriptファイルが正常に読み込まれなかった場合、Better Promptが機能しなくなりますのでご留意ください。
+
 == インストール
 === ブラウザからインストール (推奨)
 Extensions タブの Install from URL からインストールすることができます。"URL for extension's git repository" の項目に https://github.com/eideehi/sd-webui-better-prompt.git を入力して「Install」ボタンを押すだけです。
@@ -116,7 +119,8 @@ TIP: Better Promptの現在のバージョンはWeb UIのコンソールに表�
 |===
 | バージョン    | Web UIのバージョン (最小) | Web UIのバージョン (最大)
 | 0.1.0 - 0.3.0 | 9e1afa9e (2023-03-25)     | 1.3.2
-| 0.4.0         | 9e1afa9e (2023-03-25)     | ~
+| 0.4.0         | 9e1afa9e (2023-03-25)     | 1.4.0
+| 0.4.1         | 1.1.1                     | ~
 |===
 
 === Display update notifications

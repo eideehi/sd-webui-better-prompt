@@ -9,6 +9,9 @@ image::docs/images/overview.png[Image - Overview]
 == Overview
 Better Prompt was created to reduce the various inconveniences of traditional prompt input and editing. It allows you to set Textual Inversion and LoRA without displaying Extra networks (🎴), rearrange the order of prompts by drag and drop, and adjust the emphasis level of prompts through a GUI.
 
+== Precautions
+Better Prompt is a JavaScript-based extension. Please be aware that if JavaScript files are not loaded correctly, such as when using the `--data-dir` option, Better Styles not function properly.
+
 == Installation
 === Installing from the Browser (Recommended)
 You can install it from the "Install from URL" option in the Extensions tab. Simply enter https://github.com/eideehi/sd-webui-better-prompt.git in the "URL for extension's git repository" field and press the "Install" button.
@@ -116,7 +119,8 @@ TIP: The current version of Better Prompt is displayed in the console of the Web
 |===
 | Version       | Web UI Version (Minimum) | Web UI Version (Maximum)
 | 0.1.0 - 0.3.0 | 9e1afa9e (2023-03-25)    | 1.3.2
-| 0.4.0         | 9e1afa9e (2023-03-25)    | ~
+| 0.4.0         | 9e1afa9e (2023-03-25)    | 1.4.0
+| 0.4.1         | 1.1.1                    | ~
 |===
 
 === Display update notifications
