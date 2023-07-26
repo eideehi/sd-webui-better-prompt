@@ -1,16 +1,16 @@
 <script lang="ts">
-  import type { MyPrompt } from "@/libs/my-prompt";
+  import type { MyPrompt } from "#/my-prompt";
   import { getContext } from "svelte";
-  import { parsePrompt, type Prompt } from "@/libs/prompt";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
-  import { createDataset, getTextContent } from "#/better-prompt/_logic/prompt";
-  import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
-  import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
+  import { parsePrompt, type Prompt } from "#/prompt";
+  import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
+  import { createDataset, getTextContent } from "@/_logic/prompt";
+  import { adjustPrompt } from "@/_logic/adjustPrompt";
+  import { textualInversion } from "@/_logic/extraNetworks";
   import {
     type PromptInputContext,
     promptInputContextKey,
-  } from "#/better-prompt/prompt-edit/input/_logic/context";
-  import Popup from "#/widgets/Popup.svelte";
+  } from "@/prompt-edit/input/_logic/context";
+  import Popup from "%/Popup.svelte";
 
   export let data: MyPrompt;
   export let index: number;

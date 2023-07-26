@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Editor from "#/better-prompt/prompt-edit/editor/Editor.svelte";
-  import Input from "#/better-prompt/prompt-edit/input/Input.svelte";
+  import Editor from "@/prompt-edit/editor/Editor.svelte";
+  import Input from "@/prompt-edit/input/Input.svelte";
 
   export let active: boolean;
 </script>

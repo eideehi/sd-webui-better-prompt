@@ -1,5 +1,5 @@
-import type { MyPrompt } from "@/libs/my-prompt";
-import { isArray, isObject, isString } from "@/libs/util/types";
+import type { MyPrompt } from "#/my-prompt";
+import { isArray, isObject, isString } from "#/util/types";
 
 export function getMyPrompts(): Promise<MyPrompt[]> {
   const promise = fetch(`/better-prompt-api/v1/get-my-prompts?ts=${new Date().getTime()}`);

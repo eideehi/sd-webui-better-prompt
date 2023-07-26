@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    pagenationEllipsis,
-    pagenationNext,
-    pagenationPrevious,
-  } from "#/better-prompt/_logic/messages";
+  import { pagenationEllipsis, pagenationNext, pagenationPrevious } from "@/_logic/messages";
 
   export let page: number;
   export let totalCount: number;

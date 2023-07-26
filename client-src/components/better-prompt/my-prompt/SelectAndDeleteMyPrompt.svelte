@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { MyPrompt } from "@/libs/my-prompt";
-  import { removeMyPrompts } from "#/better-prompt/_logic/myPrompts";
+  import type { MyPrompt } from "#/my-prompt";
+  import { removeMyPrompts } from "@/_logic/myPrompts";
   import {
     cancelMyPromptDeletion,
     deleteSelectedMyPrompt,
     selectAndDeleteMyPrompt,
-  } from "#/better-prompt/_logic/messages";
+  } from "@/_logic/messages";
 
   export let deleteMode: boolean;
   export let selectedMyPrompts: MyPrompt[];

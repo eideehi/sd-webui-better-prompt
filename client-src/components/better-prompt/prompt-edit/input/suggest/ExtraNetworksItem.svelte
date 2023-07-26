@@ -1,15 +1,15 @@
 <script lang="ts">
-  import type { ExtraNetworksData } from "@/libs/extra-networks";
+  import type { ExtraNetworksData } from "#/extra-networks";
   import { getContext } from "svelte";
-  import { getOption } from "@/libs/util/webui";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
-  import { loraNegativePromptError } from "#/better-prompt/_logic/messages";
+  import { getOption } from "#/util/webui";
+  import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
+  import { loraNegativePromptError } from "@/_logic/messages";
   import {
     type PromptInputContext,
     promptInputContextKey,
-  } from "#/better-prompt/prompt-edit/input/_logic/context";
-  import { showToast } from "#/widgets/Toast.svelte";
-  import Popup from "#/widgets/Popup.svelte";
+  } from "@/prompt-edit/input/_logic/context";
+  import { showToast } from "%/Toast.svelte";
+  import Popup from "%/Popup.svelte";
 
   export let data: ExtraNetworksData;
   export let index: number;

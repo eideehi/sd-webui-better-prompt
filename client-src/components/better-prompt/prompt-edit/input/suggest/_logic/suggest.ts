@@ -1,6 +1,6 @@
-import type { ExtraNetworksData } from "@/libs/extra-networks";
-import type { DanbooruTag } from "@/libs/danbooru";
-import type { MyPrompt } from "@/libs/my-prompt";
+import type { ExtraNetworksData } from "#/extra-networks";
+import type { DanbooruTag } from "#/danbooru";
+import type { MyPrompt } from "#/my-prompt";
 
 export type SuggestDataType = "extra-networks" | "danbooru" | "my-prompt";
 

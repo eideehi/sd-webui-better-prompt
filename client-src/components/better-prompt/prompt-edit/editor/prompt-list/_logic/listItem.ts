@@ -1,4 +1,4 @@
-import { type Prompt } from "@/libs/prompt";
+import { type Prompt } from "#/prompt";
 
 export function isPopupEnabled(prompt: Prompt): boolean {
   switch (prompt.type) {

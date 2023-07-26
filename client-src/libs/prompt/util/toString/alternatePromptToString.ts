@@ -1,4 +1,4 @@
-import type { AlternatePrompt } from "@/libs/prompt";
+import type { AlternatePrompt } from "#/prompt";
 import { toString } from "./index";
 
 export function alternatePromptToString(prompt: AlternatePrompt): string {

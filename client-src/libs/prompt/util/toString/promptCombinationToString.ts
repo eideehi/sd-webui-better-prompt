@@ -1,4 +1,4 @@
-import type { PromptCombination } from "@/libs/prompt";
+import type { PromptCombination } from "#/prompt";
 import { toString } from "./index";
 
 export function promptCombinationToString(prompt: PromptCombination): string {

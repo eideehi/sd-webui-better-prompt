@@ -1,4 +1,4 @@
-import type { InnerPrompt, ScheduledPrompt } from "@/libs/prompt";
+import type { InnerPrompt, ScheduledPrompt } from "#/prompt";
 import { isEquals } from "./index";
 
 export function scheduledPromptEquals(prompt1: ScheduledPrompt, prompt2: ScheduledPrompt): boolean {

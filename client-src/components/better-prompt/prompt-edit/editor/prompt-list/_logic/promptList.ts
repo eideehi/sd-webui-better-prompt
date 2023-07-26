@@ -1,6 +1,6 @@
-import type { Prompt, ScheduledPrompt } from "@/libs/prompt";
-import { toString } from "@/libs/prompt";
-import { purgeEmphasizedPrompt } from "#/better-prompt/prompt-edit/_logic/purgeEmphasizedPrompt";
+import type { Prompt, ScheduledPrompt } from "#/prompt";
+import { toString } from "#/prompt";
+import { purgeEmphasizedPrompt } from "@/prompt-edit/_logic/purgeEmphasizedPrompt";
 
 export function promptIdentifier(index: number, prompt: Prompt): string {
   switch (prompt.type) {

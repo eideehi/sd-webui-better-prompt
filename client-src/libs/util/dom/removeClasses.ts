@@ -1,4 +1,4 @@
-import { omitNulls } from "@/libs/util/array";
+import { omitNulls } from "#/util/array";
 
 /**
  * Removes one or more CSS classes from an element.

@@ -1,6 +1,6 @@
 <script lang="ts">
   import Big from "big.js";
-  import { dispatchEvent } from "@/libs/util/webui";
+  import { dispatchEvent } from "#/util/webui";
 
   type Options = {
     min?: number;
@@ -85,7 +85,7 @@
   }
 
   .input {
-    @apply h-[--size-6] w-[6rem] rounded-[--input-radius] border-[length:--input-border-width] border-solid border-[--input-border-color] p-[--input-padding] px-[--size-2] py-0 text-center text-[length:--input-text-size] leading-[--line-sm] text-[--body-text-color] outline-none [box-shadow:--input-shadow] [background:--input-background-fill];
+    @apply h-[--size-6] w-[6rem] rounded-[--input-radius] border-[length:--input-border-width] border-solid border-[--input-border-color] p-[--input-padding] px-[--size-2] py-0 text-center text-[length:--input-text-size] leading-[--line-sm] text-[--body-text-color] outline-none [background:--input-background-fill] [box-shadow:--input-shadow];
   }
 
   .input:focus {

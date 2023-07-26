@@ -1,4 +1,4 @@
-import type { PromptCombination } from "@/libs/prompt";
+import type { PromptCombination } from "#/prompt";
 import { isEquals } from "./index";
 
 export function promptCombinationEquals(

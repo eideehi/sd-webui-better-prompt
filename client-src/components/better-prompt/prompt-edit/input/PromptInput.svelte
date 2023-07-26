@@ -1,16 +1,16 @@
 <script lang="ts">
   import { getContext } from "svelte";
-  import { parsePrompt } from "@/libs/prompt";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
-  import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
-  import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
-  import { inputPrompt } from "#/better-prompt/_logic/messages";
+  import { parsePrompt } from "#/prompt";
+  import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
+  import { adjustPrompt } from "@/_logic/adjustPrompt";
+  import { textualInversion } from "@/_logic/extraNetworks";
+  import { inputPrompt } from "@/_logic/messages";
   import {
     type PromptInputContext,
     type PseudoFocusMoveDirection,
     promptInputContextKey,
   } from "./_logic/context";
-  import TextInput from "#/widgets/TextInput.svelte";
+  import TextInput from "%/TextInput.svelte";
 
   export let promptText: string;
 

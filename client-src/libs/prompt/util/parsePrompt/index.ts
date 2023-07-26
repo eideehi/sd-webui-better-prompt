@@ -8,8 +8,8 @@ import type {
   Prompt,
   PromptCombination,
   ScheduledPrompt,
-} from "@/libs/prompt";
-import { getOption } from "@/libs/util/webui";
+} from "#/prompt";
+import { getOption } from "#/util/webui";
 import { get_parser } from "./prompt-parser";
 
 export function parsePrompt(text: string, callback: Callback1<Prompt[]>): void;

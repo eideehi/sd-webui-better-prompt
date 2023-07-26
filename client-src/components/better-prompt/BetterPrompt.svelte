@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Prompt } from "@/libs/prompt";
+  import type { Prompt } from "#/prompt";
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
   import { type BetterPromptContext, betterPromptContextKey } from "./_logic/context";

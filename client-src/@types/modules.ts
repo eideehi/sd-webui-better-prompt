@@ -1,4 +1,4 @@
-declare module "#/widgets/Toast.svelte" {
+declare module "%/Toast.svelte" {
   export { SvelteComponentDev as default } from "svelte/internal";
 
   export type ToastType = "info" | "success" | "warning" | "error";

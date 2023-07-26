@@ -1,8 +1,8 @@
 <script lang="ts">
   import { getContext } from "svelte";
   import { readable } from "svelte/store";
-  import { getElement, hasElement } from "@/libs/util/dom";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
+  import { getElement, hasElement } from "#/util/dom";
+  import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
   import { type EditorContext, editorContextKey } from "./_logic/context";
 
   let error = false;

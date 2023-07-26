@@ -3,7 +3,7 @@ import type {
   EmphasizedNegativePrompt,
   EmphasizedPositivePrompt,
   EmphasizedWeightedPrompt,
-} from "@/libs/prompt";
+} from "#/prompt";
 import { isEquals } from "./index";
 
 export function emphasizedPromptEquals(

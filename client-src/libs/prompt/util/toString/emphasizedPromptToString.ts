@@ -3,7 +3,7 @@ import type {
   EmphasizedPositivePrompt,
   EmphasizedPrompt,
   EmphasizedWeightedPrompt,
-} from "@/libs/prompt/emphasizedPrompt";
+} from "#/prompt/emphasizedPrompt";
 import { toString } from "./index";
 
 export function emphasizedPromptToString(prompt: EmphasizedPrompt): string {

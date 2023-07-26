@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { toggleValue } from "@/libs/util/array";
+  import { toggleValue } from "#/util/array";
   import Popup from "./Popup.svelte";
-  import { getElement, hasChild, scrollIntoViewIfNeeded } from "@/libs/util/dom";
+  import { getElement, hasChild, scrollIntoViewIfNeeded } from "#/util/dom";
 
   export let label: Nullable<string> = null;
   export let values: string[];

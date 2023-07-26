@@ -1,4 +1,4 @@
-import type { ScheduledPrompt } from "@/libs/prompt";
+import type { ScheduledPrompt } from "#/prompt";
 import { toString } from "./index";
 
 export function scheduledPromptToString(prompt: ScheduledPrompt): string {

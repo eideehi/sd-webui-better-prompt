@@ -1,6 +1,6 @@
-import type { Prompt } from "@/libs/prompt";
+import type { Prompt } from "#/prompt";
 import type { Writable } from "svelte/store";
-import { isEquals } from "@/libs/prompt";
+import { isEquals } from "#/prompt";
 
 class History<T> {
   private readonly history: T[] = [];

@@ -1,8 +1,4 @@
-import type {
-  EmphasizedNegativePrompt,
-  EmphasizedPositivePrompt,
-  InnerPrompt,
-} from "@/libs/prompt";
+import type { EmphasizedNegativePrompt, EmphasizedPositivePrompt, InnerPrompt } from "#/prompt";
 
 export function purgeEmphasizedPrompt(
   prompt: EmphasizedPositivePrompt | EmphasizedNegativePrompt

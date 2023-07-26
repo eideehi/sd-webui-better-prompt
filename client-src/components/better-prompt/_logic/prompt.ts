@@ -1,4 +1,4 @@
-import { type ExtraNetworksPrompt, type Prompt, toString } from "@/libs/prompt";
+import { type ExtraNetworksPrompt, type Prompt, toString } from "#/prompt";
 import {
   alternatePromptToString,
   emphasizedNegativePromptToString,
@@ -6,7 +6,7 @@ import {
   plainPromptToString,
   promptCombinationToString,
   scheduledPromptToString,
-} from "@/libs/prompt/util/toString";
+} from "#/prompt/util/toString";
 
 export function getTextContent(prompt: Prompt): string {
   return promptToText(prompt).replaceAll("\\", "");

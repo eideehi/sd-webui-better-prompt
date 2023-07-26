@@ -8,7 +8,7 @@ import type {
   Prompt,
   PromptCombination,
   ScheduledPrompt,
-} from "@/libs/prompt";
+} from "#/prompt";
 import { alternatePromptEquals } from "./alternatePromptEquals";
 import { promptCombinationEquals } from "./promptCombinationEquals";
 import {

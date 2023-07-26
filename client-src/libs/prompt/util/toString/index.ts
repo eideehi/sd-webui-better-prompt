@@ -1,5 +1,5 @@
-import type { Prompt } from "@/libs/prompt";
-import { concatPrompt } from "@/libs/prompt";
+import type { Prompt } from "#/prompt";
+import { concatPrompt } from "#/prompt";
 import { alternatePromptToString } from "./alternatePromptToString";
 import {
   emphasizedNegativePromptToString,

@@ -1,4 +1,4 @@
-import type { ExtraNetworksData } from "@/libs/extra-networks";
+import type { ExtraNetworksData } from "#/extra-networks";
 import { type Readable, writable } from "svelte/store";
 
 const _lora = writable<ExtraNetworksData[]>([]);

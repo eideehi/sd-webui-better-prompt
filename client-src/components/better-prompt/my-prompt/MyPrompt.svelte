@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { MyPrompt } from "@/libs/my-prompt";
+  import type { MyPrompt } from "#/my-prompt";
   import Fuse from "fuse.js";
-  import { myPrompts } from "#/better-prompt/_logic/myPrompts";
-  import { emptyMyPrompt, searchMyPrompts } from "#/better-prompt/_logic/messages";
+  import { myPrompts } from "@/_logic/myPrompts";
+  import { emptyMyPrompt, searchMyPrompts } from "@/_logic/messages";
   import MyPromptItem from "./MyPromptItem.svelte";
-  import TextInput from "#/widgets/TextInput.svelte";
-  import Pagenation from "#/widgets/Pagenation.svelte";
+  import TextInput from "%/TextInput.svelte";
+  import Pagenation from "%/Pagenation.svelte";
   import AddNewMyPrompt from "./AddNewMyPrompt.svelte";
   import SelectAndDeleteMyPrompt from "./SelectAndDeleteMyPrompt.svelte";
 

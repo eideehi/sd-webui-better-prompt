@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Prompt } from "@/libs/prompt";
-  import { weight as weightLabel } from "#/better-prompt/_logic/messages";
+  import type { Prompt } from "#/prompt";
+  import { weight as weightLabel } from "@/_logic/messages";
   import { getWeight, updateWeight } from "./_logic/weightInput";
-  import NumberInput from "#/widgets/NumberInput.svelte";
+  import NumberInput from "%/NumberInput.svelte";
 
   export let prompt: Prompt;
 

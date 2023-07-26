@@ -1,4 +1,4 @@
-import type { AlternatePrompt } from "@/libs/prompt";
+import type { AlternatePrompt } from "#/prompt";
 import { isEquals } from "./index";
 
 export function alternatePromptEquals(prompt1: AlternatePrompt, prompt2: AlternatePrompt): boolean {

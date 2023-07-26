@@ -20,8 +20,9 @@
     "baseUrl": "./",
     "outDir": "./dist",
     "paths": {
-      "@/*": ["client-src/*"],
-      "#/*": ["client-src/components/*"]
+      "@/*": ["client-src/components/better-prompt/*"],
+      "%/*": ["client-src/components/widgets/*"],
+      "#/*": ["client-src/libs/*"]
     }
   },
   "include": ["client-src/**/*.d.ts", "client-src/**/*.ts", "client-src/**/*.js", "client-src/**/*.svelte"],

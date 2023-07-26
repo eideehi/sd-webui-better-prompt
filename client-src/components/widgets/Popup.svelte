@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
-  import { getScreenPosition, hasChild } from "@/libs/util/dom";
-  import { isDarkMode } from "@/libs/util/webui";
+  import { getScreenPosition, hasChild } from "#/util/dom";
+  import { isDarkMode } from "#/util/webui";
 
   export let parent: HTMLElement;
   export let show: boolean;

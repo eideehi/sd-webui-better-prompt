@@ -1,4 +1,4 @@
-import type { PromptType } from "@/libs/prompt";
+import type { PromptType } from "#/prompt";
 
 const promptTypes: Set<string> = new Set<PromptType>([
   "alternate",

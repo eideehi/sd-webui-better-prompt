@@ -6,7 +6,7 @@ import {
   suggestFilterLora,
   suggestFilterMyPrompt,
   suggestFilterTextualInversion,
-} from "@/components/better-prompt/_logic/messages";
+} from "@/_logic/messages";
 
 export type FilterType =
   | "all"

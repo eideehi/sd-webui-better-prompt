@@ -1,12 +1,12 @@
 import "./styles/index.css";
-import { getDanbooruTags, getExtraNetworks, getLocalization, getMyPrompts } from "@/libs/api";
-import { getElement, hasElement } from "@/libs/util/dom";
-import { getCurrentTabName, withBooleanOption } from "@/libs/util/webui";
-import { initDanbooruTags } from "#/better-prompt/_logic/danbooruTags";
-import { initLora, initTextualInversion } from "#/better-prompt/_logic/extraNetworks";
-import { initMyPrompts } from "#/better-prompt/_logic/myPrompts";
-import Toast from "#/widgets/Toast.svelte";
-import BetterPrompt from "#/better-prompt/BetterPrompt.svelte";
+import { getDanbooruTags, getExtraNetworks, getLocalization, getMyPrompts } from "#/api";
+import { getElement, hasElement } from "#/util/dom";
+import { getCurrentTabName, withBooleanOption } from "#/util/webui";
+import { initDanbooruTags } from "@/_logic/danbooruTags";
+import { initLora, initTextualInversion } from "@/_logic/extraNetworks";
+import { initMyPrompts } from "@/_logic/myPrompts";
+import Toast from "%/Toast.svelte";
+import BetterPrompt from "@/BetterPrompt.svelte";
 
 let fetchLocalization: Nullable<Promise<void>> = null;
 let fetchDanbooruTags: Nullable<Promise<void>> = null;

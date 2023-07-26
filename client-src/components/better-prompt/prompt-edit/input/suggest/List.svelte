@@ -1,21 +1,21 @@
 <script lang="ts">
   import type { FilterType } from "./_logic/filters";
   import type { SuggestData } from "./_logic/suggest";
-  import type { ExtraNetworksData } from "@/libs/extra-networks";
-  import type { DanbooruTag } from "@/libs/danbooru";
+  import type { ExtraNetworksData } from "#/extra-networks";
+  import type { DanbooruTag } from "#/danbooru";
   import Fuse from "fuse.js";
   import { getContext } from "svelte";
   import { writable } from "svelte/store";
-  import { getElement, getElementAll, rotateElement } from "@/libs/util/dom";
-  import { danbooruTags } from "#/better-prompt/_logic/danbooruTags";
-  import { lora, textualInversion } from "#/better-prompt/_logic/extraNetworks";
-  import { myPrompts } from "#/better-prompt/_logic/myPrompts";
+  import { getElement, getElementAll, rotateElement } from "#/util/dom";
+  import { danbooruTags } from "@/_logic/danbooruTags";
+  import { lora, textualInversion } from "@/_logic/extraNetworks";
+  import { myPrompts } from "@/_logic/myPrompts";
   import {
     type PromptInputContext,
     promptInputContextKey,
-  } from "#/better-prompt/prompt-edit/input/_logic/context";
+  } from "@/prompt-edit/input/_logic/context";
   import ListItem from "./ListItem.svelte";
-  import type { MyPrompt } from "@/libs/my-prompt";
+  import type { MyPrompt } from "#/my-prompt";
 
   export let promptText: string;
   export let filters: FilterType[];

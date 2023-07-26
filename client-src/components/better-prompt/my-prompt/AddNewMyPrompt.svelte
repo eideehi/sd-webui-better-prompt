@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { MyPrompt } from "@/libs/my-prompt";
+  import type { MyPrompt } from "#/my-prompt";
   import { createEventDispatcher } from "svelte";
-  import { addMyPrompt, allMyPromptTags, myPrompts } from "#/better-prompt/_logic/myPrompts";
+  import { addMyPrompt, allMyPromptTags, myPrompts } from "@/_logic/myPrompts";
   import {
     addNewMyPrompt,
     addThisMyPrompt,
@@ -9,11 +9,11 @@
     myPromptLabel,
     myPromptPrompt,
     myPromptTags,
-  } from "#/better-prompt/_logic/messages";
-  import TextInput from "#/widgets/TextInput.svelte";
-  import PopupWindow from "#/widgets/PopupWindow.svelte";
-  import MultiInput from "#/widgets/MultiInput.svelte";
-  import TextArea from "#/widgets/TextArea.svelte";
+  } from "@/_logic/messages";
+  import TextInput from "%/TextInput.svelte";
+  import PopupWindow from "%/PopupWindow.svelte";
+  import MultiInput from "%/MultiInput.svelte";
+  import TextArea from "%/TextArea.svelte";
 
   let showPopup = false;
   let myPrompt: MyPrompt = {

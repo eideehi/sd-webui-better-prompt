@@ -1,6 +1,6 @@
 import { type Readable, writable } from "svelte/store";
-import type { MyPrompt } from "@/libs/my-prompt";
-import { updateMyPrompts } from "@/libs/api";
+import type { MyPrompt } from "#/my-prompt";
+import { updateMyPrompts } from "#/api";
 
 let values: MyPrompt[] = [];
 const _myPrompts = writable(values);

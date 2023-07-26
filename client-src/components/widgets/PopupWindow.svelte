@@ -2,7 +2,7 @@
   import { onDestroy } from "svelte";
   import { scale } from "svelte/transition";
   import { quintOut } from "svelte/easing";
-  import { isDarkMode } from "@/libs/util/webui";
+  import { isDarkMode } from "#/util/webui";
 
   export let title: string;
   export let show: boolean;

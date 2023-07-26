@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { DanbooruTag } from "@/libs/danbooru";
+  import type { DanbooruTag } from "#/danbooru";
   import { getContext } from "svelte";
-  import { tagToPrompt } from "@/libs/danbooru";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
+  import { tagToPrompt } from "#/danbooru";
+  import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
   import {
     type PromptInputContext,
     promptInputContextKey,
-  } from "#/better-prompt/prompt-edit/input/_logic/context";
+  } from "@/prompt-edit/input/_logic/context";
 
   export let data: DanbooruTag;
   export let index: number;

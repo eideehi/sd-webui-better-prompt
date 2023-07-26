@@ -1,7 +1,7 @@
 <script lang="ts">
   import { type FilterType, FilterTypes, typeToLabel } from "./_logic/filters";
-  import Checkbox from "#/widgets/Checkbox.svelte";
-  import { toggleValue } from "@/libs/util/array";
+  import Checkbox from "%/Checkbox.svelte";
+  import { toggleValue } from "#/util/array";
 
   export let filters: FilterType[];
 

@@ -1,4 +1,4 @@
-import { type DanbooruTag, isDanbooruTag } from "@/libs/danbooru";
+import { type DanbooruTag, isDanbooruTag } from "#/danbooru";
 
 export function getDanbooruTags(): Promise<DanbooruTag[]> {
   const promise = fetch(`/better-prompt-api/v1/get-danbooru-tags?ts=${new Date().getTime()}`);

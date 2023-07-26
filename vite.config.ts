@@ -5,8 +5,9 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 export default defineConfig({
   resolve: {
     alias: {
-      "@/": `${resolve(__dirname, "client-src")}/`,
-      "#/": `${resolve(__dirname, "client-src", "components")}/`,
+      "@/": `${resolve(__dirname, "client-src", "components", "better-prompt")}/`,
+      "%/": `${resolve(__dirname, "client-src", "components", "widgets")}/`,
+      "#/": `${resolve(__dirname, "client-src", "libs")}/`,
     },
   },
   build: {

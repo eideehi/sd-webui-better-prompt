@@ -1,4 +1,4 @@
-import { t } from "@/libs/util/webui";
+import { t } from "#/util/webui";
 
 export interface Message {
   translate(args?: Array<string | number | boolean>): string;

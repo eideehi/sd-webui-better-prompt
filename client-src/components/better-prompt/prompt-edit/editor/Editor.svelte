@@ -1,12 +1,12 @@
 <script lang="ts">
   import { getContext, onMount, setContext } from "svelte";
-  import { isEquals, parsePrompt, toString } from "@/libs/prompt";
-  import { getElement } from "@/libs/util/dom";
-  import { dispatchEvent } from "@/libs/util/webui";
-  import { type BetterPromptContext, betterPromptContextKey } from "#/better-prompt/_logic/context";
-  import { adjustPrompt } from "#/better-prompt/_logic/adjustPrompt";
-  import { textualInversion } from "#/better-prompt/_logic/extraNetworks";
-  import { editorNegativePrompt, editorPrompt } from "#/better-prompt/_logic/messages";
+  import { isEquals, parsePrompt, toString } from "#/prompt";
+  import { getElement } from "#/util/dom";
+  import { dispatchEvent } from "#/util/webui";
+  import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
+  import { adjustPrompt } from "@/_logic/adjustPrompt";
+  import { textualInversion } from "@/_logic/extraNetworks";
+  import { editorNegativePrompt, editorPrompt } from "@/_logic/messages";
   import { type EditorContext, editorContextKey } from "./_logic/context";
   import TokenCounter from "./TokenCounter.svelte";
   import PromptList from "./prompt-list/PromptList.svelte";

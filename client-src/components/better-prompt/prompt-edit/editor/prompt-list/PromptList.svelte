@@ -1,12 +1,9 @@
 <script lang="ts">
   import Sortable from "sortablejs";
   import { getContext, onMount } from "svelte";
-  import { sortByIndexes } from "@/libs/util/array";
-  import { getElementAll } from "@/libs/util/dom";
-  import {
-    type EditorContext,
-    editorContextKey,
-  } from "#/better-prompt/prompt-edit/editor/_logic/context";
+  import { sortByIndexes } from "#/util/array";
+  import { getElementAll } from "#/util/dom";
+  import { type EditorContext, editorContextKey } from "@/prompt-edit/editor/_logic/context";
   import { promptIdentifier } from "./_logic/promptList";
   import ListItem from "./ListItem.svelte";
 

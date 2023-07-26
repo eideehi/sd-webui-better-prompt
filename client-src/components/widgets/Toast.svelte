@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import type { ToastMessage } from "#/widgets/Toast.svelte";
+  import type { ToastMessage } from "%/Toast.svelte";
   import { writable } from "svelte/store";
 
   const messages = writable<ToastMessage[]>([]);
@@ -18,7 +18,7 @@
 
 <script lang="ts">
   import { fade, fly } from "svelte/transition";
-  import { isDarkMode } from "@/libs/util/webui";
+  import { isDarkMode } from "#/util/webui";
 
   function setCloseTimer(message: ToastMessage): void {
     if ((message?.duration || 0) <= 0) return;

@@ -1,4 +1,4 @@
-import type { ExtraNetworksPrompt } from "@/libs/prompt";
+import type { ExtraNetworksPrompt } from "#/prompt";
 
 export function extraNetworksPromptEquals(
   prompt1: ExtraNetworksPrompt,

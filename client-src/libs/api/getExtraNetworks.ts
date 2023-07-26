@@ -1,6 +1,6 @@
 import type { ExtraNetworksData, ExtraNetworksType } from "../extra-networks";
-import { omitNulls } from "@/libs/util/array";
-import { isObject, isString } from "@/libs/util/types";
+import { omitNulls } from "#/util/array";
+import { isObject, isString } from "#/util/types";
 
 export function getExtraNetworks(type: ExtraNetworksType): Promise<ExtraNetworksData[]> {
   const promise = fetch(
