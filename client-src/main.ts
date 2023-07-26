@@ -13,8 +13,7 @@ let fetchDanbooruTags: Nullable<Promise<void>> = null;
 let fetchMyPrompts: Nullable<Promise<void>> = null;
 
 function initWidgets(): void {
-  if (!hasElement("#better-prompt-toast")) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  if (!hasElement("#eidee-net-toast-container")) {
     new Toast({ target: gradioApp() });
   }
 }

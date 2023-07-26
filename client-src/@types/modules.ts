@@ -1,5 +1,5 @@
 declare module "%/Toast.svelte" {
-  export { SvelteComponentDev as default } from "svelte/internal";
+  export { SvelteComponent as default } from "svelte";
 
   export type ToastType = "info" | "success" | "warning" | "error";
 
@@ -10,6 +10,4 @@ declare module "%/Toast.svelte" {
   };
 
   export function showToast(message: ToastMessage): void;
-
-  export function closeToast(message: ToastMessage): void;
 }
