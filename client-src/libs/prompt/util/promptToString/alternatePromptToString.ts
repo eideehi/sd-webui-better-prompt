@@ -1,6 +1,6 @@
 import type { AlternatePrompt } from "#/prompt";
-import { toString } from "./index";
+import { promptToString } from "./promptToString";
 
 export function alternatePromptToString(prompt: AlternatePrompt): string {
-  return `[${prompt.values.map(toString).join("|")}]`;
+  return `[${prompt.values.map(promptToString).join("|")}]`;
 }

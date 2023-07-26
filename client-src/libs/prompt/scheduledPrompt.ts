@@ -1,9 +1,9 @@
 import type { Prompt } from "./prompt";
-import type { InnerPrompt } from "./innerPrompt";
+import type { Prompts } from "./promptAlias";
 
 export interface ScheduledPrompt extends Prompt {
   type: "scheduled";
-  from?: InnerPrompt;
-  to?: InnerPrompt;
+  from?: Prompts;
+  to?: Prompts;
   when: number;
 }

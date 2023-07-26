@@ -1,23 +1,21 @@
 import type { Prompt } from "./prompt";
-import type { InnerPrompt } from "./innerPrompt";
+import type { Prompts } from "./promptAlias";
 
-export type EmphasizedPrompt =
-  | EmphasizedPositivePrompt
-  | EmphasizedNegativePrompt
-  | EmphasizedWeightedPrompt;
-
-export interface EmphasizedPositivePrompt extends Prompt {
-  type: "emphasized-positive";
-  values: InnerPrompt[];
+export interface EmphasizedPrompt extends Prompt {
+  type: "emphasized";
+  subType: "positive" | "negative" | "weighted";
+  values: Prompts;
 }
 
-export interface EmphasizedNegativePrompt extends Prompt {
-  type: "emphasized-negative";
-  values: InnerPrompt[];
+export interface PositiveEmphasizedPrompt extends EmphasizedPrompt {
+  subType: "positive";
 }
 
-export interface EmphasizedWeightedPrompt extends Prompt {
-  type: "emphasized-weighted";
-  values: InnerPrompt[];
+export interface NegativeEmphasizedPrompt extends EmphasizedPrompt {
+  subType: "negative";
+}
+
+export interface WeightedEmphasizedPrompt extends EmphasizedPrompt {
+  subType: "weighted";
   weight: number;
 }

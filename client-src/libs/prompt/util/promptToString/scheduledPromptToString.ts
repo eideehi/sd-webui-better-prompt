@@ -1,13 +1,13 @@
 import type { ScheduledPrompt } from "#/prompt";
-import { toString } from "./index";
+import { promptsToString } from "./promptsToString";
 
 export function scheduledPromptToString(prompt: ScheduledPrompt): string {
   let buffer = "";
   if (prompt.from != null) {
-    buffer += `${toString(prompt.from)}:`;
+    buffer += `${promptsToString(prompt.from)}:`;
   }
   if (prompt.to != null) {
-    buffer += toString(prompt.to);
+    buffer += promptsToString(prompt.to);
   }
   buffer += `:${prompt.when}`;
   return `[${buffer}]`;
