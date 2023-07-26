@@ -1,12 +1,4 @@
-import {
-  suggestFilterAll,
-  suggestFilterDanbooruCharacter,
-  suggestFilterDanbooruCopyright,
-  suggestFilterDanbooruGeneral,
-  suggestFilterLora,
-  suggestFilterMyPrompt,
-  suggestFilterTextualInversion,
-} from "@/_logic/messages";
+import * as t from "~/messages";
 
 export type FilterType =
   | "all"
@@ -30,18 +22,18 @@ export const FilterTypes: readonly FilterType[] = [
 export function typeToLabel(type: FilterType): string {
   switch (type) {
     case "all":
-      return suggestFilterAll.translate();
+      return t.SuggestFilterAll();
     case "textual-inversion":
-      return suggestFilterTextualInversion.translate();
+      return t.SuggestFilterTextualInversion();
     case "lora":
-      return suggestFilterLora.translate();
+      return t.SuggestFilterLora();
     case "danbooru-general":
-      return suggestFilterDanbooruGeneral.translate();
+      return t.SuggestFilterDanbooruGeneral();
     case "danbooru-character":
-      return suggestFilterDanbooruCharacter.translate();
+      return t.SuggestFilterDanbooruCharacter();
     case "danbooru-copyright":
-      return suggestFilterDanbooruCopyright.translate();
+      return t.SuggestFilterDanbooruCopyright();
     case "my-prompt":
-      return suggestFilterMyPrompt.translate();
+      return t.SuggestFilterMyPrompt();
   }
 }

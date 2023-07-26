@@ -3,7 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import { parsePrompt, type Prompt } from "#/prompt";
   import { textualInversion } from "@/_logic/extraNetworks";
-  import { myPromptTagsEmpty } from "@/_logic/messages";
+  import * as t from "~/messages";
   import { createDataset, getTextContent } from "@/_logic/prompt";
   import { adjustPrompt } from "@/_logic/adjustPrompt";
 
@@ -43,7 +43,7 @@
       {/each}
     {:else}
       <div class="tag empty">
-        {myPromptTagsEmpty.translate()}
+        {t.MyPromptTagsEmpty()}
       </div>
     {/if}
   </div>

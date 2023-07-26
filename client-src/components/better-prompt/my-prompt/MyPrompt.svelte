@@ -2,7 +2,7 @@
   import type { MyPrompt } from "#/my-prompt";
   import Fuse from "fuse.js";
   import { myPrompts } from "@/_logic/myPrompts";
-  import { emptyMyPrompt, searchMyPrompts } from "@/_logic/messages";
+  import * as t from "~/messages";
   import MyPromptItem from "./MyPromptItem.svelte";
   import TextInput from "%/TextInput.svelte";
   import Pagenation from "%/Pagenation.svelte";
@@ -83,7 +83,7 @@
 
 <div class="my-prompt" class:active>
   <div class="tools">
-    <TextInput bind:value={searchKeyword} options={{ placeholder: searchMyPrompts.translate() }} />
+    <TextInput bind:value={searchKeyword} options={{ placeholder: t.SearchMyPrompts() }} />
     <AddNewMyPrompt bind:this={addNewMyPrompt} on:popupopen={() => (deleteMode = false)} />
     {#if $myPrompts.length > 0}
       <SelectAndDeleteMyPrompt bind:deleteMode bind:selectedMyPrompts />
@@ -99,7 +99,7 @@
     <Pagenation bind:page totalCount={displayableMyPrompts.length} {displayLimit} />
   {:else if $myPrompts.length === 0}
     <div class="empty-my-prompts">
-      {emptyMyPrompt.translate()}
+      {t.EmptyMyPrompt()}
     </div>
   {/if}
 </div>

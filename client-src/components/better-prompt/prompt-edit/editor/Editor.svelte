@@ -6,14 +6,14 @@
   import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
   import { adjustPrompt } from "@/_logic/adjustPrompt";
   import { textualInversion } from "@/_logic/extraNetworks";
-  import { editorNegativePrompt, editorPrompt } from "@/_logic/messages";
+  import * as t from "~/messages";
   import { type EditorContext, editorContextKey } from "./_logic/context";
   import TokenCounter from "./TokenCounter.svelte";
   import PromptList from "./prompt-list/PromptList.svelte";
 
   export let negative = false;
 
-  const caption = negative ? editorNegativePrompt : editorPrompt;
+  const caption = negative ? t.EditorNegativePrompt : t.EditorPrompt;
 
   const {
     tabName,
@@ -97,7 +97,7 @@
 </script>
 
 <div class="editor">
-  <span>{caption.translate()}</span>
+  <span>{caption()}</span>
   <div class="content">
     <TokenCounter />
     <PromptList />

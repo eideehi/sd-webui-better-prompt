@@ -2,14 +2,7 @@
   import type { MyPrompt } from "#/my-prompt";
   import { createEventDispatcher } from "svelte";
   import { addMyPrompt, allMyPromptTags, myPrompts } from "@/_logic/myPrompts";
-  import {
-    addNewMyPrompt,
-    addThisMyPrompt,
-    cancelAndClose,
-    myPromptLabel,
-    myPromptPrompt,
-    myPromptTags,
-  } from "@/_logic/messages";
+  import * as t from "~/messages";
   import TextInput from "%/TextInput.svelte";
   import PopupWindow from "%/PopupWindow.svelte";
   import MultiInput from "%/MultiInput.svelte";
@@ -55,24 +48,20 @@
 </script>
 
 <button class="button secondary lg" on:click={() => (showPopup = true)}>
-  {addNewMyPrompt.translate()}
+  {t.AddNewMyPrompt()}
 </button>
 
-<PopupWindow title={addNewMyPrompt.translate()} bind:show={showPopup}>
+<PopupWindow title={t.AddNewMyPrompt()} bind:show={showPopup}>
   <div class="add-new-my-prompt">
-    <TextInput label={myPromptLabel.translate()} bind:value={myPrompt.label} />
-    <MultiInput
-      label={myPromptTags.translate()}
-      bind:values={myPrompt.tags}
-      list={$allMyPromptTags}
-    />
-    <TextArea label={myPromptPrompt.translate()} bind:value={myPrompt.prompt} />
+    <TextInput label={t.MyPromptLabel()} bind:value={myPrompt.label} />
+    <MultiInput label={t.MyPromptTags()} bind:values={myPrompt.tags} list={$allMyPromptTags} />
+    <TextArea label={t.MyPromptPrompt()} bind:value={myPrompt.prompt} />
     <div class="buttons">
       <button class="button primary lg" on:click={onClickConfirm} disabled={!isValid(myPrompt)}>
-        {addThisMyPrompt.translate()}
+        {t.AddThisMyPrompt()}
       </button>
       <button class="button secondary lg" on:click={closePopup}>
-        {cancelAndClose.translate()}
+        {t.CancelAddingMyPrompt()}
       </button>
     </div>
   </div>

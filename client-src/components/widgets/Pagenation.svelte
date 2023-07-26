@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pagenationEllipsis, pagenationNext, pagenationPrevious } from "@/_logic/messages";
+  import * as t from "~/messages";
 
   export let page: number;
   export let totalCount: number;
@@ -22,14 +22,14 @@
   <div class="pagenation">
     {#if page > 1}
       <button class="button secondary" on:click={() => (page = page - 1)}>
-        {pagenationPrevious.translate()}
+        {t.PagenationPrevious()}
       </button>
     {/if}
     {#if page >= 4}
       <button class="button secondary" on:click={() => (page = 1)}>1</button>
       {#if page >= 5}
         <span class="ellipsis">
-          {pagenationEllipsis.translate()}
+          {t.PagenationEllipsis()}
         </span>
       {/if}
     {/if}
@@ -44,7 +44,7 @@
     {/each}
     {#if page < lastPage}
       <button class="button secondary" on:click={() => (page = page + 1)}>
-        {pagenationNext.translate()}
+        {t.PagenationNext()}
       </button>
     {/if}
   </div>

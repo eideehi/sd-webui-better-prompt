@@ -3,7 +3,7 @@
   import { getContext } from "svelte";
   import { getOption } from "#/util/webui";
   import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
-  import { loraNegativePromptError } from "@/_logic/messages";
+  import * as t from "~/messages";
   import {
     type PromptInputContext,
     promptInputContextKey,
@@ -39,7 +39,7 @@
       if (isLora && shiftKey) {
         showToast({
           type: "warning",
-          text: loraNegativePromptError.translate(),
+          text: t.LoraNegativePromptError(),
         });
         return;
       }

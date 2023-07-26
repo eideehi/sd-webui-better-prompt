@@ -22,7 +22,8 @@
     "paths": {
       "@/*": ["client-src/components/better-prompt/*"],
       "%/*": ["client-src/components/widgets/*"],
-      "#/*": ["client-src/libs/*"]
+      "#/*": ["client-src/libs/*"],
+      "~/*": ["client-src/data/*"]
     }
   },
   "include": ["client-src/**/*.d.ts", "client-src/**/*.ts", "client-src/**/*.js", "client-src/**/*.svelte"],

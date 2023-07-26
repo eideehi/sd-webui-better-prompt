@@ -8,6 +8,7 @@ export default defineConfig({
       "@/": `${resolve(__dirname, "client-src", "components", "better-prompt")}/`,
       "%/": `${resolve(__dirname, "client-src", "components", "widgets")}/`,
       "#/": `${resolve(__dirname, "client-src", "libs")}/`,
+      "~/": `${resolve(__dirname, "client-src", "data")}/`,
     },
   },
   build: {

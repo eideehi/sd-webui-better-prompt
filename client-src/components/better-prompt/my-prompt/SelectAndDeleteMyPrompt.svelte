@@ -1,11 +1,7 @@
 <script lang="ts">
   import type { MyPrompt } from "#/my-prompt";
   import { removeMyPrompts } from "@/_logic/myPrompts";
-  import {
-    cancelMyPromptDeletion,
-    deleteSelectedMyPrompt,
-    selectAndDeleteMyPrompt,
-  } from "@/_logic/messages";
+  import * as t from "~/messages";
 
   export let deleteMode: boolean;
   export let selectedMyPrompts: MyPrompt[];
@@ -22,9 +18,9 @@
 
 <button class="button secondary lg" on:click={() => (deleteMode = !deleteMode)}>
   {#if deleteMode}
-    {cancelMyPromptDeletion.translate()}
+    {t.CancelMyPromptDeletion()}
   {:else}
-    {selectAndDeleteMyPrompt.translate()}
+    {t.SelectAndDeleteMyPrompt()}
   {/if}
 </button>
 
@@ -34,6 +30,6 @@
     on:click={deleteMyPrompts}
     disabled={selectedMyPrompts.length === 0}
   >
-    {deleteSelectedMyPrompt.translate()}
+    {t.DeleteSelectedMyPrompt()}
   </button>
 {/if}

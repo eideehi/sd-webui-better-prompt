@@ -4,7 +4,7 @@
   import { type BetterPromptContext, betterPromptContextKey } from "@/_logic/context";
   import { adjustPrompt } from "@/_logic/adjustPrompt";
   import { textualInversion } from "@/_logic/extraNetworks";
-  import { inputPrompt } from "@/_logic/messages";
+  import * as t from "~/messages";
   import {
     type PromptInputContext,
     type PseudoFocusMoveDirection,
@@ -96,5 +96,5 @@
   on:focusout={clearPseudoFocus}
   on:input={clearPseudoFocus}
   on:keydown={onKeyDown}
-  options={{ placeholder: inputPrompt.translate() }}
+  options={{ placeholder: t.InputPrompt() }}
 />
