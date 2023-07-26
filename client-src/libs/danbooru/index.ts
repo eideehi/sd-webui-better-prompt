@@ -1,3 +1,3 @@
-export type { DanbooruTag } from "./danbooruTag";
-export { isDanbooruTag } from "./isDanbooruTag";
-export { tagToPrompt } from "./tagToPrompt";
+export type * from "./danbooruTag";
+export * from "./isDanbooruTag";
+export * from "./tagToPrompt";

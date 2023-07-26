@@ -1,3 +1,3 @@
-export { omitNulls } from "./omitNulls";
-export { sortByIndexes } from "./sortByIndexes";
-export { toggleValue } from "./toggleValue";
+export * from "./omitNulls";
+export * from "./sortByIndexes";
+export * from "./toggleValue";

@@ -1,5 +1,5 @@
-export { concatPrompt } from "./concatPrompt";
-export { isEquals } from "./isEquals";
-export { isPromptType } from "./isPromptType";
-export { parsePrompt } from "./parsePrompt";
-export { toString } from "./toString";
+export * from "./concatPrompt";
+export * from "./isEquals";
+export * from "./isPromptType";
+export * from "./parsePrompt";
+export * from "./toString";

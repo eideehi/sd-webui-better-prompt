@@ -1,2 +1,2 @@
-export { generateHashCode } from "./generateHashCode";
-export { toggleValue } from "./toggleValue";
+export * from "./generateHashCode";
+export * from "./toggleValue";
