@@ -54,7 +54,7 @@ def print_version() -> None:
         print(f"[Better Prompt] Version {VERSION}")
 
 
-def do_update_my_prompts(my_prompts: List[MyPrompt]) -> Dict[str, Any]:
+def update_my_prompts(my_prompts: List[MyPrompt]) -> Dict[str, Any]:
     if not MY_PROMPT_JSON.exists():
         MY_PROMPT_JSON.parent.mkdir(parents=True, exist_ok=True)
     data = list(map(lambda x: x.dict(), my_prompts))
@@ -101,29 +101,29 @@ def filter_none_fields(obj: Any) -> Any:
 
 def on_app_started(demo: Optional[gr.Blocks], app: FastAPI) -> None:
     @app.get("/better-prompt-api/v1/get-localization")
-    async def get_localization(request: Request):
+    async def get_localization_api(request: Request):
         return JSONResponse(content=localization_dict)
 
     @app.get("/better-prompt-api/v1/get-danbooru-tags")
-    async def all_danbooru_tag(request: Request):
+    async def get_danbooru_tags_api(request: Request):
         if DANBOORU_TAGS_JSON.is_file():
             return FileResponse(path=DANBOORU_TAGS_JSON, media_type="application/json")
         else:
             return JSONResponse(content=[])
 
     @app.get("/better-prompt-api/v1/get-my-prompts")
-    async def get_my_prompts(request: Request):
+    async def get_my_prompts_api(request: Request):
         if MY_PROMPT_JSON.is_file():
             return FileResponse(path=MY_PROMPT_JSON, media_type="application/json")
         else:
             return JSONResponse(content=[])
 
     @app.post("/better-prompt-api/v1/update-my-prompts")
-    async def update_my_prompts(request: List[MyPrompt]):
-        return JSONResponse(content=do_update_my_prompts(request))
+    async def update_my_prompts_api(request: List[MyPrompt]):
+        return JSONResponse(content=update_my_prompts(request))
 
     @app.get("/better-prompt-api/v1/get-extra-networks/{extra_network_type}")
-    async def get_extra_networks(extra_network_type: str):
+    async def get_extra_networks_api(extra_network_type: str):
         result = []
         match extra_network_type:
             case "lora":
