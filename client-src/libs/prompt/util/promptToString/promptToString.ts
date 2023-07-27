@@ -1,6 +1,6 @@
 import type { Prompt, PromptGroup, Prompts } from "#/prompt";
 import { alternatePromptToString } from "./alternatePromptToString";
-import { emphasizedPositivePromptToString } from "./emphasizedPromptToString";
+import { emphasizedPromptToString } from "./emphasizedPromptToString";
 import { extraNetworksPromptToString } from "./extraNetworksPromptToString";
 import { plainPromptToString } from "./plainPromptToString";
 import { promptGroupToString } from "./promptGroupToString";
@@ -26,7 +26,7 @@ function _promptToString(prompt: Prompt): string {
     case "alternate":
       return alternatePromptToString(prompt);
     case "emphasized":
-      return emphasizedPositivePromptToString(prompt);
+      return emphasizedPromptToString(prompt);
     case "extra-networks":
       return extraNetworksPromptToString(prompt);
     case "plain":

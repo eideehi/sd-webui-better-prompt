@@ -1,4 +1,9 @@
-import type { EmphasizedPrompt, WeightedEmphasizedPrompt } from "#/prompt";
+import type {
+  EmphasizedPrompt,
+  NegativeEmphasizedPrompt,
+  PositiveEmphasizedPrompt,
+  WeightedEmphasizedPrompt,
+} from "#/prompt";
 import { promptsToString } from "./promptsToString";
 
 export function emphasizedPromptToString(prompt: EmphasizedPrompt): string {
@@ -12,11 +17,11 @@ export function emphasizedPromptToString(prompt: EmphasizedPrompt): string {
   }
 }
 
-export function emphasizedPositivePromptToString(prompt: EmphasizedPrompt): string {
+export function emphasizedPositivePromptToString(prompt: PositiveEmphasizedPrompt): string {
   return `(${promptsToString(prompt.values)})`;
 }
 
-export function emphasizedNegativePromptToString(prompt: EmphasizedPrompt): string {
+export function emphasizedNegativePromptToString(prompt: NegativeEmphasizedPrompt): string {
   return `[${promptsToString(prompt.values)}]`;
 }
 
