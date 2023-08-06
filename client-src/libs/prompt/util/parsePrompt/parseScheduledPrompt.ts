@@ -15,7 +15,8 @@ function parse(text: string, offset: number): [Nullable<ScheduledPrompt>, string
   if (text[offset] !== "[") return [null, text];
 
   let i = offset + 1;
-  let nest = 0;
+  let bracketNest = 0;
+  let parenthesisNest = 0;
   const colons: number[] = [];
   for (; i < text.length; i++) {
     const c = text[i];
@@ -23,13 +24,19 @@ function parse(text: string, offset: number): [Nullable<ScheduledPrompt>, string
       i++;
       continue;
     }
-    if (c === "[") {
-      nest++;
+    if (c === "(") {
+      parenthesisNest++;
+    } else if (c === ")") {
+      parenthesisNest--;
+    } else if (c === "[") {
+      bracketNest++;
     } else if (c === ":") {
-      if (nest !== 0) continue;
+      if (bracketNest > 0 || parenthesisNest > 0) continue;
       colons.push(i);
     } else if (c === "]") {
-      if (nest === 0) {
+      if (bracketNest > 0) {
+        bracketNest--;
+      } else {
         if (colons.length === 1) {
           const to = text.slice(offset + 1, colons[0]);
           if (to.length === 0) break;
@@ -38,7 +45,7 @@ function parse(text: string, offset: number): [Nullable<ScheduledPrompt>, string
             return [
               {
                 type: "scheduled",
-                to: parsePrompt(text.slice(offset + 1, colons[0])),
+                to: parsePrompt(to),
                 when: parseFloat(num),
               },
               text.slice(i + 1),
@@ -76,8 +83,6 @@ function parse(text: string, offset: number): [Nullable<ScheduledPrompt>, string
         } else {
           break;
         }
-      } else {
-        nest--;
       }
     }
   }
